@@ -3569,6 +3569,12 @@ public final class Settings {
         public static final String STATUS_BAR_BRIGHTNESS_CONTROL = "status_bar_brightness_control";
 
         /**
+         * Configurable LTE or 4G icon - up to per user defined
+         * @hide
+         */
+        public static final String SHOW_LTE_OR_FOURGEE = "show_lte_or_fourgee";
+
+        /**
          * Whether flip action during incomming call should mute or dismiss
          * the call (mute = 0, dismiss = 1, nothing = 2 (default))
          *
