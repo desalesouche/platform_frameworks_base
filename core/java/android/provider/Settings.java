@@ -2651,6 +2651,12 @@ public final class Settings {
         public static final String LOCKSCREEN_DISABLE_HINTS = "lockscreen_disable_hints";
 
         /**
+         * This preference enables showing the power menu on LockScreen.
+         * @hide
+         */
+        public static final String LOCKSCREEN_ENABLE_POWER_MENU = "lockscreen_enable_power_menu";
+
+        /**
          * Whether to minimize lockscreen challenge on screen turned on
          * @hide
          */
