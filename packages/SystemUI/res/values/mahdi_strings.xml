@@ -182,5 +182,8 @@
     <string name="network_3G">2G/3G Pref</string>
     <string name="network_2G">2G Only</string>
     <string name="quick_settings_network_unknown">Unknown</string>
+
+    <!-- Content description for the add quick settings tile button. [CHAR LIMIT=NONE] -->
+    <string name="accessibility_desc_add_quick_settings">Add Quick settings</string>
     
 </resources>
