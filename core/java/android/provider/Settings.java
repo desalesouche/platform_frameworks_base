@@ -4357,6 +4357,12 @@ public final class Settings {
         public static final String DISABLE_FC_NOTIFICATIONS = "disable_fc_notifications";
 
         /**
+         * Show brightness slider in notification panel
+         * @hide
+         */
+        public static final String NOTIFICATION_BRIGHTNESS_SLIDER = "notification_brightness_slider";
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
