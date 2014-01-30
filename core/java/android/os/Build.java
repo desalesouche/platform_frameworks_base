@@ -112,10 +112,10 @@ public class Build {
         public static final String CODENAME = getString("ro.build.version.codename");
 
         /**
-         * The current version string that defines the mahdi version
+         * The current version string that defines the schism version
          * the device is on
          */
-        public static final String MAHDI = getString("ro.mahdi.version");
+        public static final String MAHDI = getString("ro.schism.version");
 
         /**
          * The SDK version to use when accessing resources.
