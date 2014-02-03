@@ -22,7 +22,7 @@
 The Holo themes must not be modified in order to pass CTS.
 Many related themes and styles depend on other values defined in this file.
 If you would like to provide custom themes and styles for your device,
-please see themes_device_defaults.xml.
+please see styles_device_defaults.xml.
 
 ===============================================================
                         PLEASE READ
