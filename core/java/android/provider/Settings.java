@@ -4443,6 +4443,7 @@ public final class Settings {
 
         /**
          * Pie buttons configuration second layer
+         *
          * @hide
          */
         public static final String PIE_BUTTONS_CONFIG_SECOND_LAYER =
@@ -4465,6 +4466,12 @@ public final class Settings {
          * @hide
          */
         public static final String WAKELOCK_BLOCKING_LIST = "wakelock_blocking_list";
+
+        /**
+         * Disable ads (HFM)
+         * @hide
+         */
+        public static final String HFM_DISABLE_ADS = "hfm_disable_ads";
 
         /**
          * Allows to show the background activity back the lockscreen
