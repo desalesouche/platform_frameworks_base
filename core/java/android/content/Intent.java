@@ -672,6 +672,12 @@ public class Intent implements Parcelable, Cloneable {
     @SdkConstant(SdkConstantType.ACTIVITY_INTENT_ACTION)
     public static final String ACTION_PICK = "android.intent.action.PICK";
 
+	/**
+     * Global Action: Battery services start/stop
+     * @hide
+     */
+    public static final String ACTION_BATTERY_SERVICES = "android.intent.action.BATTERY_SERVICES";
+
     /**
      * Registered and foreground services only
      * @hide
