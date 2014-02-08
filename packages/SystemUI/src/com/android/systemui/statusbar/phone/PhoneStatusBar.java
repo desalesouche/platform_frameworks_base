@@ -823,11 +823,6 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
 
         mNotificationPanelHeader = mStatusBarWindow.findViewById(R.id.header);
 
-        mStatusHeaderMachine = new StatusHeaderMachine(mContext);
-        mStatusHeaderImage = (ImageView) mNotificationPanelHeader.findViewById(R.id.header_background_image);
-        mHeaderOverlay = res.getDrawable(R.drawable.bg_custom_header_overlay);
-        updateCustomHeaderStatus();
-
         mClearButton = mStatusBarWindow.findViewById(R.id.clear_all_button);
         mClearButton.setOnClickListener(mClearButtonListener);
         mClearButton.setAlpha(0f);
@@ -982,41 +977,6 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
                 }
             });
         }
-
-        // Notification Shortcuts
-        mNotificationShortcutsLayout = (ShortcutsWidget)
-            mStatusBarWindow.findViewById(R.id.custom_notificiation_shortcuts);
-        mNotificationShortcutsLayout.setGlobalButtonOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                customButtonVibrate();
-                animateCollapsePanels();
-            }
-        });
-        mNotificationShortcutsLayout.setGlobalButtonOnLongClickListener(
-            new View.OnLongClickListener() {
-            public boolean onLongClick(View v) {
-                animateCollapsePanels();
-                return true;
-            }
-        });
-        mNotificationShortcutsScrollView = (HorizontalScrollView)
-            mStatusBarWindow.findViewById(R.id.custom_notification_scrollview);
-
-
-        String notificationShortcutsIsActive =
-                Settings.System.getStringForUser(mContext.getContentResolver(),
-                    Settings.System.NOTIFICATION_SHORTCUTS_CONFIG, UserHandle.USER_CURRENT);
-        mNotificationShortcutsIsActive = !(notificationShortcutsIsActive == null
-                || notificationShortcutsIsActive.isEmpty());
-
-        lpScrollView = (FrameLayout.LayoutParams) mScrollView.getLayoutParams();
-
-        mShortcutsDrawerMargin = res.getDimensionPixelSize(
-            R.dimen.notification_shortcuts_drawer_margin);
-        mShortcutsSpacingHeight = res.getDimensionPixelSize(
-            R.dimen.notification_shortcuts_spacing_height);
-        mCloseViewHeight = res.getDimensionPixelSize(R.dimen.close_handle_height);
-        updateCarrierMargin(false);
 
         // when we recreate statusbar shutdown quick settings before
         // we eventually recreate them
