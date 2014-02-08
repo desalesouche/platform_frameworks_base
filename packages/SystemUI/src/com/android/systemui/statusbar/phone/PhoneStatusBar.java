@@ -3606,34 +3606,17 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
         final Context context = mContext;
         final Resources res = context.getResources();
 
-
         if (mClearButton instanceof TextView) {
             ((TextView)mClearButton).setText(
                     context.getText(R.string.status_bar_clear_all_button));
-
-        if (mClearButton instanceof TextView) {
-            ((TextView)mClearButton).setText(context.getText(R.string.status_bar_clear_all_button));
         }
-        loadDimens();
-
-        // check for orientation change and update only the container layout
-        // for all other configuration changes update complete QS
-        int orientation = res.getConfiguration().orientation;
-        if (orientation != mCurrOrientation) {
-            mCurrOrientation = orientation;
-            // Update the settings container
-            if (mSettingsContainer != null) {
-                mSettingsContainer.updateResources();
-            }
-        } else {
-            if (mQS != null) {
-                mQS.updateResources();
-            }
-        }
-
+        
+        // Update the QuickSettings container
+        if (mQS != null) mQS.updateResources();
+        
         loadDimens();
     }
-
+    
     protected void loadDimens() {
         final Resources res = mContext.getResources();
 
@@ -3683,9 +3666,8 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
             mSettingsPanelGravity = Gravity.END | Gravity.TOP;
         }
 
-        mCarrierAndWifiViewHeight = res.getDimensionPixelSize(R.dimen.carrier_label_height);
+        mCarrierLabelHeight = res.getDimensionPixelSize(R.dimen.carrier_label_height);
         mNotificationHeaderHeight = res.getDimensionPixelSize(R.dimen.notification_panel_header_height);
-        mPeekHeight = res.getDimensionPixelSize(R.dimen.peek_height);       
 
         mNotificationPanelMinHeightFrac = res.getFraction(R.dimen.notification_panel_min_height_frac, 1, 1);
         if (mNotificationPanelMinHeightFrac < 0f || mNotificationPanelMinHeightFrac > 1f) {
@@ -3705,7 +3687,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
     void postStartTracing() {
         mHandler.postDelayed(mStartTracing, 3000);
     }
-    
+
     void vibrate() {
         android.os.Vibrator vib = (android.os.Vibrator)mContext.getSystemService(
                 Context.VIBRATOR_SERVICE);
@@ -3848,7 +3830,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
         if (v instanceof DemoMode) {
             ((DemoMode)v).dispatchDemoCommand(command, args);
         }
-    }         
+    }
 
     /**
      *  ContentObserver to watch for Quick Settings tiles changes
