@@ -3705,18 +3705,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
     void postStartTracing() {
         mHandler.postDelayed(mStartTracing, 3000);
     }
-
-
-    void customButtonVibrate() {
-        final boolean hapticsDisabled = Settings.System.getInt(mContext.getContentResolver(),
-                Settings.System.HAPTIC_FEEDBACK_ENABLED, 0) == 0;
-        if (!hapticsDisabled) {
-            android.os.Vibrator vib = (android.os.Vibrator)mContext.getSystemService(
-                    Context.VIBRATOR_SERVICE);
-            vib.vibrate(30);
-        }
-    }
-
+    
     void vibrate() {
         android.os.Vibrator vib = (android.os.Vibrator)mContext.getSystemService(
                 Context.VIBRATOR_SERVICE);
