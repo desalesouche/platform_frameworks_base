@@ -818,11 +818,6 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
 
         mNotificationPanelHeader = mStatusBarWindow.findViewById(R.id.header);
 
-        mStatusHeaderMachine = new StatusHeaderMachine(mContext);
-        mStatusHeaderImage = (ImageView) mNotificationPanelHeader.findViewById(R.id.header_background_image);
-        mHeaderOverlay = res.getDrawable(R.drawable.bg_custom_header_overlay);
-        updateCustomHeaderStatus();
-
         mClearButton = mStatusBarWindow.findViewById(R.id.clear_all_button);
         mClearButton.setOnClickListener(mClearButtonListener);
         mClearButton.setAlpha(0f);
@@ -1123,7 +1118,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
 
         if (mNotificationPanelHeader == null) return;
 
-        // Setup the updating notification bar header image
+        /* Setup the updating notification bar header image
         if (customHeader) {
             if (mStatusHeaderUpdater == null) {
                 mStatusHeaderUpdater = new Runnable() {
@@ -1152,8 +1147,8 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
             }
             setNotificationPanelHeaderBackground(mStatusHeaderMachine.getDefault());
         }
-    }
-
+    } */
+/* Derped code
     private void setNotificationPanelHeaderBackground(Drawable dwSrc) {
         Drawable[] arrayDrawable = new Drawable[2];
 
@@ -1175,7 +1170,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
             mStatusHeaderImage.setImageDrawable(dw);
         }
     }
-
+ */
     @Override
     protected void onShowSearchPanel() {
         if (mNavigationBarView != null) {
