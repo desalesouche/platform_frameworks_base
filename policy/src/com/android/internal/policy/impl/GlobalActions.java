@@ -52,6 +52,7 @@ import android.os.Vibrator;
 import android.provider.Settings;
 import android.service.dreams.DreamService;
 import android.service.dreams.IDreamManager;
+import android.service.gesture.IEdgeGestureService;
 import android.telephony.PhoneStateListener;
 import android.telephony.ServiceState;
 import android.telephony.TelephonyManager;
@@ -106,6 +107,8 @@ class GlobalActions implements DialogInterface.OnDismissListener, DialogInterfac
     private Context mUiContext;
     private final AudioManager mAudioManager;
     private final IDreamManager mDreamManager;
+    private IEdgeGestureService mEdgeGestureService;
+    private Object mServiceAquireLock = new Object();
 
     private ArrayList<Action> mItems;
     private GlobalActionsDialog mDialog;
@@ -794,6 +797,17 @@ class GlobalActions implements DialogInterface.OnDismissListener, DialogInterfac
     private void prepareDialog() {
         refreshSilentMode();
         mAirplaneModeOn.updateState(mAirplaneState);
+
+        // Global menu is showing. Notify EdgeGestureService.
+        IEdgeGestureService edgeGestureService = getEdgeGestureService();
+        try {
+            if (edgeGestureService != null) {
+                edgeGestureService.setOverwriteImeIsActive(true);
+            }
+        } catch (RemoteException e) {
+             mEdgeGestureService = null;
+        }
+
         mAdapter.notifyDataSetChanged();
         mDialog.getWindow().setType(WindowManager.LayoutParams.TYPE_KEYGUARD_DIALOG);
         if (mShowSilentToggle) {
@@ -821,6 +835,16 @@ class GlobalActions implements DialogInterface.OnDismissListener, DialogInterfac
                 Log.w(TAG, ie);
             }
         }
+        // Global menu dismiss. Notify EdgeGestureService.
+        IEdgeGestureService edgeGestureService = getEdgeGestureService();
+        try {
+            if (edgeGestureService != null) {
+                edgeGestureService.setOverwriteImeIsActive(false);
+            }
+        } catch (RemoteException e) {
+             mEdgeGestureService = null;
+        }
+        mContext.getContentResolver().unregisterContentObserver(mSettingsObserver);
     }
 
     /** {@inheritDoc} */
@@ -1392,6 +1416,19 @@ class GlobalActions implements DialogInterface.OnDismissListener, DialogInterfac
                 mContext.getContentResolver(),
                 Settings.System.GLOBAL_IMMERSIVE_MODE_STATE,
                 on ? 1 : 0, UserHandle.USER_CURRENT);
+    }
+    
+    /**
+     * If not set till now get EdgeGestureService.
+     */
+    private IEdgeGestureService getEdgeGestureService() {
+        synchronized (mServiceAquireLock) {
+            if (mEdgeGestureService == null) {
+                mEdgeGestureService = IEdgeGestureService.Stub.asInterface(
+                            ServiceManager.getService("edgegestureservice"));
+            }
+            return mEdgeGestureService;
+        }
     }
 
     private static final class GlobalActionsDialog extends Dialog implements DialogInterface {
