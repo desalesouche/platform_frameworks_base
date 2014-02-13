@@ -193,7 +193,7 @@ final class DisplayPowerController {
     private final DisplayBlanker mDisplayBlanker;
 
     // Our context
-   // private final Context mContext;
+    private final Context mContext;
 
     // Our handler.
     private final DisplayControllerHandler mHandler;
@@ -412,6 +412,7 @@ final class DisplayPowerController {
         mDisplayBlanker = displayBlanker;
         mCallbacks = callbacks;
         mCallbackHandler = callbackHandler;
+        mContext = context;
 
         mLights = lights;
         mTwilight = twilight;
