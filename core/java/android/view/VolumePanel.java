@@ -1212,5 +1212,4 @@ public class VolumePanel extends Handler implements OnSeekBarChangeListener, Vie
         set.playTogether(panelAlpha, moreAlpha, dividerAlpha);
         set.start();
     }
->>>>>>> ce51e58... core: fix volume panel more button transparency
 }
