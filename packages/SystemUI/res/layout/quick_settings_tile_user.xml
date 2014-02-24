@@ -15,14 +15,19 @@
 -->
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:systemui="http://schemas.android.com/apk/res/com.android.systemui"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <ImageView
+    <com.android.systemui.widget.RoundedImageView
         android:id="@+id/user_imageview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:src="@drawable/ic_qs_default_user"
         android:scaleType="centerCrop"
+        android:corner_radius="55dip"
+        android:is_oval="true"
+        systemui:corner_radius="55dip"
+        systemui:is_oval="true"
         />
     <TextView
         style="@style/TextAppearance.QuickSettings.TileView.User"

@@ -43,6 +43,7 @@ import android.view.WindowManagerGlobal;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.android.systemui.widget.RoundedImageView;
 import com.android.systemui.R;
 import com.android.systemui.statusbar.phone.QuickSettingsContainerView;
 import com.android.systemui.statusbar.phone.QuickSettingsController;
@@ -98,7 +99,7 @@ public class UserTile extends QuickSettingsTile {
 
     @Override
     void updateQuickSettings() {
-        ImageView iv = (ImageView) mTile.findViewById(R.id.user_imageview);
+        ImageView iv = (RoundedImageView) mTile.findViewById(R.id.user_imageview);
         TextView tv = (TextView) mTile.findViewById(R.id.user_textview);
         if (tv != null) {
             tv.setText(mLabel);
