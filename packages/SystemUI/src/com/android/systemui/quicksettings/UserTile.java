@@ -99,7 +99,7 @@ public class UserTile extends QuickSettingsTile {
 
     @Override
     void updateQuickSettings() {
-        ImageView iv = (RoundedImageView) mTile.findViewById(R.id.user_imageview);
+        RoundedImageView iv = (RoundedImageView) mTile.findViewById(R.id.user_imageview);
         TextView tv = (TextView) mTile.findViewById(R.id.user_textview);
         if (tv != null) {
             tv.setText(mLabel);
