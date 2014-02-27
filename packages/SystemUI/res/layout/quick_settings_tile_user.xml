@@ -26,7 +26,6 @@
         android:scaleType="centerCrop"
         systemui:corner_radius="30dip"
         systemui:is_oval="true"
-        android:raduis="55dip"
         />
     <TextView
         style="@style/TextAppearance.QuickSettings.TileView.User"
