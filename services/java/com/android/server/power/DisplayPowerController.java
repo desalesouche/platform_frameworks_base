@@ -485,13 +485,14 @@ final class DisplayPowerController {
         }
     }
 
-    Intent intent = new Intent();
-    intent.setClassName("com.android.keyguard", "com.android.keyguard.KeyguardService");
-    if (!context.bindServiceAsUser(intent, mKeyguardConnection,
-            Context.BIND_AUTO_CREATE, UserHandle.OWNER)) {
-        Log.e(TAG, "*** Keyguard: can't bind to keyguard");
-    } else {
-        Log.e(TAG, "*** Keyguard started");
+        Intent intent = new Intent();
+        intent.setClassName("com.android.keyguard", "com.android.keyguard.KeyguardService");
+        if (!context.bindServiceAsUser(intent, mKeyguardConnection,
+                Context.BIND_AUTO_CREATE, UserHandle.OWNER)) {
+            Log.e(TAG, "*** Keyguard: can't bind to keyguard");
+        } else {
+            Log.e(TAG, "*** Keyguard started");
+        }
     }
 
     private void updateAutomaticBrightnessSettings() {
@@ -641,6 +642,7 @@ final class DisplayPowerController {
             if (changed) {
                 mDisplayReadyLocked = false;
             }
+            
             boolean seeThrough = Settings.System.getInt(mContext.getContentResolver(),
                     Settings.System.LOCKSCREEN_SEE_THROUGH, 0) == 1;
             int blurRadius = Settings.System.getInt(mContext.getContentResolver(),
