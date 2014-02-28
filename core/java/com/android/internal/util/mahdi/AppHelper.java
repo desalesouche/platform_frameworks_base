@@ -117,8 +117,6 @@ public class AppHelper {
         return uri;
     }
 
-<<<<<<< HEAD
-=======
     public static String getShortcutPreferred(
             Context context, PackageManager pm, String uri) {
         if (uri == null || uri.startsWith("**")) {
@@ -137,5 +135,4 @@ public class AppHelper {
         return uri;
     }
 
->>>>>>> 4330d57e960c609a97a3522fff7c09e7e92f8794
 }

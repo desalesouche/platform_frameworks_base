@@ -17,135 +17,122 @@
 package com.android.internal.util.mahdi;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.BitmapShader;
-import android.graphics.Canvas;
-import android.graphics.ColorMatrix;
-import android.graphics.ColorMatrixColorFilter;
-import android.graphics.Matrix;
-import android.graphics.Paint;
-import android.graphics.PorterDuff;
-import android.graphics.PorterDuffColorFilter;
-import android.graphics.PorterDuffXfermode;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.Rect;
-import android.graphics.RectF;
-import android.graphics.Shader.TileMode;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.util.TypedValue;
+import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
+import android.content.res.Resources;
+import android.util.Log;
 
-public class ImageHelper {
+import java.net.URISyntaxException;
 
-    public static Bitmap getColoredBitmap(Drawable d, int color) {
-        if (d == null) {
-            return null;
-        }
-        Bitmap colorBitmap = ((BitmapDrawable) d).getBitmap();
-        Bitmap grayscaleBitmap = toGrayscale(colorBitmap);
-        Paint pp = new Paint();
-        pp.setAntiAlias(true);
-        PorterDuffColorFilter frontFilter =
-            new PorterDuffColorFilter(color, Mode.MULTIPLY);
-        pp.setColorFilter(frontFilter);
-        Canvas cc = new Canvas(grayscaleBitmap);
-        final Rect rect = new Rect(0, 0, grayscaleBitmap.getWidth(), grayscaleBitmap.getHeight());
-        cc.drawBitmap(grayscaleBitmap, rect, rect, pp);
-        return grayscaleBitmap;
-    }
+public class AppHelper {
 
-    private static Bitmap toGrayscale(Bitmap bmpOriginal) {
-        int width, height;
-        height = bmpOriginal.getHeight();
-        width = bmpOriginal.getWidth();
+    private static final String SETTINGS_METADATA_NAME = "com.android.settings";
 
-        Bitmap bmpGrayscale = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
-        Canvas c = new Canvas(bmpGrayscale);
-        Paint paint = new Paint();
-        paint.setAntiAlias(true);
-        ColorMatrix cm = new ColorMatrix();
-        final Rect rect = new Rect(0, 0, width, height);
-        cm.setSaturation(0);
+    public static String getProperSummary(Context context, PackageManager pm,
+            Resources settingsResources, String action, String values, String entries) {
 
-        ColorMatrixColorFilter f = new ColorMatrixColorFilter(cm);
-        paint.setColorFilter(f);
-        c.drawBitmap(bmpOriginal, rect, rect, paint);
-        return bmpGrayscale;
-    }
-
-    public static Drawable resize(Context context, Drawable image, int size) {
-        if (image == null || context == null) {
-            return null;
+        if (pm == null || settingsResources == null || action == null) {
+            return context.getResources().getString(
+                com.android.internal.R.string.error_message_title);
         }
 
-        int newSize = Converter.dpToPx(context, size);
-        Bitmap bitmap = ((BitmapDrawable) image).getBitmap();
-        Bitmap scaledBitmap = Bitmap.createBitmap(newSize, newSize, Config.ARGB_8888);
+        if (values != null && entries != null) {
+            int resIdEntries = -1;
+            int resIdValues = -1;
 
-        float ratioX = newSize / (float) bitmap.getWidth();
-        float ratioY = newSize / (float) bitmap.getHeight();
-        float middleX = newSize / 2.0f;
-        float middleY = newSize / 2.0f;
+            resIdEntries = settingsResources.getIdentifier(
+                        SETTINGS_METADATA_NAME + ":array/" + entries, null, null);
 
-        final Paint paint = new Paint(Paint.FILTER_BITMAP_FLAG);
-        paint.setAntiAlias(true);
+            resIdValues = settingsResources.getIdentifier(
+                        SETTINGS_METADATA_NAME + ":array/" + values, null, null);
 
-        Matrix scaleMatrix = new Matrix();
-        scaleMatrix.setScale(ratioX, ratioY, middleX, middleY);
+            if (resIdEntries > 0 && resIdValues > 0) {
+                try {
+                    String[] entriesArray = settingsResources.getStringArray(resIdEntries);
+                    String[] valuesArray = settingsResources.getStringArray(resIdValues);
+                    for (int i = 0; i < valuesArray.length; i++) {
+                        if (action.equals(valuesArray[i])) {
+                            return entriesArray[i];
+                        }
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
 
-        Canvas canvas = new Canvas(scaledBitmap);
-        canvas.setMatrix(scaleMatrix);
-        canvas.drawBitmap(bitmap, middleX - bitmap.getWidth() / 2,
-                middleY - bitmap.getHeight() / 2, paint);
-        return new BitmapDrawable(context.getResources(), scaledBitmap);
+        return getFriendlyNameForUri(context, pm, action);
     }
 
-    public static Bitmap getRoundedCornerBitmap(Bitmap bitmap) {
-        if (bitmap == null) {
+    public static String getFriendlyActivityName(Context context,
+            PackageManager pm, Intent intent, boolean labelOnly) {
+        ActivityInfo ai = intent.resolveActivityInfo(pm, PackageManager.GET_ACTIVITIES);
+        String friendlyName = null;
+
+        if (ai != null) {
+            friendlyName = ai.loadLabel(pm).toString();
+            if (friendlyName == null && !labelOnly) {
+                friendlyName = ai.name;
+            }
+        }
+
+        if (friendlyName == null || friendlyName.startsWith("#Intent;")) {
+            return context.getResources().getString(
+                com.android.internal.R.string.error_message_title);
+        }
+        return friendlyName != null || labelOnly ? friendlyName : intent.toUri(0);
+    }
+
+    public static String getFriendlyShortcutName(
+                Context context, PackageManager pm, Intent intent) {
+        String activityName = getFriendlyActivityName(context, pm, intent, true);
+        String name = intent.getStringExtra(Intent.EXTRA_SHORTCUT_NAME);
+
+        if (activityName == null || activityName.startsWith("#Intent;")) {
+            return context.getResources().getString(
+                com.android.internal.R.string.error_message_title);
+        }
+        if (activityName != null && name != null) {
+            return activityName + ": " + name;
+        }
+        return name != null ? name : intent.toUri(0);
+    }
+
+    public static String getFriendlyNameForUri(
+                Context context, PackageManager pm, String uri) {
+        if (uri == null || uri.startsWith("**")) {
             return null;
         }
-        Bitmap output = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(),
-                Config.ARGB_8888);
-        Canvas canvas = new Canvas(output);
 
-        final int color = 0xff424242;
-        final Paint paint = new Paint();
-        final Rect rect = new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight());
-        final RectF rectF = new RectF(rect);
-        final float roundPx = 24;
-        paint.setAntiAlias(true);
-        canvas.drawARGB(0, 0, 0, 0);
-        paint.setColor(color);
-        canvas.drawRoundRect(rectF, roundPx, roundPx, paint);
-        paint.setXfermode(new PorterDuffXfermode(Mode.SRC_IN));
-        canvas.drawBitmap(bitmap, rect, rect, paint);
-        return output;
+        try {
+            Intent intent = Intent.parseUri(uri, 0);
+            if (Intent.ACTION_MAIN.equals(intent.getAction())) {
+                return getFriendlyActivityName(context, pm, intent, false);
+            }
+            return getFriendlyShortcutName(context, pm, intent);
+        } catch (URISyntaxException e) {
+        }
+
+        return uri;
     }
 
-    public static Bitmap getCircleBitmap(Bitmap bitmap) {
-        if (bitmap == null) {
+    public static String getShortcutPreferred(
+            Context context, PackageManager pm, String uri) {
+        if (uri == null || uri.startsWith("**")) {
             return null;
         }
-        int width = bitmap.getWidth();
-        int height = bitmap.getHeight();
+        try {
+            Intent intent = Intent.parseUri(uri, 0);
+            String name = intent.getStringExtra(Intent.EXTRA_SHORTCUT_NAME);
+            if (name == null || name.startsWith("#Intent;")) {
+                return getFriendlyActivityName(context, pm, intent, false);
+            }
+            return name;
+        } catch (URISyntaxException e) {
+        }
 
-        Bitmap output = Bitmap.createBitmap(width, height,
-                Config.ARGB_8888);
-        Canvas canvas = new Canvas(output);
-
-        BitmapShader shader = new BitmapShader(bitmap,  TileMode.CLAMP, TileMode.CLAMP);
-        final Paint paint = new Paint();
-        paint.setAntiAlias(true);
-        paint.setShader(shader);
-
-        canvas.drawCircle(width/2, height/2, width/2, paint);
-
-        return output;
+        return uri;
     }
 
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 4330d57e960c609a97a3522fff7c09e7e92f8794
