@@ -117,4 +117,25 @@ public class AppHelper {
         return uri;
     }
 
+<<<<<<< HEAD
+=======
+    public static String getShortcutPreferred(
+            Context context, PackageManager pm, String uri) {
+        if (uri == null || uri.startsWith("**")) {
+            return null;
+        }
+        try {
+            Intent intent = Intent.parseUri(uri, 0);
+            String name = intent.getStringExtra(Intent.EXTRA_SHORTCUT_NAME);
+            if (name == null || name.startsWith("#Intent;")) {
+                return getFriendlyActivityName(context, pm, intent, false);
+            }
+            return name;
+        } catch (URISyntaxException e) {
+        }
+
+        return uri;
+    }
+
+>>>>>>> 4330d57e960c609a97a3522fff7c09e7e92f8794
 }

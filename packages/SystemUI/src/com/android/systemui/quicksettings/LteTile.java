@@ -99,5 +99,4 @@ public class LteTile extends QuickSettingsTile {
                     Settings.Global.PREFERRED_NETWORK_MODE, preferredNetworkMode);
         return network;
     }
-
 }

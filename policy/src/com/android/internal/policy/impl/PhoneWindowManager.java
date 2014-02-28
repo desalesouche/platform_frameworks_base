@@ -625,7 +625,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                     UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.VOLUME_MUSIC_CONTROLS), false, this,
-                    UserHandle.USER_ALL);	    
+                    UserHandle.USER_ALL);       
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.KEY_HOME_LONG_PRESS_ACTION), false, this);
             resolver.registerContentObserver(Settings.System.getUriFor(
@@ -1196,7 +1196,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
         mLidControlsSleep = mContext.getResources().getBoolean(
                 com.android.internal.R.bool.config_lidControlsSleep);
         mTranslucentDecorEnabled = mContext.getResources().getBoolean(
-                com.android.internal.R.bool.config_enableTranslucentDecor);	
+                com.android.internal.R.bool.config_enableTranslucentDecor); 
         mBackKillTimeout = mContext.getResources().getInteger(
                 com.android.internal.R.integer.config_backKillTimeout);
         mDeviceHardwareKeys = mContext.getResources().getInteger(
@@ -1245,7 +1245,15 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                     }
                     @Override
                     public void onSwipeFromRight() {
-                        if (mNavigationBar != null && !mNavigationBarOnBottom) {
+                        if (mNavigationBar != null && !mNavigationBarOnBottom &&
+                                !mNavigationBarLeftInLandscape) {
+                            requestTransientBars(mNavigationBar);
+                        }
+                    }
+                    @Override
+                    public void onSwipeFromLeft() {
+                        if (mNavigationBar != null && !mNavigationBarOnBottom &&
+                                mNavigationBarLeftInLandscape) {
                             requestTransientBars(mNavigationBar);
                         }
                     }
@@ -2511,7 +2519,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             mHandler.removeCallbacks(mBackLongPress);
         }
 
-	// Specific device key handling
+    // Specific device key handling
         if (mDeviceKeyHandler != null) {
             try {
                 // The device only should consume known keys.
@@ -3715,7 +3723,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             dcf.right = mSystemRight;
             dcf.bottom = mSystemBottom;
             final boolean inheritTranslucentDecor = (attrs.privateFlags
-                    & WindowManager.LayoutParams.PRIVATE_FLAG_INHERIT_TRANSLUCENT_DECOR) != 0;		    
+                    & WindowManager.LayoutParams.PRIVATE_FLAG_INHERIT_TRANSLUCENT_DECOR) != 0;          
             final boolean isAppWindow =
                     attrs.type >= WindowManager.LayoutParams.FIRST_APPLICATION_WINDOW &&
                     attrs.type <= WindowManager.LayoutParams.LAST_APPLICATION_WINDOW;
@@ -4630,7 +4638,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
 
         // Handle special keys.
         switch (keyCode) {
-	    case KeyEvent.KEYCODE_ENDCALL: {
+        case KeyEvent.KEYCODE_ENDCALL: {
                 result &= ~ACTION_PASS_TO_USER;
                 if (down) {
                     ITelephony telephonyService = getTelephonyService();
@@ -4661,7 +4669,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             }
             case KeyEvent.KEYCODE_VOLUME_DOWN:
             case KeyEvent.KEYCODE_VOLUME_UP:
-            case KeyEvent.KEYCODE_VOLUME_MUTE: {		
+            case KeyEvent.KEYCODE_VOLUME_MUTE: {        
                 if (keyCode == KeyEvent.KEYCODE_VOLUME_DOWN) {
                     if (down) {
                         if (isScreenOn && !mVolumeDownKeyTriggered

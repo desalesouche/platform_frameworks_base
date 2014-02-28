@@ -40,6 +40,11 @@
     <string name="quick_settings_lockscreen">Lock screen</string>
     <string name="quick_settings_music_play">Play</string>
     <string name="quick_settings_music_pause">Pause</string>
+    <string name="quick_settings_music_schedule_title">Sleep timer</string>
+    <string name="quick_settings_music_schedule_in_progress">Timer in progress</string>
+    <string name="quick_settings_music_schedule_start">Start timer</string>
+    <string name="quick_settings_music_schedule_cancel">Clear timer</string>
+    <string name="quick_settings_music_schedule_update">Update timer</string>
     <string name="quick_settings_network_type">Network mode</string>
     <string name="quick_settings_report_bug">Report bug</string>
     <string name="quick_settings_sync">Sync</string>
@@ -63,6 +68,8 @@
     <string name="quick_settings_quick_record_rec">Recording...</string>
     <string name="quick_settings_quick_record_save">Saved</string>
     <string name="quick_settings_quick_record_play">Playing...</string>
+    <string name="quick_settings_custom_toggle">Custom</string>
+    <string name="quick_settings_contact_toggle">Contact</string>
 
     <!-- Immersive mode strings break the rules a bit - the icon identifies the feature, the string indicates current state -->
     <string name="quick_settings_immersive_mode">Immersive</string>
@@ -122,6 +129,44 @@
     <!-- Hide notification icons -->
     <string name="status_bar_notification_hide_icon_packages">Hide app\'s notification icon(s)</string>
 
+    <!-- Dialog Cancel/OK -->
+    <string name="cancel">Cancel</string>
+    <string name="dlg_ok">Ok</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+
+    <!-- Off/On/Toggle -->
+    <string name="off">Off</string>
+    <string name="on">On</string>
+    <string name="toggle">Toggle</string>
+
+    <!-- Custom Shortcut Actions -->
+    <string name="shortcut_picker">Custom Shortcuts</string>
+    <string name="shortcut_immersive">Immersive Mode</string>
+    <string name="shortcut_quiethours">Quiethours</string>
+    <string name="shortcut_rotation">Rotation</string>
+    <string name="shortcut_torch">Torch Toggle</string>
+    <string name="shortcut_reboot">Reboot</string>
+    <string name="shortcut_recovery">Recovery</string>
+    <string name="shortcut_last_app">Last App</string>
+    <string name="shortcut_power_menu">Power Menu</string>
+    <string name="shortcut_screenshot">Screenshot</string>
+    <string name="shortcut_screensleep">Go to Sleep</string>
+    <string name="shortcut_volume">Volume</string>
+    <string name="shortcut_toggle_title">Action to perform</string>
+    <string name="shortcut_chamber">Chamber of Secrets</string>
+    <string name="chamber_disabled">Chamber of secrets is closed</string>
+    <string name="chamber_title">Input Settings string</string>
+    <string name="chamber_message">Input a Settings string that is either an on and off (checkbox) function or possibly a list-preference. For example, quiet_hours_ringer or similar. Settings can be found in the Settings.java file. WARNING: This process is dangerous!</string>
+    <string name="chamber_invalid">This is an invalid input. Be careful.</string>
+    <string name="chamber_checkbox">Checkbox</string>
+    <string name="chamber_chk_message">Is this setting a checkbox setting?</string>
+    <string name="chamber_int">Input values</string>
+    <string name="chamber_int_message">Input the values you\'d like the setting to toggle between. Separate each value with a comma. Color settings accept hex-values such as #FF00aacc or basic color values like red, green, and yellow.</string>
+    <string name="chamber_name_title">Shortcut name</string>
+    <string name="chamber_name_message">Give the shortcut a name to display with the icon.</string>
+    <string name="chamber_name_toast">Using default name</string>
+
     <!-- Battery saver mode -->
     <string name="battery_saver_start">Battery Saver Enabled</string>
     <string name="battery_saver_stop">Battery Saver Disabled</string>
@@ -129,7 +174,7 @@
     <string name="battery_saver_network">Network restored</string>
     <string name="battery_saver_wifi">Wifi restored</string>
     <string name="battery_saver_all">All configuration restored</string>
-    
+
     <!-- Battery Saver -->
     <string name="network_4G">4G/LTE</string>
     <string name="network_3G_only">3G Only</string>

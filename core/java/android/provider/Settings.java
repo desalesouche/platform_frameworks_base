@@ -3200,6 +3200,24 @@ public final class Settings {
         public static final String MUSIC_TILE_MODE = "music_tile_mode";
 
         /**
+         * Custom toggle click/long-click/icons for infinite toggles: actions 1-5
+         * @hide
+         */
+        public static final String CUSTOM_TOGGLE_ACTIONS = "custom_toggle_actions";
+
+        /**
+         * Parsed booleans from string for infinite toggles (unlock/collapse-shade/match-icon)
+         * @hide
+         */
+        public static final String CUSTOM_TOGGLE_EXTRAS = "custom_toggle_extras";
+
+        /**
+         * Contact strings for infinite toggles
+         * @hide
+         */
+        public static final String TILE_CONTACT_ACTIONS = "tile_contact_actions";
+
+        /**
          * Quick Settings Panel Dynamic Tiles
          *
          * @hide
@@ -3261,6 +3279,20 @@ public final class Settings {
          * @hide
          */
         public static final String QS_COLLAPSE_PANEL = "qs_collapse_panel";
+
+        /**
+         * Animate-flip Quick Settings Panel Tiles on click
+         *
+         * @hide
+         */
+        public static final String QUICK_SETTINGS_TILES_FLIP = "quick_settings_tiles_flip";
+
+        /**
+         * Let Quick Settings Panel Tiles vibrate on click
+         *
+         * @hide
+         */
+        public static final String QUICK_SETTINGS_TILES_VIBRATE = "quick_settings_tiles_vibrate";
 
 	/**
         * Custom Ring Mode
@@ -5122,6 +5154,12 @@ public final class Settings {
          */
         public static final String LOCK_SCREEN_OWNER_INFO_ENABLED =
             "lock_screen_owner_info_enabled";
+
+        /**
+         * Chamber on / off (custom setting shortcuts)
+         * @hide
+         */
+        public static final String CHAMBER_OF_SECRETS = "chamber_of_secrets";
 
         /**
          * The Logging ID (a unique 64-bit value) as a hex string.

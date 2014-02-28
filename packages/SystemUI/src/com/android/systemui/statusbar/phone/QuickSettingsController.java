@@ -23,6 +23,9 @@ import static com.android.internal.util.mahdi.QSConstants.TILE_BATTERY;
 import static com.android.internal.util.mahdi.QSConstants.TILE_BLUETOOTH;
 import static com.android.internal.util.mahdi.QSConstants.TILE_BRIGHTNESS;
 import static com.android.internal.util.mahdi.QSConstants.TILE_CAMERA;
+import static com.android.internal.util.mahdi.QSConstants.TILE_CONTACT;
+import static com.android.internal.util.mahdi.QSConstants.TILE_CUSTOM;
+import static com.android.internal.util.mahdi.QSConstants.TILE_CUSTOM_KEY;
 import static com.android.internal.util.mahdi.QSConstants.TILE_DELIMITER;
 import static com.android.internal.util.mahdi.QSConstants.TILE_IMMERSIVEMODE;
 import static com.android.internal.util.mahdi.QSConstants.TILE_LOCATION;
@@ -75,6 +78,8 @@ import com.android.systemui.quicksettings.BluetoothTile;
 import com.android.systemui.quicksettings.BrightnessTile;
 import com.android.systemui.quicksettings.BugReportTile;
 import com.android.systemui.quicksettings.CameraTile;
+import com.android.systemui.quicksettings.ContactTile;
+import com.android.systemui.quicksettings.CustomTile;
 import com.android.systemui.quicksettings.ImmersiveModeTile;
 import com.android.systemui.quicksettings.InputMethodTile;
 import com.android.systemui.quicksettings.LocationTile;
@@ -98,7 +103,7 @@ import com.android.systemui.quicksettings.TorchTile;
 import com.android.systemui.quicksettings.UsbTetherTile;
 import com.android.systemui.quicksettings.UserTile;
 import com.android.systemui.quicksettings.VolumeTile;
-//import com.android.systemui.quicksettings.WiFiDisplayTile;
+import com.android.systemui.quicksettings.RemoteDisplayTile;
 import com.android.systemui.quicksettings.WiFiTile;
 import com.android.systemui.quicksettings.WifiAPTile;
 import com.android.systemui.quicksettings.NavBarTile;
@@ -228,6 +233,10 @@ public class QuickSettingsController {
                 qs = new BrightnessTile(mContext, this);
             } else if (tile.equals(TILE_CAMERA) && cameraSupported) {
                 qs = new CameraTile(mContext, this, mHandler);
+            } else if (tile.contains(TILE_CONTACT)) {
+                qs = new ContactTile(mContext, this, findCustomKey(tile));
+            } else if (tile.contains(TILE_CUSTOM)) {
+                qs = new CustomTile(mContext, this, findCustomKey(tile));
             } else if (tile.equals(TILE_RINGER)) {
                 qs = new RingerModeTile(mContext, this);
             } else if (tile.equals(TILE_SYNC)) {
@@ -311,12 +320,12 @@ public class QuickSettingsController {
             qs.setupQuickSettingsTile(inflater, mContainerView);
             mQuickSettingsTiles.add(qs);
         }
-        /*if (Settings.System.getIntForUser(resolver,
+        if (Settings.System.getIntForUser(resolver,
                     Settings.System.QS_DYNAMIC_WIFI, 1, UserHandle.USER_CURRENT) == 1) {
-            QuickSettingsTile qs = new WiFiDisplayTile(mContext, this);
+            QuickSettingsTile qs = new RemoteDisplayTile(mContext, this);
             qs.setupQuickSettingsTile(inflater, mContainerView);
             mQuickSettingsTiles.add(qs);
-        }*/
+        }
         if (QSUtils.deviceSupportsImeSwitcher(mContext) && Settings.System.getIntForUser(resolver,
                     Settings.System.QS_DYNAMIC_IME, 1, UserHandle.USER_CURRENT) == 1) {
             mIMETile = new InputMethodTile(mContext, this);
@@ -329,6 +338,11 @@ public class QuickSettingsController {
             qs.setupQuickSettingsTile(inflater, mContainerView);
             mQuickSettingsTiles.add(qs);
         }
+    }
+
+    private String findCustomKey (String tile) {
+        String[] split = tile.split(TILE_CUSTOM_KEY);
+        return split[1];
     }
 
     public void shutdown() {
@@ -420,6 +434,14 @@ public class QuickSettingsController {
     }
 
     public void registerObservedContent(Uri uri, QuickSettingsTile tile) {
+        registerInMap(uri, tile, mObserverMap);
+    }
+
+    // Add to map and don't requre a race to post update methods
+    // to do so.  Can register at any point in a tile's lifetime.
+    public void addtoInstantObserverMap(Uri uri, QuickSettingsTile tile) {
+        ContentResolver resolver = mContext.getContentResolver();
+        resolver.registerContentObserver(uri, false, mObserver);
         registerInMap(uri, tile, mObserverMap);
     }
 

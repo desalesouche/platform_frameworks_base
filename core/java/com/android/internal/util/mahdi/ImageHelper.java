@@ -144,4 +144,8 @@ public class ImageHelper {
         return output;
     }
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 4330d57e960c609a97a3522fff7c09e7e92f8794

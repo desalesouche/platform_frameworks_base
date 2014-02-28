@@ -551,7 +551,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
                     mSearchPanelView.updateSettings();
             }
         }
-	   updateSettings();
+    updateSettings();
     }
 
     @Override
@@ -1104,7 +1104,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
         // listen for USER_SETUP_COMPLETE setting (per-user)
         resetUserSetupObserver();
 
-        mNotificationShortcutsLayout.setupShortcuts();
+    mNotificationShortcutsLayout.setupShortcuts();
 
         mNetworkController.setListener(this);
 
@@ -2715,6 +2715,8 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
                 setInteracting(StatusBarManager.WINDOW_STATUS_BAR, true);
             }
         }
+        return false;
+    }
 
     public GestureRecorder getGestureRecorder() {
         return mGestureRec;
@@ -3065,7 +3067,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
                 mCenterClockLayout.startAnimation(
                     loadAnim(com.android.internal.R.anim.push_down_in,
                     null));
-                }
+            }
         }
 
         public void tickerHalting() {
@@ -4110,7 +4112,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
             cr.registerContentObserver(
                     Settings.System.getUriFor(Settings.System.QS_DYNAMIC_WIFI),
                     false, this, UserHandle.USER_ALL);
-            
+
             cr.registerContentObserver(
                     Settings.System.getUriFor(Settings.System.QS_QUICK_ACCESS),
                     false, this, UserHandle.USER_ALL);
