@@ -213,7 +213,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
     private int[] mPilePosition = new int[2];
 
     StatusBarWindowView mStatusBarWindow;
-    PhoneStatusBarView mStatusBarView;
+    //PhoneStatusBarView mStatusBarView;
     private int mStatusBarWindowState = WINDOW_STATE_SHOWING;
 
     int mPixelFormat;
@@ -702,7 +702,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
     // ================================================================================
     // Constructing the view
     // ================================================================================
-    protected PhoneStatusBarView makeStatusBarView() {
+    //protected PhoneStatusBarView makeStatusBarView() {
         final Context context = mContext;
 
         Resources res = context.getResources();
