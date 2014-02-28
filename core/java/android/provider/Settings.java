@@ -2611,18 +2611,6 @@ public final class Settings {
                 "lockscreen_use_widget_container_carousel";
 
         /**
-        *Allows to show the background activity back the lockscreen        
-        * @hide
-        */
-        public static final String LOCKSCREEN_SEE_THROUGH = "lockscreen_see_through";
-        
-        /**
-        * Allows setting the raduius for blur
-        * @hide
-        */
-        public static final String LOCKSCREEN_BLUR_RADIUS = "lockscreen_blur_radius";
-        
-        /**
          * @deprecated Use {@link android.provider.Settings.Global#LOW_BATTERY_SOUND}
          * instead
          * @hide
