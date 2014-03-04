@@ -91,6 +91,7 @@ import com.android.internal.statusbar.StatusBarIconList;
 import com.android.internal.widget.SizeAdaptiveLayout;
 import com.android.internal.util.mahdi.DeviceUtils;
 import com.android.systemui.R;
+import com.android.systemui.RecentsComponent;
 import com.android.systemui.SearchPanelView;
 import com.android.systemui.SystemUI;
 import com.android.systemui.slimrecent.RecentController;
@@ -167,6 +168,10 @@ public abstract class BaseStatusBar extends SystemUI implements
 
     protected FrameLayout mStatusBarContainer;
 
+    private RecentController cRecents;
+
+    private RecentsComponent mRecents;
+
     /**
      * An interface for navigation key bars to allow status bars to signal which keys are
      * currently of interest to the user.<br>
@@ -215,7 +220,7 @@ public abstract class BaseStatusBar extends SystemUI implements
 
     private boolean mDeviceProvisioned = false;
 
-    private RecentController mRecents;
+    private boolean mCustomRecent = false;
 
     private int mGlobalImmersiveModeStyle = 0;
 
@@ -340,7 +345,14 @@ public abstract class BaseStatusBar extends SystemUI implements
         mLocale = mContext.getResources().getConfiguration().locale;
         mLayoutDirection = TextUtils.getLayoutDirectionFromLocale(mLocale);
 
-        mRecents = new RecentController(mContext, mLayoutDirection);
+        mCustomRecent = Settings.System.getBoolean(
+                       mContext.getContentResolver(), Settings.System.CUSTOM_RECENT, false);
+
+        if (mCustomRecent) {
+            cRecents = new RecentController(mContext);
+        } else {
+            mRecents = getComponent(RecentsComponent.class);
+        }
 
         mStatusBarContainer = new FrameLayout(mContext);
 
@@ -772,33 +784,54 @@ public abstract class BaseStatusBar extends SystemUI implements
     };
 
     protected void toggleRecentsActivity() {
-        if (mRecents != null) {
-            mRecents.toggleRecents(mDisplay, mLayoutDirection, getStatusBarView());
+        if (mRecents != null || cRecents != null) {
+        mCustomRecent = Settings.System.getBoolean(mContext.getContentResolver(), 
+                        Settings.System.CUSTOM_RECENT, false);
+        if(mCustomRecent)
+            cRecents.toggleRecents(mDisplay, mLayoutDirection, getStatusBarView());
+        else
+            mRecents.toggleRecents(mDisplay, mLayoutDirection, getStatusBarView(), mGlobalImmersiveModeStyle);
         }
     }
 
     protected void preloadRecentTasksList() {
-        if (mRecents != null) {
+        if (mRecents != null || cRecents != null) {
+        mCustomRecent = Settings.System.getBoolean(mContext.getContentResolver(), 
+                        Settings.System.CUSTOM_RECENT, false);
+        if(mCustomRecent)
+            cRecents.preloadRecentTasksList();
+        else
             mRecents.preloadRecentTasksList();
         }
     }
 
     protected void cancelPreloadingRecentTasksList() {
-        if (mRecents != null) {
-            mRecents.cancelPreloadingRecentTasksList();
+        if (mRecents != null || cRecents != null) {
+        mCustomRecent = Settings.System.getBoolean(mContext.getContentResolver(), 
+                        Settings.System.CUSTOM_RECENT, false);
+        if(mCustomRecent)
+            cRecents.cancelPreloadingRecentTasksList();
+        else
+            mRecents.cancelPreloadingRecentTasksList();    
         }
     }
 
     protected void closeRecents() {
-        if (mRecents != null) {
-            mRecents.closeRecents();
+        if (mRecents != null || cRecents != null) {
+        mCustomRecent = Settings.System.getBoolean(mContext.getContentResolver(), 
+                        Settings.System.CUSTOM_RECENT, false);
+        if(mCustomRecent)
+            cRecents.closeRecents();
+        else
+            mRecents.closeRecents();    
         }
     }
 
     protected void rebuildRecentsScreen() {
-        if (mRecents != null) {
-            mRecents.rebuildRecentsScreen();
-        }
+        mCustomRecent = Settings.System.getBoolean(mContext.getContentResolver(), 
+                        Settings.System.CUSTOM_RECENT, false);   
+        if (cRecents != null && mCustomRecent)   
+                cRecents.rebuildRecentsScreen();
     }
 
     public abstract void resetHeadsUpDecayTimer();

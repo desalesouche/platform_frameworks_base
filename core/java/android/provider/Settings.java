@@ -3711,6 +3711,13 @@ public final class Settings {
                 "recents_memory_indicator_location";
 
         /**
+         * Toggle for stock recents and slim recents
+         *
+         * @hide
+         */
+        public static final String CUSTOM_RECENT = "custom_recent";
+
+        /**
          * Volume key controls ringtone or media sound stream
          *
          * @hide
