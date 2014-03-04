@@ -279,24 +279,15 @@ public class QuickSettingsController {
                 qs = new QuietHoursTile(mContext, this);
             } else if (tile.equals(TILE_VOLUME)) {
                 qs = new VolumeTile(mContext, this, mHandler);
-<<<<<<< HEAD
             } else if (tile.equals(TILE_IMMERSIVEMODE)) {
                 mTileStatusUris.add(Settings.System.getUriFor(Settings.System.GLOBAL_IMMERSIVE_MODE_STYLE));
                 if (QSUtils.globalImmersiveModeEnabled(resolver)) {
                     qs = new ImmersiveModeTile(mContext, this, mHandler);
                 }
-	    } else if (tile.equals(TILE_NAVBAR)) {
-                qs = new NavBarTile(mContext, this, mHandler);
-	    } else if (tile.equals(TILE_NETWORKSPEED)) {
-                qs = new NetworkSpeedTile(mContext, this, mHandler);
-=======
             } else if (tile.equals(TILE_NAVBAR)) {
                     qs = new NavBarTile(mContext, this, mHandler);
             } else if (tile.equals(TILE_NETWORKTRAFFIC)) {
                 qs = new NetworkTrafficTile(mContext, this, mHandler);
-            } else if (tile.equals(TILE_THEME)) {
-                qs = new ThemeTile(mContext, this);
->>>>>>> 04de592... NetworkTraffic tile: update tile for new network traffic options
             } else if (tile.equals(TILE_NETWORKADB)) {
                 mTileStatusUris.add(Settings.Global.getUriFor(Settings.Global.ADB_ENABLED));
                 if (QSUtils.adbEnabled(resolver)) {
