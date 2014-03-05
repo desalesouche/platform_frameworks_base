@@ -413,7 +413,7 @@ public class MahdiActions {
         return false;
     }
 
-    private static void triggerVirtualKeypress(final int keyCode,
+    public static void triggerVirtualKeypress(final int keyCode,
             boolean longpress, boolean sendOnlyDownMessage) {
         InputManager im = InputManager.getInstance();
         long now = SystemClock.uptimeMillis();
