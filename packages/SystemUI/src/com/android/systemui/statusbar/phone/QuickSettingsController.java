@@ -51,7 +51,7 @@ import static com.android.internal.util.mahdi.QSConstants.TILE_WIFI;
 import static com.android.internal.util.mahdi.QSConstants.TILE_WIFIAP;
 import static com.android.internal.util.mahdi.QSConstants.TILE_WIMAX;
 import static com.android.internal.util.mahdi.QSConstants.TILE_NAVBAR;
-import static com.android.internal.util.mahdi.QSConstants.TILE_NETWORKSPEED;
+import static com.android.internal.util.mahdi.QSConstants.TILE_NETWORKTRAFFIC;
 
 import android.content.BroadcastReceiver;
 import android.content.ContentResolver;
@@ -107,7 +107,7 @@ import com.android.systemui.quicksettings.RemoteDisplayTile;
 import com.android.systemui.quicksettings.WiFiTile;
 import com.android.systemui.quicksettings.WifiAPTile;
 import com.android.systemui.quicksettings.NavBarTile;
-import com.android.systemui.quicksettings.NetworkSpeedTile;
+import com.android.systemui.quicksettings.NetworkTrafficTile;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -279,6 +279,7 @@ public class QuickSettingsController {
                 qs = new QuietHoursTile(mContext, this);
             } else if (tile.equals(TILE_VOLUME)) {
                 qs = new VolumeTile(mContext, this, mHandler);
+<<<<<<< HEAD
             } else if (tile.equals(TILE_IMMERSIVEMODE)) {
                 mTileStatusUris.add(Settings.System.getUriFor(Settings.System.GLOBAL_IMMERSIVE_MODE_STYLE));
                 if (QSUtils.globalImmersiveModeEnabled(resolver)) {
@@ -288,6 +289,14 @@ public class QuickSettingsController {
                 qs = new NavBarTile(mContext, this, mHandler);
 	    } else if (tile.equals(TILE_NETWORKSPEED)) {
                 qs = new NetworkSpeedTile(mContext, this, mHandler);
+=======
+            } else if (tile.equals(TILE_NAVBAR)) {
+                    qs = new NavBarTile(mContext, this, mHandler);
+            } else if (tile.equals(TILE_NETWORKTRAFFIC)) {
+                qs = new NetworkTrafficTile(mContext, this, mHandler);
+            } else if (tile.equals(TILE_THEME)) {
+                qs = new ThemeTile(mContext, this);
+>>>>>>> 04de592... NetworkTraffic tile: update tile for new network traffic options
             } else if (tile.equals(TILE_NETWORKADB)) {
                 mTileStatusUris.add(Settings.Global.getUriFor(Settings.Global.ADB_ENABLED));
                 if (QSUtils.adbEnabled(resolver)) {
