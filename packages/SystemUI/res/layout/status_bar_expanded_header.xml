@@ -115,16 +115,6 @@
             android:contentDescription="@string/accessibility_clear_all"
             />     
         
-        <ImageView android:id="@+id/halo_button"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginRight="25dp"
-            android:scaleType="center"
-            android:src="@drawable/ic_notify_halo"
-            android:background="@drawable/ic_notify_button_bg"
-            android:contentDescription="@string/accessibility_halo"
-            />
-
         <ImageView android:id="@+id/add_tile_button"
             android:layout_width="50dp"
             android:layout_height="50dp"
@@ -135,11 +125,11 @@
             android:contentDescription="@string/accessibility_desc_add_quick_settings"
             />
     </FrameLayout>
-
+    
     <FrameLayout android:id="@+id/settings_button_holder"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginStart="5dp"
+        android:layout_marginStart="12dp"
         >
         <ImageView android:id="@+id/settings_button"
             android:layout_width="50dp"
