@@ -3596,6 +3596,13 @@ public final class Settings {
          */
         public static final String CALL_END_SOUND = "call_end_sound";
 
+        /**
+         * Either if notification peek is enabled of disabled
+         * 0 = disabled (default)
+         * 1 = enabled
+         * @hide
+         */
+        public static final String PEEK_STATE = "peek_state";
 
         /**
          * Enables/disables lockscreen notifications
