@@ -187,6 +187,6 @@
   <java-symbol type="anim" name="recent_screen_fade_out" />
 
   <!-- The Schism easter egg -->
-  <java-symbol type="drawable" name="pa_world_logo" />
+  <java-symbol type="drawable" name="schism_logo" />
 
 </resources>

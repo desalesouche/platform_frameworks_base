@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2010 The Android Open Source Project
- * This code has been modified. Portions copyright (C) 2013, ParanoidAndroid Project.
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -41,13 +41,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class SchismActivity extends Activity {
+public class PlatLogoActivity extends Activity {
     FrameLayout mContent;
     int mCount;
     final Handler mHandler = new Handler();
-    final static int SOLID_BGCOLOR = 0xFF000000;
-    final static int CLEAR_BGCOLOR = 0xC0000000;
-    final static int TEXT_COLOR = 0xFFFFFFFF;
+    static final int BGCOLOR = 0xff000000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,8 +58,8 @@ public class SchismActivity extends Activity {
         Typeface light = Typeface.create("sans-serif-light", Typeface.NORMAL);
 
         mContent = new FrameLayout(this);
-        mContent.setBackgroundColor(CLEAR_BGCOLOR);
-
+        mContent.setBackgroundColor(0xC0000000);
+        
         final FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(
                 FrameLayout.LayoutParams.WRAP_CONTENT,
                 FrameLayout.LayoutParams.WRAP_CONTENT);
@@ -73,14 +71,14 @@ public class SchismActivity extends Activity {
         logo.setVisibility(View.INVISIBLE);
 
         final View bg = new View(this);
-        bg.setBackgroundColor(SOLID_BGCOLOR);
+        bg.setBackgroundColor(BGCOLOR);
         bg.setAlpha(0f);
 
         final TextView letter = new TextView(this);
 
         letter.setTypeface(bold);
-        letter.setTextSize(125);
-        letter.setTextColor(TEXT_COLOR);
+        letter.setTextSize(150);
+        letter.setTextColor(0xFFFFFFFF);
         letter.setGravity(Gravity.CENTER);
         letter.setText("SCHISM");
 
@@ -88,14 +86,14 @@ public class SchismActivity extends Activity {
 
         final TextView tv = new TextView(this);
         if (light != null) tv.setTypeface(light);
-        tv.setTextSize(20);
+        tv.setTextSize(30);
         tv.setPadding(p, p, p, p);
-        tv.setTextColor(TEXT_COLOR);
+        tv.setTextColor(0xFFFFFFFF);
         tv.setGravity(Gravity.CENTER);
         tv.setTransformationMethod(new AllCapsTransformationMethod(this));
-        String paVersion = SystemProperties.get("ro.schism.version");
-        paVersion = paVersion.replaceAll("([0-9\\.]+?)-.*", "$1");
-        tv.setText("The Schism " + paVersion);
+        String schismVersion = SystemProperties.get("ro.schism.version");
+        schismVersion = schismVersion.replaceAll("([0-9\\.]+?)-.*", "$1");
+        tv.setText("The Schism " + schismVersion);
         tv.setVisibility(View.INVISIBLE);
 
         mContent.addView(bg);
@@ -104,7 +102,7 @@ public class SchismActivity extends Activity {
 
         final FrameLayout.LayoutParams lp2 = new FrameLayout.LayoutParams(lp);
         lp2.gravity = Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL;
-        lp2.bottomMargin = p;
+        lp2.bottomMargin = 10*p;
 
         mContent.addView(tv, lp2);
 
@@ -157,6 +155,13 @@ public class SchismActivity extends Activity {
         logo.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
+                if (Settings.System.getLong(getContentResolver(), Settings.System.EGG_MODE, 0)
+                        == 0) {
+                    // For posterity: the moment this user unlocked the easter egg
+                    Settings.System.putLong(getContentResolver(),
+                            Settings.System.EGG_MODE,
+                            System.currentTimeMillis());
+                }
                 try {
                     startActivity(new Intent(Intent.ACTION_MAIN)
                         .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
@@ -164,13 +169,13 @@ public class SchismActivity extends Activity {
                             | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS)
                         .addCategory("com.android.internal.category.PLATLOGO"));
                 } catch (ActivityNotFoundException ex) {
-                    android.util.Log.e("SchismActivity", "Couldn't catch a break. - Thanks PA");
+                    android.util.Log.e("SchismActivity", "Couldn't catch a break.");
                 }
                 finish();
                 return true;
             }
         });
-
+        
         setContentView(mContent);
     }
 }
