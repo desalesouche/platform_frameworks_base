@@ -3479,7 +3479,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
     private View.OnClickListener mAddTileButtonListener = new View.OnClickListener() {
         public void onClick(View v) {
             Intent intent = new Intent();
-            intent.setClassName("com.android.settings"
+            intent.setClassName("com.android.settings",
                     "com.android.settings.Settings$QuickSettingsTilesSettingsActivity");
             startActivityDismissingKeyguard(intent, true);
         }

@@ -96,8 +96,8 @@ import com.android.internal.util.mahdi.DeviceUtils;
 import com.android.systemui.R;;
 import com.android.systemui.SearchPanelView;
 import com.android.systemui.SystemUI;
-import com.android.systemui.statusbar.halo.Halo;
 import com.android.systemui.slimrecent.RecentController;
+import com.android.systemui.statusbar.halo.Halo;
 import com.android.systemui.statusbar.phone.KeyguardTouchDelegate;
 import com.android.systemui.statusbar.phone.PhoneStatusBar;
 import com.android.systemui.statusbar.policy.NotificationRowLayout;
@@ -798,8 +798,7 @@ public abstract class BaseStatusBar extends SystemUI implements
 
     protected void toggleRecentsActivity() {
         if (mRecents != null) {
-            mRecents.toggleRecents(mDisplay, mLayoutDirection, getStatusBarView(),
-                    mGlobalImmersiveModeStyle);
+            mRecents.toggleRecents(mDisplay, mLayoutDirection, getStatusBarView());
         }
     }
 
