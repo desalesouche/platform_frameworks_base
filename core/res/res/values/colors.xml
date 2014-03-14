@@ -40,7 +40,7 @@
     <color name="grey_text">#ff5c5c5c</color>
     <color name="transparent">#00000000</color>
     <color name="background_dark">#ff000000</color>
-    <color name="background_light">#ffeaeaea</color>
+    <color name="background_light">#ffe5e5e5</color>
     <color name="bright_foreground_dark">@android:color/background_light</color>
     <color name="bright_foreground_light">@android:color/background_dark</color>
     <color name="bright_foreground_dark_disabled">#80ffffff</color>
