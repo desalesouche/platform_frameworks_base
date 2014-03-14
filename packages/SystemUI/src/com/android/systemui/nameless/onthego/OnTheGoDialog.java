@@ -17,6 +17,7 @@
 package com.android.systemui.nameless.onthego;
 
 import android.app.Dialog;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -25,7 +26,9 @@ import android.os.Handler;
 import android.provider.Settings;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.CompoundButton;
 import android.widget.SeekBar;
+import android.widget.Switch;
 
 import com.android.systemui.R;
 
@@ -43,8 +46,6 @@ public class OnTheGoDialog extends Dialog {
                 OnTheGoDialog.this.dismiss();
             }
         }
-
-        ;
     };
 
     public OnTheGoDialog(Context ctx) {
@@ -56,7 +57,7 @@ public class OnTheGoDialog extends Dialog {
         mOnTheGoDialogShortTimeout =
                 r.getInteger(R.integer.quick_settings_brightness_dialog_short_timeout);
     }
-
+   
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,9 +71,11 @@ public class OnTheGoDialog extends Dialog {
         setContentView(R.layout.quick_settings_onthego_dialog);
         setCanceledOnTouchOutside(true);
 
+        final ContentResolver resolver = mContext.getContentResolver();
+
         final SeekBar mSlider = (SeekBar) findViewById(R.id.alpha_slider);
-        final float value = Settings.System.getFloat(mContext.getContentResolver(),
-                Settings.System.ON_THE_GO_ALPHA,
+        final float value = Settings.Nameless.getFloat(resolver,
+                Settings.Nameless.ON_THE_GO_ALPHA,
                 0.5f);
         final int progress = ((int) (value * 100));
         mSlider.setProgress(progress);
@@ -90,6 +93,21 @@ public class OnTheGoDialog extends Dialog {
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
                 dismissOnTheGoDialog(mOnTheGoDialogShortTimeout);
+            }
+        });
+
+        final Switch mCamSwitch = (Switch) findViewById(R.id.onthego_camera_toggle);
+        final boolean useFrontCam = (Settings.Nameless.getInt(resolver,
+                Settings.Nameless.ON_THE_GO_CAMERA,
+                0) == 1);
+        mCamSwitch.setChecked(useFrontCam);
+        mCamSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                Settings.Nameless.putInt(resolver,
+                        Settings.Nameless.ON_THE_GO_CAMERA,
+                        (b ? 1 : 0));
+
             }
         });
     }
