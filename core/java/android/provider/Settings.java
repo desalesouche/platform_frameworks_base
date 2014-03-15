@@ -4003,7 +4003,7 @@ public final class Settings {
         public static final String CUSTOM_FLING_VELOCITY = "custom_fling_velocity";
 
         /**
-         * Disable ads (HFM)
+         * Determine custom overscroll distance.
          * @hide
          */
         public static final String CUSTOM_OVERSCROLL_DISTANCE = "custom_overscroll_distance";
