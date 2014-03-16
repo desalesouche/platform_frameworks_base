@@ -208,10 +208,6 @@
 
     <!-- Content description for the add quick settings tile button. [CHAR LIMIT=NONE] -->
     <string name="accessibility_desc_add_quick_settings">Add Quick settings</string>
-    
-    <!-- Slim recents -->
-    <string name="status_bar_recent_playstore_item_title">Play Store</string>
-    <string name="status_bar_recent_amazon_item_title">Amazon Store</string>
 
     <!-- On The Go -->
     <string name="onthego_notif_ticker">On-The-Go activated</string>
