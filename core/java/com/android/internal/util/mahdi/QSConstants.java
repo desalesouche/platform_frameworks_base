@@ -32,6 +32,7 @@ public class QSConstants {
         public static final String TILE_IMMERSIVEMODE = "toggleImmersiveMode";
         public static final String TILE_CAMERA = "toggleCamera";
         public static final String TILE_NETWORKADB = "toggleNetworkAdb";
+        public static final String TILE_ONTHEGO = "toggleOnTheGo";
         public static final String TILE_NAVBAR = "toggleNavBar";
         public static final String TILE_NETWORKTRAFFIC = "toggleNetworkTraffic";
         public static final String TILE_MUSIC = "toggleMusic";

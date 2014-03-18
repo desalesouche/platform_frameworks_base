@@ -1028,9 +1028,9 @@ public final class Settings {
             MOVED_TO_SECURE.add(Secure.LOCK_PATTERN_SIZE);
             MOVED_TO_SECURE.add(Secure.LOCK_DOTS_VISIBLE);
             MOVED_TO_SECURE.add(Secure.LOCK_SHOW_ERROR_PATH);
-	    MOVED_TO_SECURE.add(Secure.LOCK_NUMPAD_RANDOM);
-	    MOVED_TO_SECURE.add(Secure.LOCK_BEFORE_UNLOCK);
-            MOVED_TO_SECURE.add(Secure.LOCKSCREEN_UNSECURE_USED);	    
+        MOVED_TO_SECURE.add(Secure.LOCK_NUMPAD_RANDOM);
+        MOVED_TO_SECURE.add(Secure.LOCK_BEFORE_UNLOCK);
+            MOVED_TO_SECURE.add(Secure.LOCKSCREEN_UNSECURE_USED);       
             MOVED_TO_SECURE.add(Secure.LOGGING_ID);
             MOVED_TO_SECURE.add(Secure.PARENTAL_CONTROL_ENABLED);
             MOVED_TO_SECURE.add(Secure.PARENTAL_CONTROL_LAST_UPDATE);
@@ -1831,7 +1831,7 @@ public final class Settings {
          */
         @Deprecated
         public static final String LOCK_PATTERN_TACTILE_FEEDBACK_ENABLED =
-            "lock_pattern_tactile_feedback_enabled";	
+            "lock_pattern_tactile_feedback_enabled";    
 
         /**
          * A formatted string of the next alarm that is set, or the empty string
@@ -2298,7 +2298,7 @@ public final class Settings {
          */
         public static final String ACCELEROMETER_ROTATION = "accelerometer_rotation";
 
-	/**
+    /**
          * Control the type of rotation which can be performed using the accelerometer
          * if ACCELEROMETER_ROTATION is enabled.
          * Value is a bitwise combination of
@@ -2311,7 +2311,7 @@ public final class Settings {
          */
         public static final String ACCELEROMETER_ROTATION_ANGLES = "accelerometer_rotation_angles";
 
-	/**
+    /**
          * Control whether the accelerometer will be used to change lockscreen
          * orientation.  If 0, it will not be used; if 1, it will be used by default.
          * @hide
@@ -2585,7 +2585,7 @@ public final class Settings {
          */
         public static final String LOCKSCREEN_DISABLED = "lockscreen.disabled";
 
-	/**
+    /**
          * Stores values for custom lockscreen targets
          * @hide
          */
@@ -2737,7 +2737,7 @@ public final class Settings {
          */
         public static final String EGG_MODE = "egg_mode";
 
-	/**
+    /**
          * Whether the power menu reboot menu is enabled
          * @hide
          */
@@ -2749,7 +2749,7 @@ public final class Settings {
          */
         public static final String POWER_MENU_SCREENSHOT_ENABLED = "power_menu_screenshot_enabled";
 
-	/**
+    /**
          * Whether power menu screen record is enabled
           * @hide
          */
@@ -2767,19 +2767,19 @@ public final class Settings {
          */
         public static final String POWER_MENU_SILENT_ENABLED = "power_menu_silent_enabled";
 
-	/**
+    /**
          * Whether power menu expanded desktop is enabled
          * @hide
          */
         public static final String POWER_MENU_GLOBAL_IMMERSIVE_MODE_ENABLED = "power_menu_global_immersive_mode_enabled";
 
-	/**
+    /**
          * Global immersive mode on/off state
          * @hide
          */
         public static final String GLOBAL_IMMERSIVE_MODE_STATE = "global_immersive_mode_state";
 
-	/**
+    /**
          * Global immersive mode style (with status bar or without status bar)
          * @hide
          */
@@ -2791,7 +2791,7 @@ public final class Settings {
          */
         public static final String GLOBAL_IMMERSIVE_MODE_SYSTEM_BARS_VISIBILITY = "global_immersive_mode_system_bars_visibility";
 
-	/**
+    /**
          * Show the pending notification counts as overlays on the status bar
          * @hide
          */
@@ -2809,19 +2809,19 @@ public final class Settings {
          */
         public static final String VOLUME_WAKE_SCREEN = "volume_wake_screen";
 
-	/**
+    /**
          * Volume music controls
          * @hide
          */
         public static final String VOLUME_MUSIC_CONTROLS = "volume_music_controls";
 
-	/**
+    /**
          * Whether to prevent loud volume levels when headset is first plugged in.
          * @hide
          */
-        public static final String SAFE_HEADSET_VOLUME = "safe_headset_volume";	
+        public static final String SAFE_HEADSET_VOLUME = "safe_headset_volume"; 
 
-	/**
+    /**
          * Whether the blacklisting feature for phone calls is enabled
          * @hide
          */
@@ -2870,14 +2870,14 @@ public final class Settings {
          */
         public static final String PHONE_BLACKLIST_REGEX_ENABLED = "phone_blacklist_regex_enabled";
 
-	/**
+    /**
          * Whether noise suppression is enabled. The value is
          * boolean (1 or 0).
          * @hide
          */
-        public static final String NOISE_SUPPRESSION = "noise_suppression";	 
+        public static final String NOISE_SUPPRESSION = "noise_suppression";  
 
-	/**
+    /**
          * Show or hide clock
          * 0 - hide
          * 1 - show (default)
@@ -2933,7 +2933,7 @@ public final class Settings {
         */
         public static final String STATUSBAR_CLOCK_DATE_FORMAT = "statusbar_clock_date_format";
 
-	/** 
+    /** 
          * Network traffic indicator, goes from least to greatest significant bitwise
          * 0 = Display up-stream traffic if set
          * 1 = Display down-stream traffic if set
@@ -2942,14 +2942,14 @@ public final class Settings {
          * @hide
          */
         public static final String NETWORK_TRAFFIC_STATE = "network_traffic_state";
-	
+    
         /**
          * Whether or not to show circle battery around the lockscreen ring
          * @hide
          */
         public static final String BATTERY_AROUND_LOCKSCREEN_RING = "battery_around_lockscreen_ring";
 
-	/**
+    /**
          * Whether to enable custom rebindings of the actions performed on
          * certain key press events.
          * @hide
@@ -3018,7 +3018,7 @@ public final class Settings {
          */
         public static final String KEY_APP_SWITCH_LONG_PRESS_ACTION = "key_app_switch_long_press_action";
 
-	/**
+    /**
          * Control the display of the action overflow button within app UI.
          * 0 = use system default
          * 1 = force on
@@ -3026,7 +3026,7 @@ public final class Settings {
          */
         public static final String UI_FORCE_OVERFLOW_BUTTON = "ui_force_overflow_button";
 
-	/**
+    /**
          * Display style of the status bar battery information
          * 0: Display the battery an icon in portrait mode
          * 2: Display the battery as a circle
@@ -3140,7 +3140,7 @@ public final class Settings {
          */
         public static final String POWER_UI_LOW_BATTERY_WARNING_POLICY = "power_ui_low_battery_warning_policy";
 
-	/**
+    /**
          * Whether the phone ringtone should be played in an increasing manner
          * @hide
          */
@@ -3158,7 +3158,7 @@ public final class Settings {
          */
         public static final String INCREASING_RING_INTERVAL = "increasing_ring_interval";
 
-	/**
+    /**
          * Quick Settings Panel Tiles to Use
          *
          * @hide
@@ -3333,32 +3333,32 @@ public final class Settings {
          */
         public static final String REMINDER_ALERT_INTERVAL = "reminder_alert_interval";
 
-	/**
+    /**
         * Custom Ring Mode
         * @hide
         */
         public static final String EXPANDED_RING_MODE = "expanded_ring_mode";        
 
-	/**
+    /**
         * Custom Network Mode
         * @hide
         */
         public static final String EXPANDED_NETWORK_MODE = "expanded_network_mode";
 
-	/**
+    /**
         * Notification Power Widget - Custom Screen Timeout
         * @hide
         */
         public static final String EXPANDED_SCREENTIMEOUT_MODE = "expanded_screentimeout_mode";
 
-	/**
+    /**
          * Use the Notification Power Widget? (Who wouldn't!)
          *
          * @hide
          */
         public static final String EXPANDED_VIEW_WIDGET = "expanded_view_widget";
 
-	/**
+    /**
          * Quick Settings Quick access ribbon
          *
          * @hide
@@ -3379,7 +3379,7 @@ public final class Settings {
          */
         public static final String QUICK_SETTINGS_RIBBON_TILES = "quick_settings_ribbon_tiles";
 
-	/**
+    /**
          * Hide network labels in the notification drawer
          * @hide
          */
@@ -3403,7 +3403,7 @@ public final class Settings {
          */
         public static final String NOTIFICATION_SHORTCUTS_COLOR_MODE = "notification_shortcuts_color_mode";
 
-	/**
+    /**
          * Whether to enable quiet hours.
          * @hide
          */
@@ -3421,7 +3421,7 @@ public final class Settings {
          */
         public static final String QUIET_HOURS_END = "quiet_hours_end";
 
-	/**
+    /**
          * Whether to remove the sound from phone ringing during quiet hours.
          * @hide
          */
@@ -3498,13 +3498,13 @@ public final class Settings {
          */
         public static final String CALL_END_SOUND = "call_end_sound";
 
-	/**
+    /**
          * HALO enabled, should default to 0 (HALO is disabled)
          * @hide
          */
         public static final String HALO_ENABLED = "halo_enabled";
 
-	/**
+    /**
          * HALO, should default to 0 (no, do not show)
          * @hide
          */
@@ -3898,7 +3898,7 @@ public final class Settings {
                 "wallpaper_close",
                 "wallpaper_intra_open",
                 "wallpaper_intra_close",
-		"toast_animation",
+        "toast_animation",
         };
 
         /**
@@ -4039,6 +4039,13 @@ public final class Settings {
         public static final String ON_THE_GO_CAMERA = "on_the_go_camera";
 
         /**
+        * Whether the service should restart itself or not.
+        *
+        * @hide
+        */
+        public static final String ON_THE_GO_SERVICE_RESTART = "on_the_go_service_restart";
+        
+        /**
          *
          * SMOOTH PROGRESS BAR interpolator
          * @hide
@@ -4095,10 +4102,10 @@ public final class Settings {
         public static final String PROGRESSBAR_COLOR_1 = "progressbar_color_1";
 
         /**
-	 *
-	 * SMOOTH PROGRESS BAR Color_2
-	 * @hide
-	 */
+     *
+     * SMOOTH PROGRESS BAR Color_2
+     * @hide
+     */
         public static final String PROGRESSBAR_COLOR_2 = "progressbar_color_2";
 
         /**
@@ -4248,14 +4255,14 @@ public final class Settings {
             AUTO_TIME_ZONE,             // moved to global
             TIME_12_24,
             DATE_FORMAT,
-	    ACCELEROMETER_ROTATION,
-	    LOCKSCREEN_ROTATION,
+        ACCELEROMETER_ROTATION,
+        LOCKSCREEN_ROTATION,
             USER_ROTATION,
             DTMF_TONE_WHEN_DIALING,
             DTMF_TONE_TYPE_WHEN_DIALING,
             HEARING_AID,
             TTY_MODE,
-	    NOISE_SUPPRESSION,
+        NOISE_SUPPRESSION,
             SOUND_EFFECTS_ENABLED,
             HAPTIC_FEEDBACK_ENABLED,
             POWER_SOUNDS_ENABLED,       // moved to global
@@ -4269,25 +4276,25 @@ public final class Settings {
             VIBRATE_WHEN_RINGING,
             RINGTONE,
             NOTIFICATION_SOUND,
-	    POWER_MENU_REBOOT_ENABLED,
+        POWER_MENU_REBOOT_ENABLED,
             POWER_MENU_SCREENSHOT_ENABLED,
             POWER_MENU_AIRPLANE_ENABLED,
             POWER_MENU_SILENT_ENABLED,
-	    SYSTEM_PROFILES_ENABLED,
-	    POWER_MENU_PROFILES_ENABLED,
+        SYSTEM_PROFILES_ENABLED,
+        POWER_MENU_PROFILES_ENABLED,
             LOCKSCREEN_VIBRATE_ENABLED,
             LOCKSCREEN_BATTERY_VISIBILITY,
-	    PHONE_BLACKLIST_ENABLED,
+        PHONE_BLACKLIST_ENABLED,
             PHONE_BLACKLIST_NOTIFY_ENABLED,
             PHONE_BLACKLIST_PRIVATE_NUMBER_MODE,
             PHONE_BLACKLIST_UNKNOWN_NUMBER_MODE,
             PHONE_BLACKLIST_REGEX_ENABLED,
-	    QUIET_HOURS_ENABLED,
+        QUIET_HOURS_ENABLED,
             QUIET_HOURS_START,
             QUIET_HOURS_END,
             QUIET_HOURS_MUTE,
             QUIET_HOURS_STILL,
-            QUIET_HOURS_DIM,	    	    
+            QUIET_HOURS_DIM,                
         };
 
         // Settings moved to Settings.Secure
@@ -4525,7 +4532,7 @@ public final class Settings {
          */
         @Deprecated
         public static final String WIFI_WATCHDOG_PING_TIMEOUT_MS =
-            Secure.WIFI_WATCHDOG_PING_TIMEOUT_MS;	
+            Secure.WIFI_WATCHDOG_PING_TIMEOUT_MS;   
     }
 
     /**
@@ -4562,7 +4569,7 @@ public final class Settings {
             MOVED_TO_LOCK_SETTINGS.add(Secure.LOCK_PATTERN_TACTILE_FEEDBACK_ENABLED);
             MOVED_TO_LOCK_SETTINGS.add(Secure.LOCK_PATTERN_SIZE);
             MOVED_TO_LOCK_SETTINGS.add(Secure.LOCK_DOTS_VISIBLE);
-            MOVED_TO_LOCK_SETTINGS.add(Secure.LOCK_SHOW_ERROR_PATH);	    
+            MOVED_TO_LOCK_SETTINGS.add(Secure.LOCK_SHOW_ERROR_PATH);        
 
             MOVED_TO_GLOBAL = new HashSet<String>();
             MOVED_TO_GLOBAL.add(Settings.Global.ADB_ENABLED);
@@ -5075,13 +5082,13 @@ public final class Settings {
         @Deprecated
         public static final String ADB_ENABLED = Global.ADB_ENABLED;
 
-	/**
+    /**
          * Whether to display the ADB notification.
          * @hide
          */
         public static final String ADB_NOTIFY = "adb_notify";
 
-	/**
+    /**
          * The TCP/IP port to run ADB on, or -1 for USB
          * @hide
          */
@@ -5263,7 +5270,7 @@ public final class Settings {
          */
         public static final String LOCK_PATTERN_VISIBLE = "lock_pattern_visible_pattern";
 
-	/**
+    /**
          * Whether the NumKeyPad will change the orders of numbers
          * in a PIN locked lockscreen
          * 0 = off | 1 = always | 2 = only on request
@@ -5339,13 +5346,13 @@ public final class Settings {
          */
         public static final String LOCK_SCREEN_LOCK_AFTER_TIMEOUT = "lock_screen_lock_after_timeout";
 
-	/**
+    /**
          * Stores value for lock before unlock
          * @hide
          */
         public static final String LOCK_BEFORE_UNLOCK = "lock_before_unlock";
 
-	/**
+    /**
          * Stores used unsecure lockscreen for normal mode and unlock before unlock
          * @hide
          */
@@ -6362,26 +6369,26 @@ public final class Settings {
          */
         public static final String PAYMENT_SERVICE_SEARCH_URI = "payment_service_search_uri";
 
-	/**
+    /**
          * Whether to include options in power menu for rebooting into recovery or bootloader
          * @hide
          */
         public static final String ADVANCED_REBOOT = "advanced_reboot";
 
-	/**
+    /**
          * Whether to display the 'Wipe data' and 'Force close' options in the notification
          * area and in the recent app list
          * @hide
          */
         public static final String DEVELOPMENT_SHORTCUT = "development_shortcut";
 
-	/**
+    /**
          * Whether newly installed apps should run with privacy guard by default
          * @hide
          */
          public static final String PRIVACY_GUARD_DEFAULT = "privacy_guard_default";
 
-	/**
+    /**
          * Whether to allow killing of the foreground app by long-pressing the Back button
          * @hide
          */
@@ -6436,8 +6443,8 @@ public final class Settings {
             MOUNT_UMS_PROMPT,
             MOUNT_UMS_NOTIFY_ENABLED,
             UI_NIGHT_MODE,
-	    PRIVACY_GUARD_DEFAULT,
-	    DEVELOPMENT_SHORTCUT
+        PRIVACY_GUARD_DEFAULT,
+        DEVELOPMENT_SHORTCUT
         };
 
         /**
