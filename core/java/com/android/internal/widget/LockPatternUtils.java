@@ -1438,8 +1438,9 @@ public class LockPatternUtils {
         final boolean hasPattern = isPattern && isLockPatternEnabled() && savedPatternExists();
         final boolean hasGesture = isLockGestureEnabled() && savedGestureExists();
         final boolean hasPassword = isPassword && savedPasswordExists();
+        final boolean hasGesture = isGesture && isLockGestureEnabled() && savedGestureExists();
 
-        return (hasPattern || hasPassword) &&
+        return (hasPattern || hasPassword || hasGesture) &&
                 getActiveProfileLockMode() == Profile.LockMode.DEFAULT;
     }
 
