@@ -1678,7 +1678,7 @@ public class Activity extends ContextThemeWrapper
                 refreshAppLayoutSize();
                 Configuration config = getResources().getConfiguration();
                 if (config.orientation != mPreviousOrientation) {
-                	mWindow.setGravity(Gravity.LEFT | Gravity.TOP);
+                    mWindow.setGravity(Gravity.LEFT | Gravity.TOP);
                     if (!isUnSnap()) {
                         requestChangingFlagsLayout();
                     }
@@ -2794,7 +2794,7 @@ public class Activity extends ContextThemeWrapper
 		}
 	}
 
-	private void requestChangingFlagsLayout() {
+    private void requestChangingFlagsLayout() {
         mWindow.setCloseOnTouchOutside(false);
         mWindow.addFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL);
         mWindow.addFlags(WindowManager.LayoutParams.FLAG_SPLIT_TOUCH);
@@ -3081,7 +3081,7 @@ public class Activity extends ContextThemeWrapper
         }
     }
 
-	/**
+    /**
      * @hide
      */
     public void sendAppLaunchBroadcast() {
@@ -3091,7 +3091,7 @@ public class Activity extends ContextThemeWrapper
         appIntent.addFlags(
                 Intent.FLAG_RECEIVER_REGISTERED_ONLY | Intent.FLAG_RECEIVER_FOREGROUND);
         sendBroadcast(appIntent);
-      	moveTaskToBack(true);
+        moveTaskToBack(true);
     }
 
     private void sendAppEndBroadcast() {

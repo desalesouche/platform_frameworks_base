@@ -46,7 +46,7 @@ public class FloatingWindowView extends RelativeLayout {
         super(activity);
         mResource = activity.getResources();
 
-  XmlResourceParser parser = mResource.getLayout(R.layout.floating_window_layout);
+	      XmlResourceParser parser = mResource.getLayout(R.layout.floating_window_layout);
         activity.getLayoutInflater().inflate(parser, this);
 
         setId(ID_OVERLAY_VIEW);
@@ -55,9 +55,9 @@ public class FloatingWindowView extends RelativeLayout {
         mContentViews = findViewById(R.id.floating_window_background);
         mContentViews.bringToFront();
 
-  setIsRootNamespace(true);
+	      setIsRootNamespace(true);
 
-  final FrameLayout decorView =
+	      final FrameLayout decorView =
                     (FrameLayout) activity.getWindow().peekDecorView().getRootView();
 
         View child = decorView.getChildAt(0);
