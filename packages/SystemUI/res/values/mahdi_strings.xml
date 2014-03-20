@@ -202,4 +202,7 @@
     <string name="screenrecord_notif_pointer">Toggle pointer</string>
     <string name="screenrecord_notif_error">Unable to record screen</string>
     
+    <!-- App Circle Sidebar -->
+    <string name="app_stop_item_title">Kill app</string>
+    
 </resources>

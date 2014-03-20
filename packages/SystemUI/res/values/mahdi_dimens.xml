@@ -16,6 +16,7 @@
 */
 -->
 <resources>
+
     <!-- Notification Shortcuts -->
     <dimen name="notification_shortcuts_close_handle_height">28dp</dimen>
     <dimen name="notification_shortcuts_spacing_height">88dp</dimen>
@@ -33,4 +34,8 @@
 
     <!-- Padding under status bar battery icon -->
     <dimen name="status_bar_battery_bottom_padding">1px</dimen>
+
+    <!-- App Circle Sidebar -->
+    <dimen name="app_sidebar_trigger_width">10dip</dimen>
+    
 </resources>
