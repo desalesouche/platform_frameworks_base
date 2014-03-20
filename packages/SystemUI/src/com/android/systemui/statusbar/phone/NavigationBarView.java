@@ -133,6 +133,7 @@ public class NavigationBarView extends LinearLayout implements BaseStatusBar.Nav
 
     private FrameLayout mRot0;
     private FrameLayout mRot90;
+    private boolean mNavigationBarCanMove;
 
     private ArrayList<ButtonConfig> mButtonsConfig;
     private List<Integer> mButtonIdList;
@@ -1033,6 +1034,10 @@ public class NavigationBarView extends LinearLayout implements BaseStatusBar.Nav
         mDeadZone.setStartFromRight(leftInLandscape);
     }
 
+    public void setNavigationBarCanMove(boolean navigationBarCanMove) {
+        mNavigationBarCanMove = navigationBarCanMove;
+    }
+
     public void setNavigationBarDisableIMECursor(boolean disabled) {
         mIMECursorDisabled = disabled;
     }
@@ -1043,13 +1048,7 @@ public class NavigationBarView extends LinearLayout implements BaseStatusBar.Nav
             mRotatedViews[i].setVisibility(View.GONE);
         }
 
-        boolean navigationBarCanMove = DeviceUtils.isPhone(mContext) ?
-                Settings.System.getIntForUser(mContext.getContentResolver(),
-                        Settings.System.NAVIGATION_BAR_CAN_MOVE, 1,
-                        UserHandle.USER_CURRENT) == 1
-                : false;
-
-        if (!navigationBarCanMove) {
+        if (!mNavigationBarCanMove) {
             mCurrentView = mRotatedViews[Surface.ROTATION_0];
         } else {
             mCurrentView = mRotatedViews[rot];
