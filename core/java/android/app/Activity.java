@@ -1181,6 +1181,7 @@ public class Activity extends ContextThemeWrapper
         }
         if (!reload) {
             decorFloatingView.setFitsSystemWindows(true);
+            decorFloatingView.hackTurnOffWindowResizeAnim(true);
             mFloatingWindowView = new FloatingWindowView(this, getActionBarHeight(true));
             decorFloatingView.addView(mFloatingWindowView, -1, FloatingWindowView.getParams());
             decorFloatingView.setTagInternal(android.R.id.extractArea, mFloatingWindowView);
@@ -1678,19 +1679,48 @@ public class Activity extends ContextThemeWrapper
                 refreshAppLayoutSize();
                 Configuration config = getResources().getConfiguration();
                 if (config.orientation != mPreviousOrientation) {
+                	mWindow.setGravity(Gravity.LEFT | Gravity.TOP);
+                    if (!isUnSnap()) {
+                        requestChangingFlagsLayout();
+                    }
                     WindowManager.LayoutParams params = mWindow.getAttributes();
-                    final int old_x = params.x;
-                    final int old_y = params.y;
-                    params.x = old_y;
-                    params.y = old_x;
-                    params.width = mAppFloatViewWidth;
-                    params.height = mAppFloatViewHeight;
+                    switch (mSnap) {
+                        case SNAP_LEFT:
+                             params.width = (mCurrentScreenWidth / 2);
+                             params.height = ViewGroup.LayoutParams.MATCH_PARENT;
+	                     params.x = 0;
+	                     params.y = 0;
+                             break;
+                        case SNAP_RIGHT:
+                             params.width = (mCurrentScreenWidth / 2);
+                             params.height = ViewGroup.LayoutParams.MATCH_PARENT;
+	                     params.x = (mCurrentScreenWidth / 2);
+	                     params.y = 0;
+                             break;
+                        case SNAP_TOP:
+                             params.width = ViewGroup.LayoutParams.MATCH_PARENT;
+                             params.height = (mCurrentScreenHeight / 2);
+	                     params.x = 0;
+	                     params.y = 0;
+                             break;
+                        case SNAP_BOTTOM:
+                             params.width = ViewGroup.LayoutParams.MATCH_PARENT;
+                             params.height = (mCurrentScreenHeight / 2);
+	                     params.x = 0;
+	                     params.y = (mCurrentScreenHeight / 2);
+                             break;
+                        case SNAP_NONE:
+                             int width = params.width;
+                             int height = params.height;
+                             params.width = height;
+                             params.height = width;
+                             break;
+                    }
                     mWindow.setAttributes(params);
                     mPreviousOrientation = config.orientation;
                 }
             }
         }
-
         if (mActionBar != null) {
             // Do this last; the action bar will need to access
             // view changes from above.
@@ -2760,12 +2790,16 @@ public class Activity extends ContextThemeWrapper
         mWindow.setGravity(Gravity.LEFT | Gravity.TOP);
         if (!mChangedFlags) {
             mChangedFlags = true;
-            mWindow.setCloseOnTouchOutside(false);
-            mWindow.addFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL);
-            mWindow.addFlags(WindowManager.LayoutParams.FLAG_SPLIT_TOUCH);
-            if (ActivityManager.isHighEndGfx()) {
-                mWindow.addFlags(WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED);
-            }
+			requestChangingFlagsLayout();
+		}
+	}
+
+	private void requestChangingFlagsLayout() {
+        mWindow.setCloseOnTouchOutside(false);
+        mWindow.addFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL);
+        mWindow.addFlags(WindowManager.LayoutParams.FLAG_SPLIT_TOUCH);
+        if (ActivityManager.isHighEndGfx()) {
+            mWindow.addFlags(WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED);
         }
     }
 
@@ -3151,8 +3185,8 @@ public class Activity extends ContextThemeWrapper
         public boolean onScale(ScaleGestureDetector scaleGestureDetector) {
             float spanX = scaleGestureDetector.getCurrentSpanX();
             float spanY = scaleGestureDetector.getCurrentSpanY();
-            float newWidth = lastSpanX / spanX * (float) params.width;
-            float newHeight = lastSpanY / spanY * (float) params.height;
+            float newWidth = spanX / lastSpanX * (float) params.width;
+            float newHeight = spanY / lastSpanY * (float) params.height;
             params.width = (int) newWidth;
             params.height = (int) newHeight;
             mWindow.setAttributes(params);

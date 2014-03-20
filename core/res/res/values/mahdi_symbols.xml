@@ -221,7 +221,6 @@
        frameworks/base/core/res/MakeJavaSymbols.sed for how to easily generate
        this.
   -->
-
   <!-- Floating Window -->
   <java-symbol type="drawable" name="ic_floating_window_close" />
   <java-symbol type="drawable" name="ic_floating_window_max" />
@@ -239,5 +238,5 @@
   <java-symbol type="string" name="floating_window_snap_bottom"/>
   <java-symbol type="string" name="floating_window_snap_left"/>
   <java-symbol type="string" name="floating_window_snap_right"/>
-
+  
 </resources>
