@@ -1,21 +1,18 @@
 /*
-* <!--
-*    Copyright (C) 2014 The NamelessROM Project
-*
-*    This program is free software: you can redistribute it and/or modify
-*    it under the terms of the GNU General Public License as published by
-*    the Free Software Foundation, either version 3 of the License, or
-*    (at your option) any later version.
-*
-*    This program is distributed in the hope that it will be useful,
-*    but WITHOUT ANY WARRANTY; without even the implied warranty of
-*    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-*    GNU General Public License for more details.
-*
-*    You should have received a copy of the GNU General Public License
-*    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-* -->
-*/
+ * Copyright (C) 2014 The NamelessRom Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
 package com.android.systemui.quicksettings;
 
@@ -28,7 +25,6 @@ import android.view.View;
 import android.view.View.OnLongClickListener;
 
 import com.android.internal.util.nameless.NamelessActions;
-import com.android.internal.util.nameless.NamelessUtils;
 import com.android.systemui.R;
 import com.android.systemui.nameless.onthego.OnTheGoDialog;
 import com.android.systemui.nameless.onthego.OnTheGoService;
@@ -57,8 +53,8 @@ public class OnTheGoTile extends QuickSettingsTile {
             }
         };
 
-        qsc.registerObservedContent(Settings.Nameless.getUriFor(
-                Settings.Nameless.ON_THE_GO_CAMERA), this);
+        qsc.registerObservedContent(Settings.System.getUriFor(
+                Settings.System.ON_THE_GO_CAMERA), this);
     }
 
     @Override
@@ -75,19 +71,19 @@ public class OnTheGoTile extends QuickSettingsTile {
 
     private void toggleCamera() {
         final ContentResolver resolver = mContext.getContentResolver();
-        final int camera = Settings.Nameless.getInt(resolver,
-                Settings.Nameless.ON_THE_GO_CAMERA,
-                CAMERA_BACK);
+        final int camera = Settings.System.getInt(resolver,
+                Settings.System.ON_THE_GO_CAMERA,
+                0);
 
         int newValue;
-        if (camera == CAMERA_BACK) {
-            newValue = CAMERA_FRONT;
+        if (camera == 0) {
+            newValue = 1;
         } else {
-            newValue = CAMERA_BACK;
+            newValue = 0;
         }
 
-        Settings.Nameless.putInt(resolver,
-                Settings.Nameless.ON_THE_GO_CAMERA,
+        Settings.System.putInt(resolver,
+                Settings.System.ON_THE_GO_CAMERA,
                 newValue);
 
         updateResources();
@@ -112,15 +108,9 @@ public class OnTheGoTile extends QuickSettingsTile {
     }
 
     private synchronized void updateTile() {
-        int cameraMode;
-
-        if (NamelessUtils.hasFrontCamera(mContext)) {
-            cameraMode = Settings.Nameless.getInt(mContext.getContentResolver(),
-                    Settings.Nameless.ON_THE_GO_CAMERA,
-                    CAMERA_BACK);
-        } else {
-            cameraMode = CAMERA_BACK;
-        }
+        final int cameraMode = Settings.System.getInt(mContext.getContentResolver(),
+                Settings.System.ON_THE_GO_CAMERA,
+                0);
 
         switch (cameraMode) {
             default:
