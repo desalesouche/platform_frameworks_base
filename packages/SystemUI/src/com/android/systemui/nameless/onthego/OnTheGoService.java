@@ -44,8 +44,8 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 
-import com.android.internal.util.nameless.NamelessUtils;
-import com.android.internal.util.nameless.constants.FlashLightConstants;
+import com.android.internal.util.mahdi.DeviceUtils;
+import com.android.internal.util.mahdi.TorchConstants;
 import com.android.internal.util.nameless.listeners.ShakeDetector;
 import com.android.systemui.R;
 
@@ -145,8 +145,8 @@ public class OnTheGoService extends Service implements ShakeDetector.Listener {
         public void onReceive(Context context, Intent intent) {
             synchronized (mRestartObject) {
                 final ContentResolver resolver = getContentResolver();
-                final boolean restartService = Settings.Nameless.getBoolean(resolver,
-                        Settings.Nameless.ON_THE_GO_SERVICE_RESTART,
+                final boolean restartService = Settings.System.getBoolean(resolver,
+                        Settings.System.ON_THE_GO_SERVICE_RESTART,
                         false);
                 if (restartService) {
                     restartOnTheGo();
@@ -184,7 +184,7 @@ public class OnTheGoService extends Service implements ShakeDetector.Listener {
     public int onStartCommand(Intent intent, int flags, int startId) {
         logDebug("onStartCommand called");
 
-        if (intent == null || !NamelessUtils.hasCamera(this)) {
+        if (intent == null || !DeviceUtils.hasCamera(this)) {
             stopSelf();
             return START_NOT_STICKY;
         }
@@ -274,7 +274,7 @@ public class OnTheGoService extends Service implements ShakeDetector.Listener {
     private void getCameraInstance(int type) throws RuntimeException, IOException {
         releaseCamera();
 
-        if (!NamelessUtils.hasFrontCamera(this)) {
+        if (!DeviceUtils.hasFrontCamera(this)) {
             mCamera = Camera.open();
             return;
         }
@@ -303,8 +303,8 @@ public class OnTheGoService extends Service implements ShakeDetector.Listener {
     private void setupViews(final boolean isRestarting) {
         logDebug("Setup Views, restarting: " + (isRestarting ? "true" : "false"));
 
-        final int cameraType = Settings.Nameless.getInt(getContentResolver(),
-                Settings.Nameless.ON_THE_GO_CAMERA,
+        final int cameraType = Settings.System.getInt(getContentResolver(),
+                Settings.System.ON_THE_GO_CAMERA,
                 0);
 
         try {
@@ -452,7 +452,7 @@ public class OnTheGoService extends Service implements ShakeDetector.Listener {
     public void hearShake() {
         synchronized (mShakeLock) {
             if (!mIsShakeLocked) {
-                final Intent intent = new Intent(FlashLightConstants.ACTION_TOGGLE_STATE);
+                final Intent intent = new Intent(TorchConstants.ACTION_TOGGLE_STATE);
                 sendBroadcastAsUser(intent, UserHandle.CURRENT);
                 mIsShakeLocked = true;
                 mHandler.postDelayed(new Runnable() {
