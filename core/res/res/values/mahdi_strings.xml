@@ -46,9 +46,6 @@
     <!-- label for item that screenshots in phone options dialog -->
     <string name="global_action_screenshot">Screenshot</string>
 
-    <!-- label for screen record item in phone options dialog -->
-    <string name="global_action_screen_record">Screen record</string>
-
     <!-- label for item that toggles global immersive mode -->
     <string name="global_actions_toggle_global_immersive_mode">Immersive mode</string>
     <!-- status message in phone options dialog for when expand desktop mode is on -->
@@ -97,11 +94,6 @@
     <string name="permdesc_changePrivacyGuardState">Allows the app to change whether another app runs with Privacy Guard. When an app is running with Privacy Guard, it will not have access to personal data such as contacts, call logs, or messages.</string>
     <string name="privacy_guard_notification">Privacy Guard active</string>
     <string name="privacy_guard_notification_detail"><xliff:g id="app">%1$s</xliff:g> will not be able to access personal data</string>
-
-    <!-- Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
-    <string name="permlab_recordScreen">Record content being displayed</string>
-    <!-- Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
-    <string name="permdesc_recordScreen">Allows the app to record the users screen.</string>
 
     <string name="permlab_interceptSmsSent">intercept outgoing SMS</string>
     <!-- Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
