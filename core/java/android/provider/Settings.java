@@ -3811,12 +3811,6 @@ public final class Settings {
         public static final String FORMAL_TEXT_INPUT = "formal_text_input";
 
         /**
-         * Whether to include audio when recording a video
-         * @hide
-         */
-        public static final String SCREEN_RECORDER_RECORD_AUDIO = "screen_recorder_record_audio";
-
-        /**
         * Sets the portrait background of notification drawer
         * @hide
         */
