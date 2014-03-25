@@ -2,7 +2,6 @@
  * Copyright (C) 2008 The Android Open Source Project
  * Copyright (C) 2012-2013 The CyanogenMod Project
  * Modifications Copyright (C) 2013 The OmniROM Project
- * We all love modifications!
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -4857,8 +4856,9 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                                 && (event.getFlags() & KeyEvent.FLAG_FALLBACK) == 0) {
                             mVolumeUpKeyTriggered = true;
                             mVolumeUpKeyTime = event.getDownTime();
-                            mVolumeUpKeyConsumedByScreenRecordChord = false;
+                            mVolumeUpKeyConsumedByScreenrecordChord = false;
                             cancelPendingPowerKeyAction();
+                            cancelPendingScreenshotChordAction();
                             interceptScreenrecordChord();
                         }
                     } else {
