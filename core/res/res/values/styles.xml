@@ -2371,7 +2371,7 @@ please see styles_device_defaults.xml.
     </style>
 
     <style name="Widget.Holo.Light.Tab" parent="Widget.Holo.Light.ActionBar.TabView">
-        <item name="android:background">@android:drawable/tab_indicator_holo</item>
+        <item name="android:background">@android:drawable/tab_indicator_holo_light</item>
         <item name="android:layout_width">0dip</item>
         <item name="android:layout_weight">1</item>
         <item name="android:minWidth">80dip</item>
