@@ -439,7 +439,7 @@ class GlobalActions implements DialogInterface.OnDismissListener, DialogInterfac
         // next: screen record, if enabled
         if (mShowScreenRecord) {
             if (Settings.System.getInt(mContext.getContentResolver(),
-                    Settings.System.SCREENRECORD_IN_POWER_MENU, 0) != 0) {
+                    Settings.System.POWER_MENU_SCREENRECORD_ENABLED, 0) != 0) {
                 mItems.add(
                     new SinglePressAction(com.android.internal.R.drawable.ic_lock_screen_record,
                             R.string.global_action_screenrecord) {
