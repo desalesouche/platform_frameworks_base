@@ -381,7 +381,6 @@ public class LockSettingsService extends ILockSettings.Stub {
             }
         }
         return false;
->>>>>>> b7f8761... Gesture Lockscreen [1/2]
     }
 
     @Override

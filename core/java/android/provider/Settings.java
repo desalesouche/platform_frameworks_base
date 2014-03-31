@@ -5517,12 +5517,6 @@ public final class Settings {
          */
         public static final String LOCK_GESTURE_VISIBLE = "lock_gesture_visible_pattern";
 
-         /**
-         * Determines the width and height of the LockPatternView widget
-         * @hide
-         */
-        public static final String LOCK_PATTERN_SIZE = "lock_pattern_size";
-
         /**
          * Whether lock pattern will show dots (0 = false, 1 = true)
          * @hide
