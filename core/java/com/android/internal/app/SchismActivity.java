@@ -77,7 +77,7 @@ public class SchismActivity extends Activity {
         final TextView letter = new TextView(this);
 
         letter.setTypeface(bold);
-        letter.setTextSize(120);
+        letter.setTextSize(85);
         letter.setTextColor(0xFFFFFFFF);
         letter.setGravity(Gravity.CENTER);
         letter.setText("SCHISM");
