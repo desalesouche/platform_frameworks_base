@@ -103,7 +103,6 @@ public class RecentsPanelView extends FrameLayout implements OnItemClickListener
     private boolean mHighEndGfx;
     private ImageView mClearAllRecents;
     private CircleMemoryMeter mRecentsMemoryIndicator;
-    private boolean mUpdateMemoryIndicator;
 
     public static interface RecentsScrollView {
         public int numItemsInOneScreenful();
@@ -384,11 +383,8 @@ public class RecentsPanelView extends FrameLayout implements OnItemClickListener
                         break;
                 }
                 mRecentsMemoryIndicator.setLayoutParams(layoutParams);
-                mRecentsMemoryIndicator.setVisibility(View.VISIBLE);
-                mUpdateMemoryIndicator = true;
             } else {
                 mRecentsMemoryIndicator.setVisibility(View.GONE);
-                mUpdateMemoryIndicator = false;
             }
 
             if (showClearAllButton && !noApps) {
@@ -421,9 +417,6 @@ public class RecentsPanelView extends FrameLayout implements OnItemClickListener
                 mClearAllRecents.setVisibility(View.GONE);
             }
 
-            if (mUpdateMemoryIndicator) {
-                mRecentsMemoryIndicator.updateMemoryInfo();
-            }
             onAnimationEnd(null);
             setFocusable(true);
             setFocusableInTouchMode(true);
@@ -841,10 +834,6 @@ public class RecentsPanelView extends FrameLayout implements OnItemClickListener
                     mContext.getString(R.string.accessibility_recents_item_dismissed, ad.getLabel()));
             sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_SELECTED);
             setContentDescription(null);
-
-            if (mUpdateMemoryIndicator) {
-                mRecentsMemoryIndicator.updateMemoryInfo();
-            }
         }
     }
 
