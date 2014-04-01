@@ -1479,7 +1479,7 @@ please see themes_device_defaults.xml.
         <item name="actionModeBackground">@android:drawable/cab_background_top_holo_light</item>
         <item name="actionModeSplitBackground">@android:drawable/cab_background_bottom_holo_light</item>
         <item name="actionModeCloseDrawable">@android:drawable/ic_cab_done_holo_light</item>
-        <item name="actionBarTabStyle">@style/Widget.Holo.Light.Tab</item>
+        <item name="actionBarTabStyle">@style/Widget.Holo.Light.ActionBar.TabView</item>
         <item name="actionBarTabBarStyle">@style/Widget.Holo.Light.ActionBar.TabBar</item>
         <item name="actionBarTabTextStyle">@style/Widget.Holo.Light.ActionBar.TabText</item>
         <item name="actionModeStyle">@style/Widget.Holo.Light.ActionMode</item>
