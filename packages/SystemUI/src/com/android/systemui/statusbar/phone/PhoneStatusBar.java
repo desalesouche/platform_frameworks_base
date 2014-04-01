@@ -3084,7 +3084,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
             Log.d(TAG, (showMenu?"showing":"hiding") + " the MENU button");
         }
 
-        propagateMenuVisibility(showMenu)
+        propagateMenuVisibility(showMenu);
 
         // See above re: lights-out policy for legacy apps.
         if (showMenu) setLightsOn(true);
