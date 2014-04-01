@@ -844,7 +844,6 @@ class GlobalActions implements DialogInterface.OnDismissListener, DialogInterfac
         } catch (RemoteException e) {
              mEdgeGestureService = null;
         }
-        mContext.getContentResolver().unregisterContentObserver(mSettingsObserver);
     }
 
     /** {@inheritDoc} */
