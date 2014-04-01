@@ -262,7 +262,7 @@
     <dimen name="pie_navbar_second_layer_radius">160dp</dimen>
     <dimen name="pie_navbar_height">85dp</dimen>
 
-    <dimen name="pie_sysinfo_radius">165dp</dimen>  254
+    <dimen name="pie_sysinfo_radius">165dp</dimen>
     <dimen name="pie_sysinfo_second_layer_radius">255dp</dimen>
     <dimen name="pie_sysinfo_height">85sp</dimen>
 
