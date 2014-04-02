@@ -679,37 +679,6 @@ public class Intent implements Parcelable, Cloneable {
     public static final String ACTION_BATTERY_SERVICES = "android.intent.action.BATTERY_SERVICES";
 
     /**
-     * Registered and foreground services only
-     * @hide
-     */
-    public static final String ACTION_ACTIVITY_LAUNCH_DETECTOR =
-            "android.intent.action.ACTIVITY_LAUNCH_DETECTOR";
-
-    /**
-     * Registered and foreground services only
-     * @hide
-     */
-    public static final String ACTION_ACTIVITY_END_DETECTOR =
-            "android.intent.action.ACTIVITY_END_DETECTOR";
-
-    /**
-<<<<<<< HEAD
-=======
-     * Registered and foreground services only
-     * @hide
-     */
-    public static final String ACTION_ACTIVITY_LAUNCH_DETECTOR =
-            "android.intent.action.ACTIVITY_LAUNCH_DETECTOR";
-
-    /**
-     * Registered and foreground services only
-     * @hide
-     */
-    public static final String ACTION_ACTIVITY_END_DETECTOR =
-            "android.intent.action.ACTIVITY_END_DETECTOR";
-
-    /**
->>>>>>> parent of 13e513e... Base: Floating window with multitasking
      * Activity Action: Creates a shortcut.
      * <p>Input: Nothing.</p>
      * <p>Output: An Intent representing the shortcut. The intent must contain three
@@ -3689,30 +3658,6 @@ public class Intent implements Parcelable, Cloneable {
      * saw.   This can only be used in conjunction with {@link #FLAG_ACTIVITY_NEW_TASK}.
      */
     public static final int FLAG_ACTIVITY_TASK_ON_HOME = 0X00004000;
-    /**
-<<<<<<< HEAD
-     * If set, this intent will always match start up as a floating window
-     * in multi window scenarios.
-     */
-    public static final int FLAG_FLOATING_WINDOW = 0x00002000;
-    /**
-=======
->>>>>>> parent of e8c0840... Floating Window PS11
-     * If set in an Intent passed to {@link Context#startActivity Context.startActivity()},
-     * this flag will cause a newly launching task to be resized according to the split
-     * view metrics, making it running alongside another app.
-     * @hide
-     */
-<<<<<<< HEAD
-    public static final int FLAG_ACTIVITY_SPLIT_VIEW = 0x00001000;
-=======
-    public static final int FLAG_ACTIVITY_SPLIT_VIEW = 0x00002000;
-    /**
-     * If set, this intent will always match start up as a floating window
-     * in multi window scenarios.
-     */
-    public static final int FLAG_FLOATING_WINDOW = 0x00001000;
->>>>>>> parent of e8c0840... Floating Window PS11
 
     /**
      * If set, when sending a broadcast only registered receivers will be
