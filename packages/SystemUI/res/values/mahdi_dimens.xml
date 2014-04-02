@@ -36,6 +36,6 @@
     <dimen name="status_bar_battery_bottom_padding">1px</dimen>
 
     <!-- App Circle Sidebar -->
-    <dimen name="app_sidebar_trigger_width">10dip</dimen>
+    <dimen name="app_sidebar_trigger_width">25dip</dimen>
     
 </resources>
