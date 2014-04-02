@@ -2909,7 +2909,7 @@ public class Activity extends ContextThemeWrapper
             Log.e(TAG, "Could not perform get app minimum view layout", e);
         }
     }
-
+    
     private void sendAppLaunchBroadcast() {
         Intent appIntent = new Intent(Intent.ACTION_ACTIVITY_LAUNCH_DETECTOR);
         appIntent.putExtra("packagename", getPackageName());
