@@ -10942,11 +10942,14 @@ public class WindowManagerService extends IWindowManager.Stub
         mLastStatusBarVisibility |= flag;
     }
 
+<<<<<<< HEAD
     @Override
     public int getSystemUIVisibility() {
         return mLastStatusBarVisibility;
     }
-    
+
+=======
+>>>>>>> c6750bc... Base: Floating window with multitasking
     private void moveTaskAndActivityToFront(int taskId) {
         try {
             moveTaskToTop(taskId);
