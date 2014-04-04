@@ -2574,7 +2574,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
             }
             if (mBrightnessView != null && mBrightnessSliderEnabled) {
                 mBrightnessView.setVisibility(View.VISIBLE);
-                mBrightnessView.setScaleX(-percent);
+                mBrightnessView.setScaleX(-progress);
             }
             mNotificationButton.setVisibility(View.GONE);
             mAddTileButton.setVisibility(View.GONE);
