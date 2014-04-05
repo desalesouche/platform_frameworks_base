@@ -10,7 +10,7 @@
     <com.android.systemui.statusbar.appcirclesidebar.CircleListView
         android:id="@+id/circle_list"
         style="@style/ListTheme"
-        android:layout_width="160dp"
+        android:layout_width="@dimen/app_sidebar_listview_width"
         android:layout_height="match_parent" />
 
 </com.android.systemui.statusbar.appcirclesidebar.AppCircleSidebar>

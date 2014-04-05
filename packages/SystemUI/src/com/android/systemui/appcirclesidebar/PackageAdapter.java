@@ -165,12 +165,14 @@ public class PackageAdapter extends BaseAdapter implements InputItemHandler.Inpu
         void onLongClick(View v, BaseAdapter adapter);
     }
 
+    @Override
     public void handleOnClickEvent(View v) {
         if (mOnCircleItemClickListener != null) {
             mOnCircleItemClickListener.onClick(v, PackageAdapter.this);
         }
     }
 
+    @Override
     public void handleOnLongClickEvent(View v) {
         if (mOnCircleItemClickListener != null) {
             mOnCircleItemClickListener.onLongClick(v, PackageAdapter.this);

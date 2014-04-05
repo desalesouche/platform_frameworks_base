@@ -105,6 +105,7 @@ public class CircleListView extends ListView implements OnScrollListener {
         throw new UnsupportedOperationException();
     }
 
+    @Override
     public void onScrollStateChanged(AbsListView view, int scrollState) {
         if (scrollState == SCROLL_STATE_IDLE) {
 
@@ -135,8 +136,8 @@ public class CircleListView extends ListView implements OnScrollListener {
         return super.onTouchEvent(ev);
     }
 
+    @Override
     public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-
     }
 
     /**

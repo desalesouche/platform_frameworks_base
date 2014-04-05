@@ -11,8 +11,8 @@
 
         <ImageView
             android:id="@+id/icon"
-            android:layout_width="72dp"
-            android:layout_height="72dp"
+            android:layout_width="@dimen/app_sidebar_icon_width"
+            android:layout_height="@dimen/app_sidebar_icon_height"
             android:layout_centerVertical="true"
             android:scaleType="fitXY"/>
 
