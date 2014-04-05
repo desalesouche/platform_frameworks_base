@@ -963,7 +963,6 @@ public class Activity extends ContextThemeWrapper
         getApplication().dispatchActivityCreated(this, savedInstanceState);
         mCalled = true;
         mPreviousOrientation = getResources().getConfiguration().orientation;
-        sendAppLaunchBroadcast();
         mScaleGestureDetector = new ScaleGestureDetector(getApplicationContext(), mScaleGestureListener);
         mScaleGestureDetector.setQuickScaleEnabled(false);
     }
@@ -3082,12 +3081,17 @@ public class Activity extends ContextThemeWrapper
         }
     }
 
-    private void sendAppLaunchBroadcast() {
+	/**
+     * @hide
+     */
+    public void sendAppLaunchBroadcast() {
         Intent appIntent = new Intent(Intent.ACTION_ACTIVITY_LAUNCH_DETECTOR);
         appIntent.putExtra("packagename", getPackageName());
+        appIntent.putExtra("packagetoken", mToken);
         appIntent.addFlags(
                 Intent.FLAG_RECEIVER_REGISTERED_ONLY | Intent.FLAG_RECEIVER_FOREGROUND);
         sendBroadcast(appIntent);
+      	moveTaskToBack(true);
     }
 
     private void sendAppEndBroadcast() {
