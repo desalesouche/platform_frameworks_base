@@ -45,7 +45,7 @@ public class SchismActivity extends Activity {
     FrameLayout mContent;
     int mCount;
     final Handler mHandler = new Handler();
-    static final int BGCOLOR = 0xff000000;
+    static final int BGCOLOR = 0xff99CA3C;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +58,7 @@ public class SchismActivity extends Activity {
         Typeface light = Typeface.create("sans-serif-light", Typeface.NORMAL);
 
         mContent = new FrameLayout(this);
-        mContent.setBackgroundColor(0xC0000000);
+        mContent.setBackgroundColor(0xC099CA3C);
         
         final FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(
                 FrameLayout.LayoutParams.WRAP_CONTENT,
