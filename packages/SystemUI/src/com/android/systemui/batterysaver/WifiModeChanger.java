@@ -18,9 +18,9 @@ package com.android.systemui.batterysaver;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.TrafficStats;
 import android.net.wifi.WifiManager;
 import android.os.AsyncTask;
-import android.util.Log;
 
 import com.android.systemui.R;
 
@@ -28,6 +28,8 @@ public class WifiModeChanger extends ModeChanger {
 
     private WifiManager mWM;
     private ConnectivityManager mCM;
+    private long mTrafficBytes;
+    private final long TRAFFIC_BYTES_THRESHOLD = 5 * 1024 * 1024; // 5mb
 
     public WifiModeChanger(Context context) {
         super(context);
@@ -36,12 +38,11 @@ public class WifiModeChanger extends ModeChanger {
 
     public void setServices(ConnectivityManager cm) {
         mCM = cm;
+        setWasEnabled(isStateEnabled());
     }
 
-    @Override
-    public void setModeEnabled(boolean enabled) {
-        super.setModeEnabled(enabled);
-        setWasEnabled(isStateEnabled());
+    public void updateTraffic() {
+        mTrafficBytes = TrafficStats.getTotalRxBytes() + TrafficStats.getTotalTxBytes();
     }
 
     public boolean deviceSupportsWifiAp() {
@@ -87,6 +88,12 @@ public class WifiModeChanger extends ModeChanger {
     }
 
     @Override
+    public boolean isDelayChanges() {
+        final long traffic = TrafficStats.getTotalRxBytes() + TrafficStats.getTotalTxBytes();
+        return ((traffic - mTrafficBytes) > TRAFFIC_BYTES_THRESHOLD);
+    }
+
+    @Override
     public boolean isStateEnabled() {
         if (mWM == null) return false;
 
@@ -100,12 +107,12 @@ public class WifiModeChanger extends ModeChanger {
                      return false;
         }
         return false;
-    }
+    };
 
     @Override
     public boolean isSupported() {
         return isModeEnabled();
-    }
+    };
 
     @Override
     public int getMode() {
@@ -114,16 +121,12 @@ public class WifiModeChanger extends ModeChanger {
 
     @Override
     public void stateNormal() {
-        if (!isStateEnabled()) {
-            updateWifiState(true);
-        }
+        updateWifiState(true);
     }
 
     @Override
     public void stateSaving() {
-        if (isStateEnabled()) {
-            updateWifiState(false);
-        }
+        updateWifiState(false);
     }
 
     @Override
@@ -131,13 +134,10 @@ public class WifiModeChanger extends ModeChanger {
         if (isDelayChanges()) {
             // download/upload progress detected, delay changing mode
             changeMode(true, false);
-            if (BatterySaverService.DEBUG) {
-                Log.i(BatterySaverService.TAG, " delayed wifi changing because traffic full ");
-            }
             return false;
         }
         return true;
-    }
+    };
 
     @Override
     public void setModes() {

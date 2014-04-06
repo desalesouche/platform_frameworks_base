@@ -17,13 +17,15 @@ package com.android.systemui.batterysaver;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
-import android.util.Log;
+import android.net.TrafficStats;
 
 import com.android.systemui.R;
 
 public class MobileDataModeChanger extends ModeChanger {
 
     private ConnectivityManager mCM;
+    private long mTrafficBytes;
+    private final long TRAFFIC_BYTES_THRESHOLD = 5 * 1024 * 1024; // 5mb
 
     public MobileDataModeChanger(Context context) {
         super(context);
@@ -31,25 +33,30 @@ public class MobileDataModeChanger extends ModeChanger {
 
     public void setServices(ConnectivityManager cm) {
         mCM = cm;
+        setWasEnabled(isStateEnabled());
+    }
+
+    public void updateTraffic() {
+        mTrafficBytes = TrafficStats.getTotalRxBytes() + TrafficStats.getTotalTxBytes();
     }
 
     @Override
-    public void setModeEnabled(boolean enabled) {
-        super.setModeEnabled(enabled);
-        setWasEnabled(isStateEnabled());
+    public boolean isDelayChanges() {
+        final long traffic = TrafficStats.getTotalRxBytes() + TrafficStats.getTotalTxBytes();
+        return ((traffic - mTrafficBytes) > TRAFFIC_BYTES_THRESHOLD);
     }
 
     @Override
     public boolean isStateEnabled() {
         if (!isSupported()) return false;
         return (mCM != null) ? mCM.getMobileDataEnabled() : false;
-    }
+    };
 
     @Override
     public boolean isSupported() {
         boolean isSupport = (mCM != null) ? mCM.isNetworkSupported(ConnectivityManager.TYPE_MOBILE) : false;
         return isModeEnabled() && isSupport;
-    }
+    };
 
     @Override
     public int getMode() {
@@ -58,16 +65,12 @@ public class MobileDataModeChanger extends ModeChanger {
 
     @Override
     public void stateNormal() {
-        if (!isStateEnabled()) {
-            mCM.setMobileDataEnabled(true);
-        }
+        mCM.setMobileDataEnabled(true);
     }
 
     @Override
     public void stateSaving() {
-        if (isStateEnabled()) {
-            mCM.setMobileDataEnabled(false);
-        }
+        mCM.setMobileDataEnabled(false);
     }
 
     @Override
@@ -75,13 +78,10 @@ public class MobileDataModeChanger extends ModeChanger {
         if (isDelayChanges()) {
             // download/upload progress detected, delay changing mode
             changeMode(true, false);
-            if (BatterySaverService.DEBUG) {
-                Log.i(BatterySaverService.TAG, " delayed mobile data changing because traffic full ");
-            }
             return false;
         }
         return true;
-    }
+    };
 
     @Override
     public void setModes() {
