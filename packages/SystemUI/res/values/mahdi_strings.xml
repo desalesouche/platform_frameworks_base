@@ -149,8 +149,9 @@
     <string name="advanced_dev_option_wipe_app">Wipe app data</string>
     <string name="advanced_dev_option_force_stop">Force stop</string>
 
-    <!-- Hide notification icons -->
+    <!-- Notification options -->
     <string name="status_bar_notification_hide_icon_packages">Hide app\'s notification icon(s)</string>
+    <string name="status_bar_notification_floating_window_title">Float view</string>
 
     <!-- Dialog Cancel/OK -->
     <string name="cancel">Cancel</string>
