@@ -4351,6 +4351,14 @@ public final class Settings {
         public static final String RECENT_PANEL_FAVORITES = "recent_panel_favorites";
 
         /**
+         * Recent panel expanded mode (auto = 0, always = 1, never = 0).
+         * default = 0.
+         *
+         * @hide
+         */
+        public static final String RECENT_PANEL_EXPANDED_MODE = "recent_panel_expanded_mode";
+
+        /**
          * Disable FC Notifications
          * @hide
          */
