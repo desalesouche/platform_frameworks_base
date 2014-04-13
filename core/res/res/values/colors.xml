@@ -155,6 +155,9 @@
     <color name="default_dialog_divider_holo_dark">@android:color/background_holo_light</color>
     <color name="default_dialog_divider_holo_light">#ffacacac</color>
 
+    <!-- Dialog colors - themed -->
+    <color name="dialog_title_color">#ffd6d6d6</color>
+
     <!-- Group buttons -->
     <eat-comment />
     <color name="group_button_dialog_pressed_holo_dark">#46c5c1ff</color>
