@@ -191,9 +191,6 @@
     <!-- label for item that takes On-The-Go in the phone options dialog -->
     <string name="global_action_onthego">On-The-Go Mode</string>
 
-    <!-- In WiFi notification -->
-    <string name="notify_turn_wifi_off_title">Turn Wi-Fi off</string>
-
     <!-- Floating Window -->
     <string name="floating_window_snap_top">Snap top</string>
     <string name="floating_window_snap_bottom">Snap bottom</string>
