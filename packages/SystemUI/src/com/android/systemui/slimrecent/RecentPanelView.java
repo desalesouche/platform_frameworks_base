@@ -711,7 +711,7 @@ public class RecentPanelView {
                         // The first tasks are always added to the task list.
                         mTasks.add(item);
                     } else {
-                        if (mExpandedMode == EXPANDED_MODE_ALWAYS) != 0) {
+                        if (mExpandedMode == EXPANDED_MODE_ALWAYS) {
                             oldState |= EXPANDED_STATE_BY_SYSTEM;
                         }
                         item.setExpandedState(oldState);
