@@ -82,7 +82,7 @@ public class MahdiActions {
 
             if (collapseShade) {
                 if (!action.equals(ButtonsConstants.ACTION_QS)
-                        && !action.equals(ButtonsConstants.ACTION_NOTIFICATIONS)) 
+                        && !action.equals(ButtonsConstants.ACTION_NOTIFICATIONS)
                         && !action.equals(ButtonsConstants.ACTION_SMART_PULLDOWN)) {
 
                     try {
