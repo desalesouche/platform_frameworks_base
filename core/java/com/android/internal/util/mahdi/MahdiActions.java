@@ -107,16 +107,16 @@ public class MahdiActions {
                 triggerVirtualKeypress(KeyEvent.KEYCODE_MENU, isLongpress, false);
                 return;
             } else if (action.equals(ButtonsConstants.ACTION_IME_NAVIGATION_LEFT)) {
-                triggerVirtualKeypress(KeyEvent.KEYCODE_DPAD_LEFT, isLongpress);
+                triggerVirtualKeypress(KeyEvent.KEYCODE_DPAD_LEFT, isLongpress, false);
                 return;
             } else if (action.equals(ButtonsConstants.ACTION_IME_NAVIGATION_RIGHT)) {
-                triggerVirtualKeypress(KeyEvent.KEYCODE_DPAD_RIGHT, isLongpress);
+                triggerVirtualKeypress(KeyEvent.KEYCODE_DPAD_RIGHT, isLongpress, false);
                 return;
             } else if (action.equals(ButtonsConstants.ACTION_IME_NAVIGATION_UP)) {
-                triggerVirtualKeypress(KeyEvent.KEYCODE_DPAD_UP, isLongpress);
+                triggerVirtualKeypress(KeyEvent.KEYCODE_DPAD_UP, isLongpress, false);
                 return;
             } else if (action.equals(ButtonsConstants.ACTION_IME_NAVIGATION_DOWN)) {
-                triggerVirtualKeypress(KeyEvent.KEYCODE_DPAD_DOWN, isLongpress);
+                triggerVirtualKeypress(KeyEvent.KEYCODE_DPAD_DOWN, isLongpress, false);
                 return;
             } else if (action.equals(ButtonsConstants.ACTION_POWER_MENU)) {
                 triggerVirtualKeypress(KeyEvent.KEYCODE_POWER, isLongpress, true);
