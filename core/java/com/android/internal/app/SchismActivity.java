@@ -58,7 +58,7 @@ public class SchismActivity extends Activity {
         Typeface light = Typeface.create("sans-serif-light", Typeface.NORMAL);
 
         mContent = new FrameLayout(this);
-        mContent.setBackgroundColor(0xC099CA3C);
+        mContent.setBackgroundColor(0xC0000000);
         
         final FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(
                 FrameLayout.LayoutParams.WRAP_CONTENT,
@@ -169,7 +169,7 @@ public class SchismActivity extends Activity {
                             | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS)
                         .addCategory("com.android.internal.category.PLATLOGO"));
                 } catch (ActivityNotFoundException ex) {
-                    android.util.Log.e("SchismActivity", "Couldn't catch a break.");
+                    android.util.Log.e("SchismActivity", "The creep is gone..");
                 }
                 finish();
                 return true;
