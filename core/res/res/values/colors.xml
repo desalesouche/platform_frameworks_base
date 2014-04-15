@@ -126,8 +126,8 @@
     <color name="facelock_spotlight_mask">#CC000000</color>
 
     <!-- For holo theme -->
-      <drawable name="screen_background_holo_light">#fff3f3f3</drawable>
-      <drawable name="screen_background_holo_dark">#ff000000</drawable>
+    <drawable name="screen_background_holo_light">#fff3f3f3</drawable>
+    <drawable name="screen_background_holo_dark">#ff000000</drawable>
     <color name="background_holo_dark">#ff000000</color>
     <color name="background_holo_light">#fff3f3f3</color>
     <color name="bright_foreground_holo_dark">@android:color/background_holo_light</color>
@@ -150,13 +150,13 @@
     <color name="highlighted_text_holo_light">#66000000</color>
     <color name="link_text_holo_dark">#5c5cff</color>
     <color name="link_text_holo_light">#0000ee</color>
-    <color name="default_dialog_text_holo_dark">@android:color/background_holo_light</color>
-    <color name="default_dialog_text_holo_light">@android:color/background_holo_dark</color>
+    <color name="default_dialog_text_holo_dark">@android:color/dialog_text_title_color</color>
+    <color name="default_dialog_text_holo_light">@android:color/dialog_text_title_color</color>
     <color name="default_dialog_divider_holo_dark">@android:color/background_holo_light</color>
     <color name="default_dialog_divider_holo_light">#ffacacac</color>
 
     <!-- Dialog colors - themed -->
-    <color name="dialog_title_color">#ffd6d6d6</color>
+    <color name="dialog_text_title_color">#ffd6d6d6</color>
 
     <!-- Group buttons -->
     <eat-comment />
@@ -235,4 +235,3 @@
     <color name="holo_yellow_dark">#ff8800</color>
     <color name="holo_purple_dark">#9933cc</color>
 </resources>
-

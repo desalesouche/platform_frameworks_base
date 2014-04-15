@@ -22,6 +22,6 @@
      <item android:state_focused="true"
            android:color="@*android:color/white" /> <!-- focused -->
      
-     <item android:color="@*android:color/dialog_title_color" /> <!-- default -->
+     <item android:color="@*android:color/dialog_text_title_color" /> <!-- default -->
      
  </selector>

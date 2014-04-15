@@ -40,7 +40,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center_vertical|start"
-            android:textColor="@color/dialog_title_color"
+            android:textColor="@color/dialog_text_color"
             android:minHeight="@dimen/alert_dialog_title_height"
             android:layout_marginStart="16dip"
             android:layout_marginEnd="16dip">
@@ -51,7 +51,7 @@
                 android:src="@null" />
             <com.android.internal.widget.DialogTitle android:id="@+id/alertTitle"
                 style="?android:attr/windowTitleStyle"
-                android:textColor="@color/dialog_white_color"
+                android:textColor="@color/dialog_text_color"
                 android:singleLine="true"
                 android:ellipsize="end"
                 android:layout_width="match_parent"
@@ -78,7 +78,7 @@
             android:clipToPadding="false">
             <TextView android:id="@+id/message"
                 style="?android:attr/textAppearanceMedium"
-                android:textColor="@color/dialog_white_color"
+                android:textColor="@color/dialog_text_color"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingStart="16dip"
@@ -104,7 +104,7 @@
         android:minHeight="@dimen/alert_dialog_button_bar_height"
         android:orientation="vertical"
         android:divider="?android:attr/dividerHorizontal"
-        android:showDividers="none"
+        android:showDividers="beginning"
         android:dividerPadding="0dip">
         <LinearLayout
             style="?android:attr/buttonBarStyle"
@@ -120,7 +120,7 @@
                 android:maxLines="2"
                 style="?android:attr/buttonBarButtonStyle"
                 android:textSize="14sp"
-                android:textColor="@color/dialog_title_color"
+                android:textColor="@color/dialog_text_title_color"
                 android:minHeight="@dimen/alert_dialog_button_bar_height"
                 android:layout_height="wrap_content" />
             <Button android:id="@+id/button3"
@@ -130,7 +130,7 @@
                 android:maxLines="2"
                 style="?android:attr/buttonBarButtonStyle"
                 android:textSize="14sp"
-                android:textColor="@color/dialog_title_color"
+                android:textColor="@color/dialog_text_title_color"
                 android:minHeight="@dimen/alert_dialog_button_bar_height"
                 android:layout_height="wrap_content" />
             <Button android:id="@+id/button1"
@@ -141,7 +141,7 @@
                 android:minHeight="@dimen/alert_dialog_button_bar_height"
                 style="?android:attr/buttonBarButtonStyle"
                 android:textSize="14sp"
-                android:textColor="@color/dialog_title_color"
+                android:textColor="@color/dialog_text_title_color"
                 android:layout_height="wrap_content" />
         </LinearLayout>
      </LinearLayout>
