@@ -312,6 +312,11 @@ public class RecentController implements RecentPanelView.OnExitListener,
             mRecentPanelView.setCancelledByUser(false);
             mRecentPanelView.loadTasks();
         }
+
+        if (mTasksSize == 0) {
+            setVisibility(
+            exit();
+        }
     }
 
     /**
