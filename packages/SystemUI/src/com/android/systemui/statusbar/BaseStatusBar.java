@@ -169,7 +169,6 @@ public abstract class BaseStatusBar extends SystemUI implements
     protected FrameLayout mStatusBarContainer;
 
     private RecentController cRecents;
-
     private RecentsComponent mRecents;
 
     /**
@@ -345,12 +344,12 @@ public abstract class BaseStatusBar extends SystemUI implements
         mLocale = mContext.getResources().getConfiguration().locale;
         mLayoutDirection = TextUtils.getLayoutDirectionFromLocale(mLocale);
 
-        mCustomRecent = Settings.System.getBoolean(
-                       mContext.getContentResolver(), Settings.System.CUSTOM_RECENT, false);
+        mCustomRecent = Settings.System.getBoolean(mContext.getContentResolver(),
+                        Settings.System.CUSTOM_RECENT, false);
 
-        if (mCustomRecent) {
+        if(mCustomRecent){
             cRecents = new RecentController(mContext);
-        } else {
+        }else{
             mRecents = getComponent(RecentsComponent.class);
         }
 
