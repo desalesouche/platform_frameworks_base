@@ -382,32 +382,7 @@ public class RecentsPanelView extends FrameLayout implements OnItemClickListener
             mRecentsNoApps.setAlpha(1f);
             mRecentsNoApps.setVisibility(noApps ? View.VISIBLE : View.INVISIBLE);
 
-            boolean showClearAllButton = Settings.System.getInt(mContext.getContentResolver(), Settings.System.SHOW_CLEAR_RECENTS_BUTTON, 1) == 1;
-
-            if (showClearAllButton) {
-                mClearAllRecents.setVisibility(noApps ? View.GONE : View.VISIBLE);
-                int clearAllButtonLocation = Settings.System.getInt(mContext.getContentResolver(), Settings.System.CLEAR_RECENTS_BUTTON_LOCATION, Constants.CLEAR_ALL_BUTTON_BOTTOM_LEFT);
-                FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams)mClearAllRecents.getLayoutParams();
-                switch (clearAllButtonLocation) {
-                    case Constants.CLEAR_ALL_BUTTON_TOP_LEFT:
-                        layoutParams.gravity = Gravity.TOP | Gravity.LEFT;
-                        break;
-                    case Constants.CLEAR_ALL_BUTTON_TOP_RIGHT:
-                        layoutParams.gravity = Gravity.TOP | Gravity.RIGHT;
-                        break;
-                    case Constants.CLEAR_ALL_BUTTON_BOTTOM_RIGHT:
-                        layoutParams.gravity = Gravity.BOTTOM | Gravity.RIGHT;
-                        break;
-                    case Constants.CLEAR_ALL_BUTTON_BOTTOM_LEFT:
-                    default:
-                        layoutParams.gravity = Gravity.BOTTOM | Gravity.LEFT;
-                        break;
-                }
-                mClearAllRecents.setLayoutParams(layoutParams);
-                mClearAllRecents.setVisibility(View.VISIBLE);
-            } else {
-                mClearAllRecents.setVisibility(View.GONE);
-            }
+            mClearAllRecents.setVisibility(noApps ? View.GONE : View.VISIBLE);
 
             onAnimationEnd(null);
             setFocusable(true);
@@ -540,11 +515,6 @@ public class RecentsPanelView extends FrameLayout implements OnItemClickListener
                     return true;
                 }
             });
-        }
-        boolean showClearAllButton = Settings.System.getInt(mContext.getContentResolver(),
-                    Settings.System.SHOW_CLEAR_RECENTS_BUTTON, 0) == 1;
-        if (!showClearAllButton){
-            mClearAllRecents.setVisibility(View.GONE);
         }
 
         if (mRecentsScrim != null) {
@@ -1059,6 +1029,18 @@ public class RecentsPanelView extends FrameLayout implements OnItemClickListener
             bottom += getBottomPaddingOffset();
         }
         mRecentsContainer.drawFadedEdges(canvas, left, right, top, bottom);
+    }
+
+    @Override
+    protected boolean fitSystemWindows(Rect insets) {
+        if (mClearAllRecents != null) {
+            MarginLayoutParams lp = (MarginLayoutParams) mClearAllRecents.getLayoutParams();
+            lp.topMargin = insets.top;
+            lp.rightMargin = insets.right;
+            mClearAllRecents.setLayoutParams(lp);
+        }
+
+        return super.fitSystemWindows(insets);
     }
 
     class FakeClearUserDataObserver extends IPackageDataObserver.Stub {
