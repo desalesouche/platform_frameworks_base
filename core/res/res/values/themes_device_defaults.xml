@@ -398,6 +398,7 @@ easier.
         <item name="android:buttonBarStyle">@android:style/DeviceDefault.ButtonBar.AlertDialog</item>
         <item name="borderlessButtonStyle">@android:style/Widget.DeviceDefault.Button.Borderless.Small</item>
 
+        <item name="android:textColor">@android:color/dialog_text_title_color</item>
         <item name="textAppearance">@android:style/Dialog.TextAppearance.DeviceDefault</item>
         <item name="textAppearanceInverse">@android:style/Dialog.TextAppearance.DeviceDefault.Inverse</item>
     </style>
@@ -442,6 +443,7 @@ easier.
         <item name="android:buttonBarStyle">@android:style/DeviceDefault.Light.ButtonBar.AlertDialog</item>
         <item name="borderlessButtonStyle">@android:style/Widget.DeviceDefault.Light.Button.Borderless.Small</item>
 
+        <item name="android:textColor">@android:color/dialog_text_title_color</item>
         <item name="textAppearance">@android:style/Dialog.TextAppearance.DeviceDefault</item>
         <item name="textAppearanceInverse">@android:style/Dialog.TextAppearance.DeviceDefault</item>
     </style>
