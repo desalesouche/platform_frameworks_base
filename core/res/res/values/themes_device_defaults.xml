@@ -398,8 +398,8 @@ easier.
         <item name="android:buttonBarStyle">@android:style/DeviceDefault.ButtonBar.AlertDialog</item>
         <item name="borderlessButtonStyle">@android:style/Widget.DeviceDefault.Button.Borderless.Small</item>
 
-        <item name="textAppearance">@android:style/TextAppearance.DeviceDefault</item>
-        <item name="textAppearanceInverse">@android:style/TextAppearance.DeviceDefault.Inverse</item>
+        <item name="textAppearance">@android:style/Dialog.TextAppearance.DeviceDefault</item>
+        <item name="textAppearanceInverse">@android:style/Dialog.TextAppearance.DeviceDefault.Inverse</item>
     </style>
     <!-- Variant of {@link #Theme_DeviceDefault_Dialog} that has a nice minimum width for a
     regular dialog. -->
@@ -442,8 +442,8 @@ easier.
         <item name="android:buttonBarStyle">@android:style/DeviceDefault.Light.ButtonBar.AlertDialog</item>
         <item name="borderlessButtonStyle">@android:style/Widget.DeviceDefault.Light.Button.Borderless.Small</item>
 
-        <item name="textAppearance">@android:style/TextAppearance.DeviceDefault.Light</item>
-        <item name="textAppearanceInverse">@android:style/TextAppearance.DeviceDefault.Light.Inverse</item>
+        <item name="textAppearance">@android:style/Dialog.TextAppearance.DeviceDefault</item>
+        <item name="textAppearanceInverse">@android:style/Dialog.TextAppearance.DeviceDefault</item>
     </style>
     <!-- Variant of {@link #Theme_DeviceDefault_Light_Dialog} that has a nice minimum width for a
     regular dialog. -->
@@ -573,7 +573,6 @@ easier.
         <item name="actionModeStyle">@style/Widget.DeviceDefault.Light.ActionMode.Inverse</item>
         <item name="actionModeCloseButtonStyle">@style/Widget.DeviceDefault.ActionButton.CloseMode</item>
         <item name="actionModePopupWindowStyle">@android:style/Widget.DeviceDefault.PopupWindow.ActionMode</item>
-
     </style>
 
     <style name="Theme.DeviceDefault.Dialog.Alert" parent="Theme.Holo.Dialog.Alert">
@@ -590,6 +589,15 @@ easier.
     </style>
 
     <style name="Theme.DeviceDefault.Dialog.NoFrame" parent="Theme.Holo.Dialog.NoFrame">
+    </style>
+
+    <!-- Schism Dialog Styles -->
+    <style name="Dialog.TextAppearance.DeviceDefault" parent="TextAppearance.DeviceDefault">
+        <item name="android:textColor">@android:color/dialog_text_title_color</item>
+    </style>
+
+    <style name="Dialog.TextAppearance.DeviceDefault.Inverse" parent="TextAppearance.DeviceDefault.Inverse">
+        <item name="android:textColor">@android:color/dialog_text_title_color</item>
     </style>
 
 </resources>

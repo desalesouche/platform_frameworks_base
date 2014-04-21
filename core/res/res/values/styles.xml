@@ -48,6 +48,7 @@ please see styles_device_defaults.xml.
         <item name="android:maxLines">1</item>
         <item name="android:scrollHorizontally">true</item>
         <item name="android:textAppearance">@style/TextAppearance.DialogWindowTitle</item>
+        <item name="android:textColor">@android:color/dialog_text_title_color</item>
     </style>
 
     <style name="AlertDialog">
@@ -853,6 +854,7 @@ please see styles_device_defaults.xml.
 
     <style name="TextAppearance.DialogWindowTitle">
         <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@android:color/dialog_text_title_color</item>
     </style>
 
     <style name="TextAppearance.Large">
@@ -1524,7 +1526,7 @@ please see styles_device_defaults.xml.
 
     <style name="TextAppearance.Holo.DialogWindowTitle">
         <item name="android:textSize">22sp</item>
-        <item name="android:textColor">@android:color/default_dialog_text_holo_dark</item>
+        <item name="android:textColor">@android:color/dialog_text_title_color</item>
     </style>
 
     <style name="TextAppearance.Holo.CalendarViewWeekDayView" parent="TextAppearance.Small.CalendarViewWeekDayView">
@@ -1623,7 +1625,7 @@ please see styles_device_defaults.xml.
 
     <style name="TextAppearance.Holo.Light.DialogWindowTitle">
         <item name="android:textSize">22sp</item>
-        <item name="android:textColor">@android:color/default_dialog_text_holo_light</item>
+        <item name="android:textColor">@android:color/dialog_text_title_color</item>
     </style>
 
     <style name="TextAppearance.Holo.Light.CalendarViewWeekDayView" parent="TextAppearance.Small.CalendarViewWeekDayView">
@@ -2529,12 +2531,14 @@ please see styles_device_defaults.xml.
         <item name="android:maxLines">1</item>
         <item name="android:scrollHorizontally">true</item>
         <item name="android:textAppearance">@style/TextAppearance.Holo.DialogWindowTitle</item>
+        <item name="android:textColor">@android:color/dialog_text_title_color</item>
     </style>
 
     <style name="DialogWindowTitle.Holo.Light">
         <item name="android:maxLines">1</item>
         <item name="android:scrollHorizontally">true</item>
         <item name="android:textAppearance">@style/TextAppearance.Holo.Light.DialogWindowTitle</item>
+        <item name="android:textColor">@android:color/dialog_text_title_color</item>
     </style>
 
     <style name="Widget.Holo.PreferenceFrameLayout">
@@ -2642,4 +2646,38 @@ please see styles_device_defaults.xml.
         <item name="spb_reversed">@bool/spb_default_reversed</item>
         <item name="spb_mirror_mode">@bool/spb_default_mirror_mode</item>
     </style>
+
+    <!-- Schism Dialog Styles -->
+    <style name="Dialog.TextAppearance.Holo.Light" parent="android:TextAppearance.Holo.Light">
+        <item name="android:textColor">@color/dialog_text_title_color</item>
+    </style>
+
+    <style name="Dialog.TextAppearance.Holo.Light.Inverse" parent="android:TextAppearance.Holo.Light.Inverse">
+        <item name="android:textColor">@color/dialog_text_title_color</item>
+    </style>
+
+    <style name="Dialog.TextAppearance.Small" parent="android:TextAppearance.Small">
+        <item name="android:textColor">@color/dialog_text_title_color</item>
+    </style>
+
+    <style name="Dialog.TextAppearance.Medium" parent="android:TextAppearance.Medium">
+        <item name="android:textColor">@color/dialog_text_title_color</item>
+    </style>
+
+    <style name="Dialog.TextAppearance.Large" parent="android:TextAppearance.Large">
+        <item name="android:textColor">@color/dialog_text_title_color</item>
+    </style>
+
+    <style name="Dialog.TextAppearance.Small.Inverse" parent="android:TextAppearance.Small.Inverse">
+        <item name="android:textColor">@color/dialog_text_title_color</item>
+    </style>
+
+    <style name="Dialog.TextAppearance.Medium.Inverse" parent="android:TextAppearance.Medium.Inverse">
+        <item name="android:textColor">@color/dialog_text_title_color</item>
+    </style>
+
+    <style name="Dialog.TextAppearance.Large.Inverse" parent="android:TextAppearance.Large.Inverse">
+        <item name="android:textColor">@color/dialog_text_title_color</item>
+    </style>
+    
 </resources>

@@ -62,7 +62,7 @@
         </LinearLayout>
         <ImageView android:id="@+id/titleDivider"
             android:layout_width="match_parent"
-            android:layout_height="2dip"
+            android:layout_height="1dip"
             android:visibility="gone"
             android:scaleType="fitXY"
             android:gravity="fill_horizontal"
