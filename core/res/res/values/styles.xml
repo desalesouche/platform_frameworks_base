@@ -52,6 +52,7 @@ please see styles_device_defaults.xml.
     </style>
 
     <style name="AlertDialog">
+        <item name="android:textColor">@android:color/dialog_text_title_color</item>
         <item name="fullDark">@android:drawable/popup_full_dark</item>
         <item name="topDark">@android:drawable/popup_top_dark</item>
         <item name="centerDark">@android:drawable/popup_center_dark</item>
@@ -892,6 +893,7 @@ please see styles_device_defaults.xml.
     </style>
 
     <style name="TextAppearance.Theme.Dialog" parent="TextAppearance.Theme">
+        <item name="android:textColor">@android:color/dialog_text_title_color</item>
     </style>
 
     <style name="TextAppearance.Theme.Dialog.AppError">
@@ -1050,16 +1052,19 @@ please see styles_device_defaults.xml.
     </style>
 
     <style name="Preference.DialogPreference">
+        <item name="android:textColor">@android:color/dialog_text_title_color</item>
         <item name="android:positiveButtonText">@android:string/ok</item>
         <item name="android:negativeButtonText">@android:string/cancel</item>
     </style>
 
     <style name="Preference.DialogPreference.YesNoPreference">
+        <item name="android:textColor">@android:color/dialog_text_title_color</item>
         <item name="android:positiveButtonText">@android:string/yes</item>
         <item name="android:negativeButtonText">@android:string/no</item>
     </style>
 
     <style name="Preference.DialogPreference.EditTextPreference">
+        <item name="android:textColor">@android:color/dialog_text_title_color</item>
         <item name="android:dialogLayout">@android:layout/preference_dialog_edittext</item>
     </style>
 
@@ -1105,16 +1110,19 @@ please see styles_device_defaults.xml.
     </style>
 
     <style name="Preference.Holo.DialogPreference">
+        <item name="android:textColor">@android:color/dialog_text_title_color</item>
         <item name="android:positiveButtonText">@android:string/ok</item>
         <item name="android:negativeButtonText">@android:string/cancel</item>
     </style>
 
     <style name="Preference.Holo.DialogPreference.YesNoPreference">
+        <item name="android:textColor">@android:color/dialog_text_title_color</item>
         <item name="android:positiveButtonText">@android:string/yes</item>
         <item name="android:negativeButtonText">@android:string/no</item>
     </style>
 
     <style name="Preference.Holo.DialogPreference.EditTextPreference">
+        <item name="android:textColor">@android:color/dialog_text_title_color</item>
         <item name="android:dialogLayout">@android:layout/preference_dialog_edittext</item>
     </style>
 
@@ -1699,6 +1707,7 @@ please see styles_device_defaults.xml.
     </style>
 
     <style name="Holo.ButtonBar.AlertDialog">
+        <item name="android:textColor">@android:color/dialog_text_title_color</item>
         <item name="android:background">@null</item>
         <item name="android:dividerPadding">0dp</item>
     </style>
@@ -2482,6 +2491,7 @@ please see styles_device_defaults.xml.
     <!-- Dialog styles -->
 
     <style name="AlertDialog.Holo" parent="AlertDialog">
+        <item name="android:textColor">@android:color/dialog_text_title_color</item>
         <item name="fullDark">@android:drawable/dialog_full_holo_dark</item>
         <item name="topDark">@android:drawable/dialog_top_holo_dark</item>
         <item name="centerDark">@android:drawable/dialog_middle_holo_dark</item>
@@ -2502,6 +2512,7 @@ please see styles_device_defaults.xml.
     </style>
 
     <style name="AlertDialog.Holo.Light">
+        <item name="android:textColor">@android:color/dialog_text_title_color</item>
         <item name="fullDark">@android:drawable/dialog_full_holo_light</item>
         <item name="topDark">@android:drawable/dialog_top_holo_light</item>
         <item name="centerDark">@android:drawable/dialog_middle_holo_light</item>

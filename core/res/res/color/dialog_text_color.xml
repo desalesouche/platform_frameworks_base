@@ -17,10 +17,10 @@
  <selector xmlns:android="http://schemas.android.com/apk/res/android">
      
      <item android:state_pressed="true"
-           android:color="@*android:color/white" /> <!-- pressed -->
+           android:color="@*android:color/dialog_text_title_color" /> <!-- pressed -->
      
      <item android:state_focused="true"
-           android:color="@*android:color/white" /> <!-- focused -->
+           android:color="@*android:color/dialog_text_title_color" /> <!-- focused -->
      
      <item android:color="@*android:color/dialog_text_title_color" /> <!-- default -->
      
