@@ -2,7 +2,7 @@
 <!--
 /* //device/apps/common/assets/res/any/strings.xml
 **
-** Copyright 2014, Mahdi-Rom project
+** Copyright 2014, Schism-Rom project
 **
 ** Licensed under the Apache License, Version 2.0 (the "License");
 ** you may not use this file except in compliance with the License.
@@ -66,16 +66,16 @@
     <string name="profile_none">Keine</string>
 
     <!-- Names of default profiles. -->
-    <string name="profileNameDefault">Default</string>
-    <string name="profileNameWork">Work</string>
-    <string name="profileNameHome">Home</string>
-    <string name="profileNameSilent">Silent</string>
-    <string name="profileNameNight">Night</string>
-    <string name="profileNameAutomobile">Automobile</string>
+    <string name="profileNameDefault">Standard</string>
+    <string name="profileNameWork">Arbeit</string>
+    <string name="profileNameHome">zu Hause</string>
+    <string name="profileNameSilent">Stumm</string>
+    <string name="profileNameNight">Nachts</string>
+    <string name="profileNameAutomobile">Automobil</string>
 
     <!-- Names of application groups. -->
-    <string name="profileGroupPhone">Phone</string>
-    <string name="profileGroupCalendar">Calendar</string>
+    <string name="profileGroupPhone">Telefon</string>
+    <string name="profileGroupCalendar">Kalender</string>
     <string name="profileGroupGmail">Gmail</string>
     <string name="profileGroupEmail">Email</string>
     <string name="profileGroupSMS">SMS</string>
@@ -90,24 +90,39 @@
     <!-- Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
     <string name="permlab_cancelNotifications">Benachrichtigungen unterdrücken</string>
     <!-- Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
-    <string name="permdesc_cancelNotifications">Erlaubt der App Benachrichtigungen anderer Apps zu unterdrücken.</string>
+    <string name="permdesc_cancelNotifications">Erlaubt der App, Benachrichtigungen anderer Apps zu unterdrücken.</string>
 
     <!-- Privacy Guard -->
     <string name="permlab_changePrivacyGuardState">Datenschutz aktivieren oder deaktivieren</string>
-    <string name="permdesc_changePrivacyGuardState">Erlaubt der App zu ändern ob eine andere App unter Datenschutz ausgeführt wird oder nicht. Wenn eine App mit aktivem Datenschutz ausgeführt wird, hat diese keinen Zugriff auf persönliche Daten wie Kontakte, Nachrichten oder das Anrufprotokoll.</string>
+    <string name="permdesc_changePrivacyGuardState">Erlaubt der App zu ändern, ob eine andere App unter Datenschutz ausgeführt wird oder nicht. Wenn eine App mit aktivem Datenschutz ausgeführt wird, hat diese keinen Zugriff auf persönliche Daten wie Kontakte, Nachrichten oder das Anrufprotokoll.</string>
     <string name="privacy_guard_notification">Datenschutz aktiv</string>
     <string name="privacy_guard_notification_detail"><xliff:g id="app">%1$s</xliff:g> kann nun nicht mehr auf die persönlichen Daten zugreifen</string>
 
     <!-- Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
     <string name="permlab_recordScreen">Aufnahme wird wiedergegeben</string>
     <!-- Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
-    <string name="permdesc_recordScreen">Erlaubt der App den Bildschirminhalt aufzuzeichnen.</string>
+    <string name="permdesc_recordScreen">Erlaubt der App, den Bildschirminhalt aufzuzeichnen.</string>
 
     <string name="permlab_interceptSmsSent">Abfangen ausgehender SMS</string>
     <!-- Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
     <string name="permdesc_interceptSmsSent">Erlaubt der App das Abfangen einer ausgehenden SMS. Bösartige Apps verwenden dies um ausgehnde SMS zu blockieren.</string>
+	
+	<!-- Title of a category of application permissions, listed so the user can choose whether they want to allow the application to do this. -->
+    <string name="permgrouplab_security">Sicherheit</string>
+    <!-- Description of a category of application permissions, listed so the user can choose whether they want to allow the application to do this. -->
+    <string name="permgroupdesc_security">Genehnigungen bezüglich der Informationen zur Geräte-Sicherheit beziehen.</string>
 
-    <string name="immersive_mode_confirmation_bottom">Von der Unterseite nach oben wischen um den erweiterterten Desktop zu beenden.</string>
+    <!-- [CHAR LIMIT=NONE] Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
+    <string name="permlab_readPhoneBlacklist">Telefon-Blacklist lesen</string>
+    <!-- [CHAR LIMIT=NONE] Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
+    <string name="permdesc_readPhoneBlacklist">Erlaubt es der App, Informationen über Nummern, von denen eingehende Anrufe und Nachrichten blockiert werden, zu lesen.</string>
+
+    <!-- [CHAR LIMIT=NONE] Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
+    <string name="permlab_changePhoneBlacklist">Telefon-Blacklist ändern</string>
+    <!-- [CHAR LIMIT=NONE] Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
+    <string name="permdesc_changePhoneBlacklist">Erlaubt es der App,die Nummern, von denen eingehende Anrufe und Nachrichten blockiert werden, zu ändern.</string>
+	
+	<string name="immersive_mode_confirmation_bottom">Von der Unterseite nach oben wischen, um den erweiterterten Desktop zu beenden.</string>
 
     <!-- Lock screen always show battery -->
     <string name="lockscreen_discharging">Entladen, <xliff:g id="number">%d</xliff:g><xliff:g id="percent">%%</xliff:g></string>
@@ -144,4 +159,76 @@
 
     <string name="privacy_guard_dialog_title">Datenschutz</string>
     <string name="privacy_guard_dialog_summary"><xliff:g id="app">%1$s</xliff:g> möchte <xliff:g id="op">%2$s</xliff:g>.</string>
+
+    <!-- App ops requests -->
+    <string name="app_ops_access_camera">Zufriff auf die Kamera</string>
+    <string name="app_ops_access_location">Zugriff auf den Standort</string>
+    <string name="app_ops_access_notifications">Benachrichtigungen lesen</string>
+    <string name="app_ops_alarm_wakeup">Das Gerät aufwecken</string>
+    <string name="app_ops_draw_on_top">Über andere Apps legen</string>
+    <string name="app_ops_keep_device_awake">Das Gerät wach halten</string>
+    <string name="app_ops_make_phone_call">Einen Anruf tätigen</string>
+    <string name="app_ops_modify_calendar">Den Kalender aktualisieren</string>
+    <string name="app_ops_modify_call_log">Die Anrufliste aktualisieren</string>
+    <string name="app_ops_modify_clipboard">Die Zwischenablage ändern</string>
+    <string name="app_ops_modify_contacts">Die Kontakte aktualisieren</string>
+    <string name="app_ops_modify_settings">System-Einstellungen aktualisieren</string>
+    <string name="app_ops_play_audio">Ton wiedergeben</string>
+    <string name="app_ops_post_notification">Benachrichtigungen erstellen</string>
+    <string name="app_ops_read_calendar">Kalendereinträge lesen</string>
+    <string name="app_ops_read_call_log">Die Anrufliste lesen</string>
+    <string name="app_ops_read_clipboard">Die Zwischenablage lesen</string>
+    <string name="app_ops_read_contacts">Die Kontakte lesen</string>
+    <string name="app_ops_read_mms">MMS-Nachrichten lesen</string>
+    <string name="app_ops_read_sms">SMS-Nachrichten lesen</string>
+    <string name="app_ops_receive_sms">SMS-Nachrichten empfangen</string>
+    <string name="app_ops_record_audio">Audio aufnehmen</string>
+    <string name="app_ops_send_mms">MMS-Nachrichten empfangen</string>
+    <string name="app_ops_send_sms">SMS-Nachrichten empfangen</string>
+    <string name="app_ops_start_at_bootup">Beim Einschalten starten</string>
+    <string name="app_ops_toggle_bluetooth">Bluetooth ein-/ausschalten</string>
+    <string name="app_ops_toggle_mobile_data">Mobile Daten ein-/ausschalten</string>
+    <string name="app_ops_toggle_wifi">WiFi ein-/ausschalten</string>
+    <string name="app_ops_use_alarm_volume">Die Wecker-Lautstärke ändern</string>
+    <string name="app_ops_use_audio_focus">Den Audio-Fokus ändern</string>
+    <string name="app_ops_use_bluetooth_volume">Bluetooth-Lautstärke ändern</string>
+    <string name="app_ops_use_master_volume">Gesamtlautstärke ändern</string>
+    <string name="app_ops_use_media_buttons">Medien-Buttons verwenden</string>
+    <string name="app_ops_use_media_volume">Medien-Lautstärke verändern</string>
+    <string name="app_ops_use_notification_volume">Benachrichtigungs-Lautstärke ändern</string>
+    <string name="app_ops_use_ring_volume">Klingelton-Lautstärke ändern</string>
+    <string name="app_ops_use_vibrate">Haptische Rückmeldungen verwenden</string>
+    <string name="app_ops_use_voice_volume">Anruf-Lautstärke ändern</string>
+    <string name="app_ops_write_mms">MMS-Nachrichten versenden</string>
+    <string name="app_ops_write_sms">SMS-Nachrichten versenden</string>
+
+    <string name="privacy_guard_dialog_title">Privacy Guard</string>
+    <string name="privacy_guard_dialog_summary"><xliff:g id="app">%1$s</xliff:g> würde gerne <xliff:g id="op">%2$s</xliff:g>.</string>
+    
+    <string name="permission_remember_choice">Auswahl merken</string>
+
+    <!-- label for item that takes On-The-Go in the phone options dialog -->
+    <string name="global_action_onthego">On-The-Go Modus</string>
+
+    <!-- Floating Window -->
+    <string name="floating_window_snap_top">Oben anheften</string>
+    <string name="floating_window_snap_bottom">Unten anheften</string>
+    <string name="floating_window_snap_left">Links anheften</string>
+    <string name="floating_window_snap_right">Rechts anheften</string>
+    <string name="floating_window_minimize">Minimieren</string>
+
+    <!-- Slim PIE -->
+    <!-- status message in phone options dialog for when pie is on -->
+    <string name="global_actions_pie_mode_on_status">SlimPie ist AN</string>
+    <!-- status message in phone options dialog for when pie is off -->
+    <string name="global_actions_pie_mode_off_status">SlimPie ist AUS</string>
+    <!-- Error message if user want to try to disable all navigation options -->
+    <string name="disable_pie_navigation_error">Die PIE-Controls können nicht deaktiviert werden, da keine andere Möglichkeit der Navigation aktiviert ist. Bitte zuerst die Navigationsleiste aktivieren.</string>
+    <!-- status message in phone options dialog for when navigation bar is on -->
+    <string name="global_actions_nav_bar_mode_on_status">Navigationsleiste ist AN</string>
+    <!-- status message in phone options dialog for when navigation bar is off -->
+    <string name="global_actions_nav_bar_mode_off_status">Navigationsleiste ist AUS</string>
+    <!-- Error message if user want to try to disable all navigation options -->
+    <string name="disable_navigation_pie_error">Die Navigationsleiste kann nicht deaktiviert werden, da keine andere Möglichkeit der Navigation aktiviert ist. Bitte zuerst die PIE-Controls aktivieren.</string>
+
 </resources>

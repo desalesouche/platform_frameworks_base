@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
 /**
- * Copyright (C) 2012-2013 The Mahdi-Rom Project
+ * Copyright (C) 2012-2013 The Schism-Rom Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  * you may not use this file except in compliance with the License. 
@@ -63,14 +63,49 @@
     <string name="quick_settings_wifiap_off">WLAN-AP aus</string>
     <string name="quick_settings_quiethours">Ruhige Stunden</string>
     <string name="quick_settings_quiethours_off">Ruhige Stunden aus</string>
-    <string name="quick_settings_quick_record_nofile">Langer-Druck</string>
+    <string name="quick_settings_custom_toggle">Angepasst</string>
+    <string name="quick_settings_contact_toggle">Kontakt</string>
+	<string name="quick_settings_quick_record_nofile">Langer-Druck</string>
     <string name="quick_settings_quick_record_def">Quick Record</string>
     <string name="quick_settings_quick_record_rec">Aufnahme...</string>
     <string name="quick_settings_quick_record_save">Gespeichert</string>
     <string name="quick_settings_quick_record_play">Abspielen...</string>
-    <string name="quick_settings_custom_toggle">Angepasst</string>
-    <string name="quick_settings_contact_toggle">Kontakt</string>
+    <string name="quick_settings_battery_saver_label">Energiesparmodus an</string>
+    <string name="quick_settings_battery_saver_off_label">Energiesparmodus aus</string>
+    <string name="quick_settings_network_type">Status</string>
+	<string name="quick_settings_network_disable">Kein Internet</string>
 	
+	<!-- Network Strings for battery saver mode -->
+    <string name="network_4G">4G/LTE</string>
+    <string name="network_3G_only">3G</string>
+    <string name="network_3G_auto">2G/3G Automatisch</string>
+    <string name="network_3G">2G/3G Bevorzugt</string>
+    <string name="network_2G">2G</string>
+    <string name="quick_settings_network_unknown">Unbekannt</string>
+	
+	<!-- Battery saver mode -->
+    <string name="battery_saver_start">Energiesparmodus aktiviert</string>
+    <string name="battery_saver_stop">Energiesparmodus deaktiviert</string>
+    <string name="battery_saver_change">Netzwerk geändert: </string>
+    <string name="battery_saver_network">Netzwerk wieder hergestellt</string>
+    <string name="battery_saver_data">Mobile Datenverbindung wieder hergestellt</string>
+    <string name="battery_saver_brightness">Bildschirmhelligkeit wieder hergestellt</string>
+    <string name="battery_saver_bluetooth">Bluetooth wieder hergestellt</string>
+    <string name="battery_saver_location">GPS wieder hergestellt</string>
+    <string name="battery_saver_wifi">WLAN wieder hergestellt</string>
+    <string name="battery_saver_cpu">CPU wieder hergestellt</string>
+    <string name="battery_saver_cpu_change">CPU-Frequenz zum Energiesparen setzen auf</string>
+    <string name="battery_saver_sync">Synchronisation wieder hergestellt</string>
+    <string name="battery_saver_led">LED wieder hergestellt</string>
+    <string name="battery_saver_vibrate">Vibration wieder hergestellt</string>
+    <string name="battery_saver_no_changes">Keine Konfiguration wieder hergestellt</string>
+    <string name="battery_saver_all">Konfigurationen wieder hergestellt</string>
+    <string name="battery_saver_enable_ticker">Energiesparmodus aktiviert...</string>
+    <string name="battery_saver_enable_title">Energiesparmodus</string>
+    <string name="battery_saver_airplane_ticker">Flugmodus wurde durch den Energiesparmodus aktiviert</string>
+    <string name="battery_saver_airplane_text">Flugmodus wurde durch den Energiesparmodus aktiviert da nach 5 Minuten kein Netz gefunden wurde</string>
+    <string name="battery_saver_disable">Deaktiviert</string>
+    
     <!-- Immersive mode strings break the rules a bit - the icon identifies the feature, the string indicates current state -->
     <string name="quick_settings_immersive_mode">Erweitert</string>
     <string name="quick_settings_immersive_mode_off">Normal</string>
@@ -104,6 +139,7 @@
     <string name="quick_settings_reminder_dismiss_message">Aktuelle Erinnerung löschen?</string>
     <string name="quick_settings_reminder_help_title">Tippen</string>
     <string name="quick_settings_reminder_noti_dismiss">Verwerfen</string>
+    <string name="quick_settings_reminder_noti_later">Aktualisierungszeit</string>
     <string name="quick_settings_reminder_help_message">Hier Tippen um eine Erinnerung zu erstellen. Lange Drücken um die aktuelle Erinnerung zu löschen.</string>
 
     <!--ScreenShot Trash-->
@@ -124,7 +160,8 @@
 
     <!-- Hide notification icons -->
     <string name="status_bar_notification_hide_icon_packages">Benachrichtigungssymbol(e) verstecken</string>
-
+	<string name="status_bar_notification_floating_window_title">Schwebende Ansicht</string>
+	
     <!-- Dialog Cancel/OK -->
     <string name="cancel">Abbrechen</string>
     <string name="dlg_ok">Ok</string>
@@ -153,6 +190,7 @@
     <string name="chamber_title">Eingabe</string>
     <string name="chamber_message">Geben Sie eine Zeichenfolge ein welche entweder die Einstellungen ein-und ausschaltet (Checkbox)-Funktion oder einer Listen-Präferenz. Zum Beispiel quiet_hours_ringer oder ähnliches. Die Einstellungen können in der Settings.java Datei gefunden werden. WARNUNG: Dieser Vorgang ist gefährlich!</string>
     <string name="chamber_invalid">Ungültige Eingabe - sei vorsichtig.</string>
+    <string name="chamber_invalid_setting">Versuche, diese Einstellung per Hand zu ändern, um sicherzugehen, dass die Datenbank dazu existiert.</string>
     <string name="chamber_checkbox">Checkbox</string>
     <string name="chamber_chk_message">Handelt es sich um eine Checkbox Einstellung?</string>
     <string name="chamber_int">Eingabewerte</string>
@@ -161,30 +199,57 @@
     <string name="chamber_name_message">Geben Sie der Verknüpfung einen Namen. Wird zusammen mit dem Symbol angezeigt wird.</string>
     <string name="chamber_name_toast">Standard verwenden</string>
    
-    <!-- Battery saver mode -->
-    <string name="battery_saver_start">Energiesparmodus aktiviert</string>
-    <string name="battery_saver_stop">Energiesparmodus deaktiviert</string>
-    <string name="battery_saver_change">Netzwerk geändert: </string>
-    <string name="battery_saver_network">Netzwerk wieder hergestellt</string>
-    <string name="battery_saver_data">Mobile Datenverbindung wieder hergestellt</string>
-    <string name="battery_saver_wifi">WLAN wieder hergestellt</string>
-    <string name="battery_saver_all">Konfigurationen wieder hergestellt</string>
-    <string name="battery_saver_no_changes">Keine Konfiguration wieder hergestellt</string>
-    <string name="battery_saver_enable_ticker">Energiesparmodus aktiviert...</string>
-    <string name="battery_saver_enable_title">Energiesparmodus</string>
-    <string name="battery_saver_airplane_ticker">Flugmodus wurde durch den Energiesparmodus aktiviert</string>
-    <string name="battery_saver_airplane_text">Flugmodus wurde durch den Energiesparmodus aktiviert da nach 5 Minuten kein Netz gefunden wurde</string>
-    <string name="battery_saver_disable">Deaktiviert</string>
-    <!-- Battery Saver -->
-    <string name="network_4G">4G/LTE</string>
-    <string name="network_3G_only">3G</string>
-    <string name="network_3G_auto">2G/3G Automatisch</string>
-    <string name="network_3G">2G/3G Bevorzugt</string>
-    <string name="network_2G">2G</string>
-    <string name="quick_settings_network_unknown">Unbekannt</string>
+    
+    
 
     <!-- Title shown in recents popup for locking an app from being cleared -->
     <string name="status_bar_recent_lock_item_title">Gesperrt</string>
     <!-- Title shown in recents popup for unlocking an app from being cleared -->
     <string name="status_bar_recent_unlock_item_title">Entsperrt</string>
+	
+	<!-- Content description for the add quick settings tile button. [CHAR LIMIT=NONE] -->
+    <string name="accessibility_desc_add_quick_settings">Schnelleinstellungen hinzufügen</string>
+
+    <!-- On The Go -->
+    <string name="onthego_notif_ticker">On-The-Go aktiviert</string>
+    <string name="onthego_notif_title">On-The-Go ist aktiv</string>
+    <string name="onthego_notif_stop">Stop</string>
+    <string name="onthego_notif_options">Optionen</string>
+    <string name="onthego_notif_error">On-The-Go kann nicht gestartet werden</string>
+    <string name="onthego_notif_restart">On-The-Gon eu starten</string>
+    <string name="onthego_notif_camera_changed">Kameramodus geändert</string>
+    <string name="onthego_transparency">Transparenz</string>
+    <string name="onthego_front_camera">Frontkamera verwenden</string>
+    <string name="onthego_service_toggle">Dienst automatisch neu starten</string>
+    <string name="quick_settings_onthego_back">Hintere Kamera</string>
+    <string name="quick_settings_onthego_front">Vordere Kamera</string>
+
+    <!-- Screenrecord - Omni -->
+    <string name="screenrecord_notif_ticker">Bildschirminhalt wird aufgenommen</string>
+    <string name="screenrecord_notif_title">Aufnahme läuft</string>
+    <string name="screenrecord_notif_stop">Stop</string>
+    <string name="screenrecord_notif_pointer">Berührungen anzeigen</string>
+    <string name="screenrecord_notif_error">Bildschirm kann nicht aufgemonnen werden</string>
+    
+    <!-- App Circle Sidebar -->
+    <string name="app_float_maximize_item_title">Maximieren</string>
+    <string name="app_float_item_title">Schwebende Ansicht</string>
+    <string name="app_stop_item_title">App beenden</string>
+
+    <!-- Battery status in pie controls -->
+    <string name="pie_battery_status_charging">Lädt (<xliff:g id="percent">%d</xliff:g>%%)</string>
+    <string name="pie_battery_status_full">Geladen</string>
+    <string name="pie_battery_status_discharging"><xliff:g id="percent">%d</xliff:g>%% verb</string>
+
+    <!-- Phone status in pie controls -->
+    <string name="pie_phone_status_no_service">Kein Dienst</string>
+    <string name="pie_phone_status_airplane_mode">Flugmodus ist an</string>
+    <string name="pie_phone_status_emergency_only">Nur Notrufe</string>
+
+    <!-- Smart PullDown Warning -->
+    <string name="smart_pulldown_disabled">Intelligentes Herunterziehen ist aktiviert</string>
+
+    <!-- Navigation bar IME navigation -->
+    <string name="accessibility_ime_navigation_left">Cursor Links</string>
+    <string name="accessibility_ime_navigation_right">Cursor rechts</string>
 </resources>
