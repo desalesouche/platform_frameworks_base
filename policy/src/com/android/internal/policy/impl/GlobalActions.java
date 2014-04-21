@@ -114,7 +114,6 @@ class GlobalActions implements DialogInterface.OnDismissListener, DialogInterfac
     private boolean mHasTelephony;
     private boolean mHasVibrator;
     private final boolean mShowSilentToggle;
-    private boolean mDisableToolbox;
     private int mHiddenMenuOptions;
     private int mScreenshotDelay;
 
@@ -276,7 +275,6 @@ class GlobalActions implements DialogInterface.OnDismissListener, DialogInterfac
                     return true;
                 }
             });
-        if (!mDisableToolbox && (mHiddenMenuOptions & HIDE_REBOOT) != HIDE_REBOOT) {
             // next: reboot
             mItems.add(
                 new SinglePressAction(
@@ -299,8 +297,6 @@ class GlobalActions implements DialogInterface.OnDismissListener, DialogInterfac
                         return true;
                     }
                 });
-        }
-        if (!mDisableToolbox && (mHiddenMenuOptions & HIDE_SCREENSHOT) != HIDE_SCREENSHOT) { 
             // next: screenshot
             mItems.add(
                 new SinglePressAction(
@@ -318,7 +314,6 @@ class GlobalActions implements DialogInterface.OnDismissListener, DialogInterfac
                         return true;
                     }
                 });
-        }
 
         // next: airplane mode
         if ((mHiddenMenuOptions & HIDE_AIRPLANE) != HIDE_AIRPLANE) { 
@@ -1074,8 +1069,6 @@ class GlobalActions implements DialogInterface.OnDismissListener, DialogInterfac
     }
 
     private void checkSettings() {
-        mDisableToolbox = Settings.System.getInt(mContext.getContentResolver(),
-                Settings.System.DISABLE_TOOLBOX, 0) == 1;
         mHiddenMenuOptions = Settings.System.getInt(mContext.getContentResolver(),
                 Settings.System.HIDDEN_POWER_MENU_OPTIONS, 0);
         mScreenshotDelay = Settings.System.getInt(mContext.getContentResolver(),
