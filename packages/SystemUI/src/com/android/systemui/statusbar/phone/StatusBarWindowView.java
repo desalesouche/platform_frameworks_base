@@ -34,8 +34,8 @@ import com.android.systemui.statusbar.BaseStatusBar;
 import com.android.systemui.statusbar.policy.NotificationRowLayout;
 
 
-public class StatusBarWindowView extends FrameLayout
-{
+public class StatusBarWindowView extends FrameLayout {
+    
     public static final String TAG = "StatusBarWindowView";
     public static final boolean DEBUG = BaseStatusBar.DEBUG;
 
@@ -70,13 +70,6 @@ public class StatusBarWindowView extends FrameLayout
         if (root != null) {
             root.setDrawDuringWindowsAnimating(true);
         }
-    }
-
-    @Override
-    public void dispatchWindowFocusChanged(boolean hasFocus) {
-        this.setFocusableInTouchMode(hasFocus);
-        this.requestFocus();
-        super.dispatchWindowFocusChanged(hasFocus);
     }
 
     @Override
