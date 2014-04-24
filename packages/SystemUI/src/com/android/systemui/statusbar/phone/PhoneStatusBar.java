@@ -4132,16 +4132,6 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
 
     private void recreateStatusBar(boolean recreateNavigationBar) {
         mRecreating = true;
-        synchronized(mLock) {
-            while (mTickerInProgress) {
-                try {
-                    mLock.wait();
-                } catch (InterruptedException e) {
-                    // bad bad
-                }
-            }
-        }
-
         mStatusBarContainer.removeAllViews();
 
         // extract icons from the soon-to-be recreated viewgroup.
