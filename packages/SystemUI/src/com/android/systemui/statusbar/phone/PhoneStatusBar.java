@@ -642,9 +642,8 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
     }
 
     @Override
-        public void onChange(boolean selfChange) {
-            updateSettings();
-            updateCustomHeaderStatus();
+    public void onChange(boolean selfChange) {
+        updateSettings();
         }
     }
     
@@ -3804,13 +3803,15 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
     }
 
     private void updateSettings() {
-        ContentResolver resolver = mContext.getContentResolver();
+        final ContentResolver resolver = mContext.getContentResolver();
         //XXX: multi-user correct?
         boolean autoBrightness = Settings.System.getInt(
                 resolver, Settings.System.SCREEN_BRIGHTNESS_MODE, 0) ==
                 Settings.System.SCREEN_BRIGHTNESS_MODE_AUTOMATIC;
         mBrightnessControl = !autoBrightness && Settings.System.getInt(
                 resolver, Settings.System.STATUS_BAR_BRIGHTNESS_CONTROL, 0) == 1;
+
+        updateCustomHeaderStatus();
 
         int batteryStyle = Settings.System.getInt(resolver, Settings.System.STATUS_BAR_BATTERY, 0);
         BatteryMeterMode mode = BatteryMeterMode.BATTERY_METER_ICON_PORTRAIT;
