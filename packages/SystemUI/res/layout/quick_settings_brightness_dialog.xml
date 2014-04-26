@@ -26,7 +26,7 @@
         android:layout_gravity="center_vertical"
         android:paddingStart="8dp"
         android:paddingEnd="10dp"
-        android:src="@drawable/ic_qs_brightness_auto_off"
+        android:src="@drawable/ic_brightness_dialog_auto_on"
         />
     <com.android.systemui.settings.ToggleSlider
         android:id="@+id/brightness_slider"
@@ -55,7 +55,7 @@
         android:layout_height="48dp"
         android:layout_gravity="center_vertical"
         android:scaleType="center"
-        android:src="@drawable/ic_qs_settings"
+        android:src="@*android:drawable/ic_sysbar_quicksettings_holo_light"
         android:background="?android:attr/selectableItemBackground"
         />
 </LinearLayout>

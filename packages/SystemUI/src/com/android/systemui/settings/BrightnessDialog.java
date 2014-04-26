@@ -54,7 +54,6 @@ public class BrightnessDialog extends Dialog implements
         };
     };
 
-
     public BrightnessDialog(Context ctx) {
         super(ctx);
         Resources r = ctx.getResources();
@@ -63,7 +62,6 @@ public class BrightnessDialog extends Dialog implements
         mBrightnessDialogShortTimeout =
                 r.getInteger(R.integer.quick_settings_brightness_dialog_short_timeout);
     }
-
 
     /**
      * Create the brightness dialog and any resources that are used for the

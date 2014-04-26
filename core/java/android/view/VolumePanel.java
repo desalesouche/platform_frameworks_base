@@ -118,7 +118,7 @@ public class VolumePanel extends Handler implements OnSeekBarChangeListener, Vie
     public static final int VOLUME_OVERLAY_EXPANDED = 2;
     public static final int VOLUME_OVERLAY_NONE = 3;
 
-    private static final int TRANSLUCENT_START_LEVEL = 208;
+    private static final int TRANSLUCENT_START_LEVEL = 280;
     private static final int TRANSLUCENT_TO_OPAQUE_DURATION = 400;
 
     protected Context mContext;
@@ -160,44 +160,44 @@ public class VolumePanel extends Handler implements OnSeekBarChangeListener, Vie
     private enum StreamResources {
         BluetoothSCOStream(AudioManager.STREAM_BLUETOOTH_SCO,
                 R.string.volume_icon_description_bluetooth,
-                R.drawable.ic_audio_bt,
-                R.drawable.ic_audio_bt,
+                R.drawable.ic_audio_bt_themed,
+                R.drawable.ic_audio_bt_themed,
                 false),
         RingerStream(AudioManager.STREAM_RING,
                 R.string.volume_icon_description_ringer,
-                R.drawable.ic_audio_ring_notif,
-                R.drawable.ic_audio_ring_notif_mute,
+                R.drawable.ic_audio_ring_notif_themed,
+                R.drawable.ic_audio_ring_notif_mute_themed,
                 true),
         VoiceStream(AudioManager.STREAM_VOICE_CALL,
                 R.string.volume_icon_description_incall,
-                R.drawable.ic_audio_phone,
-                R.drawable.ic_audio_phone,
+                R.drawable.ic_audio_phone_themed,
+                R.drawable.ic_audio_phone_themed,
                 false),
         AlarmStream(AudioManager.STREAM_ALARM,
                 R.string.volume_alarm,
-                R.drawable.ic_audio_alarm,
-                R.drawable.ic_audio_alarm_mute,
+                R.drawable.ic_audio_alarm_themed,
+                R.drawable.ic_audio_alarm_mute_themed,
                 true),
         MediaStream(AudioManager.STREAM_MUSIC,
                 R.string.volume_icon_description_media,
-                R.drawable.ic_audio_vol,
-                R.drawable.ic_audio_vol_mute,
+                R.drawable.ic_audio_vol_themed,
+                R.drawable.ic_audio_vol_mute_themed,
                 true),
         NotificationStream(AudioManager.STREAM_NOTIFICATION,
                 R.string.volume_icon_description_notification,
-                R.drawable.ic_audio_notification,
-                R.drawable.ic_audio_notification_mute,
+                R.drawable.ic_audio_notification_themed,
+                R.drawable.ic_audio_notification_mute_themed,
                 true),
         // for now, use media resources for master volume
         MasterStream(STREAM_MASTER,
                 R.string.volume_icon_description_media, //FIXME should have its own description
-                R.drawable.ic_audio_vol,
-                R.drawable.ic_audio_vol_mute,
+                R.drawable.ic_audio_vol_themed,
+                R.drawable.ic_audio_vol_mute_themed,
                 false),
         RemoteStream(AudioService.STREAM_REMOTE_MUSIC,
                 R.string.volume_icon_description_media, //FIXME should have its own description
-                R.drawable.ic_media_route_on_holo_dark,
-                R.drawable.ic_media_route_disabled_holo_dark,
+                R.drawable.ic_media_route_on_holo_light,
+                R.drawable.ic_media_route_disabled_holo_light,
                 false);// will be dynamically updated
 
         int streamType;
@@ -581,7 +581,7 @@ public class VolumePanel extends Handler implements OnSeekBarChangeListener, Vie
         if (((sc.streamType == AudioManager.STREAM_RING) ||
                 (sc.streamType == AudioManager.STREAM_NOTIFICATION)) &&
                 mAudioManager.getRingerMode() == AudioManager.RINGER_MODE_VIBRATE) {
-            sc.icon.setImageResource(R.drawable.ic_audio_ring_notif_vibrate);
+            sc.icon.setImageResource(R.drawable.ic_audio_ring_notif_vibrate_themed);
         }
         if (sc.streamType == AudioService.STREAM_REMOTE_MUSIC) {
             // never disable touch interactions for remote playback, the muting is not tied to
@@ -787,9 +787,9 @@ public class VolumePanel extends Handler implements OnSeekBarChangeListener, Vie
                         (AudioManager.DEVICE_OUT_BLUETOOTH_A2DP |
                         AudioManager.DEVICE_OUT_BLUETOOTH_A2DP_HEADPHONES |
                         AudioManager.DEVICE_OUT_BLUETOOTH_A2DP_SPEAKER)) != 0) {
-                    setMusicIcon(R.drawable.ic_audio_bt, R.drawable.ic_audio_bt_mute);
+                    setMusicIcon(R.drawable.ic_audio_bt_themed, R.drawable.ic_audio_bt_mute_themed);
                 } else {
-                    setMusicIcon(R.drawable.ic_audio_vol, R.drawable.ic_audio_vol_mute);
+                    setMusicIcon(R.drawable.ic_audio_vol_themed, R.drawable.ic_audio_vol_mute_themed);
                 }
                 break;
             }
