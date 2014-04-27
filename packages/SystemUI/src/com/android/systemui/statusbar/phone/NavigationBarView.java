@@ -112,6 +112,7 @@ public class NavigationBarView extends LinearLayout implements BaseStatusBar.Nav
 
     private boolean mShowMenu;
     private boolean mIMENavigation;
+    private boolean mIMECursorDisabled;
     private int mDisabledFlags = 0;
     private int mNavigationIconHints = 0;
 
@@ -283,6 +284,10 @@ public class NavigationBarView extends LinearLayout implements BaseStatusBar.Nav
         mButtonsConfig = ButtonsHelper.getNavBarConfigWithDescription(
                 mContext, "shortcut_action_values", "shortcut_action_entries");
         mButtonIdList = new ArrayList<Integer>();
+
+        mIMECursorDisabled = Settings.System.getIntForUser(mContext.getContentResolver(),
+                Settings.System.VOLUME_KEY_CURSOR_CONTROL, 0,
+                UserHandle.USER_CURRENT) > 0;
     }
 
     private void watchForDevicePolicyChanges() {
@@ -924,7 +929,8 @@ public class NavigationBarView extends LinearLayout implements BaseStatusBar.Nav
     }
 
     private void handleIMENavigation(boolean show, boolean force) {
-        if (!force && mIMENavigation == show) {
+        if (!force && mIMENavigation == show
+                || mIMECursorDisabled) {
             return;
         }
         View leftIMENavigationKeyView = getLeftIMENavigationButton();
@@ -1025,6 +1031,10 @@ public class NavigationBarView extends LinearLayout implements BaseStatusBar.Nav
     public void setLeftInLandscape(boolean leftInLandscape) {
         mLeftInLandscape = leftInLandscape;
         mDeadZone.setStartFromRight(leftInLandscape);
+    }
+
+    public void setNavigationBarDisableIMECursor(boolean disabled) {
+        mIMECursorDisabled = disabled;
     }
 
     public void reorient() {

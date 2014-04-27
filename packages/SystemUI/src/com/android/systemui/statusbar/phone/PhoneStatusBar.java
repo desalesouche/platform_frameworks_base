@@ -530,6 +530,9 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
                     false, this, UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.CUSTOM_RECENT), false, this);
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.VOLUME_KEY_CURSOR_CONTROL), false, this,
+                    UserHandle.USER_ALL);
             updateSettings();
         }
 
@@ -614,6 +617,14 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
                 prepareNavigationBarView();
                 if (mSearchPanelView != null) {
                     mSearchPanelView.updateSettings();
+                }
+            } else if (uri.equals(Settings.System.getUriFor(
+                    Settings.System.VOLUME_KEY_CURSOR_CONTROL))) {
+                if (mNavigationBarView != null) {
+                    mNavigationBarView.setNavigationBarDisableIMECursor(
+                            Settings.System.getIntForUser(mContext.getContentResolver(),
+                                    Settings.System.VOLUME_KEY_CURSOR_CONTROL, 0,
+                                    UserHandle.USER_CURRENT) > 0);
                 }
             } else if (uri != null && uri.equals(Settings.System.getUriFor(
                     Settings.System.NOTIFICATION_BRIGHTNESS_SLIDER))) {
