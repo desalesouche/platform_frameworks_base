@@ -227,7 +227,8 @@
     <string name="screenrecord_notif_ticker">Screen is being recorded</string>
     <string name="screenrecord_notif_title">Recording screen</string>
     <string name="screenrecord_notif_stop">Stop</string>
-    <string name="screenrecord_notif_pointer">Toggle pointer</string>
+    <string name="screenrecord_notif_pointer_on">Show pointer</string>
+    <string name="screenrecord_notif_pointer_off">Hide pointer</string>
     <string name="screenrecord_notif_error">Unable to record screen</string>
     
     <!-- App Circle Sidebar -->
