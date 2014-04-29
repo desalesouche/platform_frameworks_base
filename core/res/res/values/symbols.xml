@@ -1786,5 +1786,19 @@
   <java-symbol type="bool" name="config_wifiApFirmwareReload" />
 
   <java-symbol type="bool" name="use_motion_accel" />
-</resources>
 
+  <!-- Volume Panel Icons -->
+  <java-symbol type="drawable" name="ic_audio_alarm_themed" />
+  <java-symbol type="drawable" name="ic_audio_alarm_mute_themed" />
+  <java-symbol type="drawable" name="ic_audio_bt_themed" />
+  <java-symbol type="drawable" name="ic_audio_bt_mute_themed" />
+  <java-symbol type="drawable" name="ic_audio_notification_themed" />
+  <java-symbol type="drawable" name="ic_audio_notification_mute_themed" />
+  <java-symbol type="drawable" name="ic_audio_phone_themed" />
+  <java-symbol type="drawable" name="ic_audio_ring_notif_themed" />
+  <java-symbol type="drawable" name="ic_audio_ring_notif_mute_themed" />
+  <java-symbol type="drawable" name="ic_audio_ring_notif_vibrate_themed" />
+  <java-symbol type="drawable" name="ic_audio_vol_themed" />
+  <java-symbol type="drawable" name="ic_audio_vol_mute_themed" />
+
+</resources>
