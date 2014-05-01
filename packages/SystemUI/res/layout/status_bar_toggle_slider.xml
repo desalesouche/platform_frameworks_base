@@ -30,6 +30,7 @@
         android:button="@null"
         />
     <SeekBar
+        style="@*android:style/Widget.Holo.Light.SeekBar"
         android:id="@+id/slider"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

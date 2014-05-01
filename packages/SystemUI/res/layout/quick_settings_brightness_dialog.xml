@@ -29,6 +29,7 @@
         android:src="@drawable/ic_brightness_dialog_auto_on"
         />
     <com.android.systemui.settings.ToggleSlider
+        style="@*android:style/Widget.Holo.Light.SeekBar"
         android:id="@+id/brightness_slider"
         android:layout_width="0dp"
         android:layout_height="48dp"
