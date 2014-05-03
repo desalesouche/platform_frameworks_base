@@ -78,22 +78,25 @@ public class LocationTile extends QuickSettingsTile implements LocationSettingsC
     }
 
     private synchronized void updateTile() {
+        int textResId;
         switch (mLocationMode) {
             case Settings.Secure.LOCATION_MODE_SENSORS_ONLY:
+                textResId = R.string.location_mode_sensors_only_title;
                 mDrawable = R.drawable.ic_qs_location_on_gps;
                 break;
             case Settings.Secure.LOCATION_MODE_BATTERY_SAVING:
+                textResId = R.string.location_mode_battery_saving_title;
                 mDrawable = R.drawable.ic_qs_location_on_wifi;
                 break;
             case Settings.Secure.LOCATION_MODE_HIGH_ACCURACY:
+                textResId = R.string.location_mode_battery_saving_title;
                 mDrawable = R.drawable.ic_qs_location_on;
                 break;
             case Settings.Secure.LOCATION_MODE_OFF:
+                textResId = R.string.quick_settings_location_off_label;
                 mDrawable = R.drawable.ic_qs_location_off;
                 break;
         }
-        int textResId = mLocationEnabled ? R.string.quick_settings_location_label
-                : R.string.quick_settings_location_off_label;
         mLabel = mContext.getText(textResId).toString();
     }
 
