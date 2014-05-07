@@ -124,8 +124,6 @@ public class BatterySaverService extends Service implements NetworkSignalChanged
 
         // register controller
         mBatteryController = new BatteryController(this);
-        mBluetoothController = new BluetoothController(this);
-        mLocationController = new LocationController(this);
         mNetworkController = new NetworkController(this);
 
         // register changing engine
@@ -281,10 +279,6 @@ public class BatterySaverService extends Service implements NetworkSignalChanged
                         Settings.Global.BATTERY_SAVER_DATA_MODE, 1) != 0);
                 mWifiModeChanger.setModeEnabled(Settings.Global.getInt(resolver,
                         Settings.Global.BATTERY_SAVER_WIFI_MODE, 0) != 0);
-                mSyncModeChanger.setModeEnabled(Settings.Global.getInt(resolver,
-                        Settings.Global.BATTERY_SAVER_SYNC_MODE, 0) != 0);
-                mKillAllModeChanger.setModeEnabled(Settings.Global.getInt(resolver,
-                        Settings.Global.BATTERY_SAVER_KILLALL_MODE, 0) != 0);
                 mLedModeChanger.setModeEnabled(Settings.Global.getInt(resolver,
                         Settings.Global.BATTERY_SAVER_LED_MODE, 0) != 0);
                 mVibrateModeChanger.setModeEnabled(Settings.Global.getInt(resolver,
@@ -350,8 +344,6 @@ public class BatterySaverService extends Service implements NetworkSignalChanged
         mMobileDataModeChanger.setShowToast(enabled);
         mNetworkModeChanger.setShowToast(enabled);
         mWifiModeChanger.setShowToast(enabled);
-        mSyncModeChanger.setShowToast(enabled);
-        mKillAllModeChanger.setShowToast(enabled);
         mLedModeChanger.setShowToast(enabled);
         mVibrateModeChanger.setShowToast(enabled);
     }
@@ -361,8 +353,6 @@ public class BatterySaverService extends Service implements NetworkSignalChanged
         mMobileDataModeChanger.setDelayed(delay);
         mNetworkModeChanger.setDelayed(delay);
         mWifiModeChanger.setDelayed(delay);
-        mSyncModeChanger.setDelayed(delay);
-        mKillAllModeChanger.setDelayed(delay);
         mLedModeChanger.setDelayed(delay);
         mVibrateModeChanger.setDelayed(delay);
     }
