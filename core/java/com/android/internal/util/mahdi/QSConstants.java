@@ -38,6 +38,7 @@ public class QSConstants {
         public static final String TILE_CUSTOM = "toggleCustom";
         public static final String TILE_CONTACT = "tileContact";
         public static final String TILE_BATTERYSAVER = "toggleBatterySaver";
+        public static final String TILE_SHAKE = "tileShake";
 
         //Key for custom tile additive
         public static final String TILE_CUSTOM_KEY = " Key=";
