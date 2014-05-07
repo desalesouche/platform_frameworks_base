@@ -2676,6 +2676,12 @@ public final class Settings {
         public static final String WHITELIST_APP_CIRCLE_BAR = "whitelist_app_circle_bar";
 
         /**
+         * Set app circle bar trigger width.
+         * @hide
+         */
+        public static final String APP_CIRCLE_BAR_TRIGGER_WIDTH = "app_circle_bar_trigger_width";
+
+        /**
          * Whether to show the camera widget on lockscreen
          * @hide
          */
