@@ -37,6 +37,7 @@ public class LocationTile extends QuickSettingsTile implements LocationSettingsC
     private LocationController mLocationController;
     private boolean mLocationEnabled;
     private int mLocationMode;
+    private int textResId;
 
     public LocationTile(Context context, final QuickSettingsController qsc) {
         super(context, qsc);
@@ -78,7 +79,6 @@ public class LocationTile extends QuickSettingsTile implements LocationSettingsC
     }
 
     private synchronized void updateTile() {
-        int textResId;
         switch (mLocationMode) {
             case Settings.Secure.LOCATION_MODE_SENSORS_ONLY:
                 textResId = R.string.location_mode_sensors_only_title;
