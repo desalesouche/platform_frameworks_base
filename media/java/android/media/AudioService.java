@@ -42,7 +42,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
+<<<<<<< HEAD
 import android.content.pm.PackageManager.NameNotFoundException;
+=======
+import android.content.pm.ThemeUtils;
+>>>>>>> 818c7f5... base: Moves isAvailableApp and isAppInstalled to PackageUtils
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.content.res.XmlResourceParser;
@@ -76,6 +80,7 @@ import android.view.KeyEvent;
 import android.view.Surface;
 import android.view.VolumePanel;
 import android.view.WindowManager;
+import com.android.internal.util.omni.PackageUtils;
 
 import com.android.internal.telephony.ITelephony;
 import com.android.internal.util.XmlUtils;
@@ -4528,7 +4533,7 @@ public class AudioService extends IAudioService.Stub {
                             String mPackage = headsetPlugIntent.getComponent()
                                 .getPackageName();
 
-                            if (isAvailableApp(mPackage)) {
+                            if (PackageUtils.isAvailableApp(mPackage, context)) {
                                headsetPlugIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                context.startActivityAsUser(headsetPlugIntent, UserHandle.CURRENT);
                             } else {
@@ -4558,18 +4563,6 @@ public class AudioService extends IAudioService.Stub {
 
     }
 
-    private boolean isAvailableApp(String packageName) {
-        final PackageManager pm = mContext.getPackageManager();
-        try {
-            pm.getPackageInfo(packageName, PackageManager.GET_ACTIVITIES);
-            int enabled = pm.getApplicationEnabledSetting(packageName);
-            return enabled != PackageManager.COMPONENT_ENABLED_STATE_DISABLED &&
-                enabled != PackageManager.COMPONENT_ENABLED_STATE_DISABLED_USER;
-        } catch (NameNotFoundException e) {
-            return false;
-        }
-    }
-    
     //==========================================================================================
     // RemoteControlDisplay / RemoteControlClient / Remote info
     //==========================================================================================
