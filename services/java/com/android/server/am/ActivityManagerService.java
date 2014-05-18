@@ -24,12 +24,12 @@ import static com.android.internal.util.XmlUtils.writeLongAttribute;
 import static com.android.server.Watchdog.NATIVE_STACKS_OF_INTEREST;
 import static org.xmlpull.v1.XmlPullParser.END_DOCUMENT;
 import static org.xmlpull.v1.XmlPullParser.START_TAG;
-
 import static com.android.server.am.ActivityStackSupervisor.HOME_STACK_ID;
 
 import android.app.AppOpsManager;
 import android.appwidget.AppWidgetManager;
 import android.util.ArrayMap;
+
 import com.android.internal.R;
 import com.android.internal.annotations.GuardedBy;
 import com.android.internal.app.IAppOpsService;
@@ -51,6 +51,7 @@ import com.android.server.Watchdog;
 import com.android.server.am.ActivityStack.ActivityState;
 import com.android.server.firewall.IntentFirewall;
 import com.android.server.pm.UserManagerService;
+import com.android.server.power.PowerManagerService;
 import com.android.server.wm.AppTransition;
 import com.android.server.wm.StackBox;
 import com.android.server.wm.WindowManagerService;
@@ -996,6 +997,8 @@ public final class ActivityManagerService extends ActivityManagerNative
 
     WindowManagerService mWindowManager;
 
+    PowerManagerService mPowerManager;
+
     static ActivityManagerService mSelf;
     static ActivityThread mSystemThread;
 
@@ -1852,7 +1855,7 @@ public final class ActivityManagerService extends ActivityManagerNative
         ncl.start();
     }
 
-    public static final Context main(int factoryTest) {
+    public static final Context main(int factoryTest, PowerManagerService power) {
         AThread thr = new AThread();
         thr.start();
 
@@ -1880,6 +1883,7 @@ public final class ActivityManagerService extends ActivityManagerNative
         m.mBatteryStatsService.publish(context);
         m.mUsageStatsService.publish(context);
         m.mAppOpsService.publish(context);
+        m.mPowerManager = power;
 
         synchronized (thr) {
             thr.mReady = true;

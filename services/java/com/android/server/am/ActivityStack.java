@@ -41,6 +41,7 @@ import com.android.internal.util.Objects;
 import com.android.server.AttributeCache;
 import com.android.server.Watchdog;
 import com.android.server.am.ActivityManagerService.ItemMatcher;
+import com.android.server.power.PowerManagerService;
 import com.android.server.wm.AppTransition;
 import com.android.server.wm.TaskGroup;
 import com.android.server.wm.WindowManagerService;
@@ -259,6 +260,8 @@ final class ActivityStack {
 
     final Handler mHandler;
 
+    private final PowerManagerService mPowerManager;
+
     static final ActivityTrigger mActivityTrigger;
 
     static {
@@ -352,6 +355,7 @@ final class ActivityStack {
         mContext = context;
         mStackId = stackId;
         mCurrentUser = service.mCurrentUserId;
+        mPowerManager = service.mPowerManager;
     }
 
     boolean okToShow(ActivityRecord r) {
@@ -1362,6 +1366,9 @@ final class ActivityStack {
         if (mActivityTrigger != null) {
             mActivityTrigger.activityResumeTrigger(next.intent);
         }
+
+        // Some activities may want to alter the system power management
+        mPowerManager.activityResumed(next.intent);
 
         // If we are currently pausing an activity, then don't do anything
         // until that is done.
