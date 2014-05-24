@@ -2887,6 +2887,18 @@ public final class Settings {
          */
         public static final String SAFE_HEADSET_VOLUME = "safe_headset_volume"; 
 
+        /**
+         * Whether the torch will pulse on incoming call
+         * @hide
+         */
+        public static final String TORCH_WHILE_RINGING = "torch_while_ringing";
+
+        /**
+         * Pulse rate of the incoming call torch (if enabled)
+         * @hide
+         */
+        public static final String TORCH_WHILE_RINGING_PERIOD = "torch_while_ringing_period";	
+
     /**
          * Whether the blacklisting feature for phone calls is enabled
          * @hide
