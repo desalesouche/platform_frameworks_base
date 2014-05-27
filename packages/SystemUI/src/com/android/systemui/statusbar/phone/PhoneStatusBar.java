@@ -640,6 +640,12 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
                                     Settings.System.VOLUME_KEY_CURSOR_CONTROL, 0,
                                     UserHandle.USER_CURRENT) > 0);
                 }
+            } else if (uri.equals(Settings.System.getUriFor(
+                    Settings.System.SHAKE_LISTENER_ENABLED))) {
+                updateShakeListener();
+            } else if (uri.equals(Settings.System.getUriFor(
+                    Settings.System.SHAKE_SENSITIVITY))) {
+                updateShakeSensitivity();
             } else if (uri != null && uri.equals(Settings.System.getUriFor(
                     Settings.System.NOTIFICATION_BRIGHTNESS_SLIDER))) {
                 final ContentResolver resolver = mContext.getContentResolver();
@@ -650,12 +656,6 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
                     mBrightnessView.setVisibility(View.VISIBLE);
                 } else {
                     cleanupBrightnessSlider();
-            } else if (uri.equals(Settings.System.getUriFor(
-                    Settings.System.SHAKE_LISTENER_ENABLED))) {
-                updateShakeListener();
-            } else if (uri.equals(Settings.System.getUriFor(
-                    Settings.System.SHAKE_SENSITIVITY))) {
-                updateShakeSensitivity();
             }
         }
     updateSettings();
@@ -2294,7 +2294,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
                     UserHandle.USER_CURRENT);
             if (event != null && !event.equals(ButtonsConstants.ACTION_NULL)) {
                 customButtonVibrate();
-                SlimActions.processAction(mContext, event, false);
+                MahdiActions.processAction(mContext, event, false);
             }
         }
     }
