@@ -19,13 +19,13 @@
 <resources>
 
     <!-- quick settings text color -->
-    <color name="quick_settings_text_color">#cccccc</color>
-    <color name="quick_settings_alarm_text_color">#ff3a3b39</color>
-    <color name="quick_settings_clock_text_color">#ff33b5e5</color>
+    <color name="quick_settings_text_color">@color/dark_grey_text_color</color>
+    <color name="quick_settings_alarm_text_color">@color/light_grey_text_color</color>
+    <color name="quick_settings_clock_text_color">@color/light_grey_text_color</color>
 
     <!-- quick settings background -->
-    <color name="qs_background_color">#FF212121</color>
-    <color name="qs_background_pressed_color">#FF161616</color>
+    <color name="qs_background_color">@android:color/transparent</color>
+    <color name="qs_background_pressed_color">@android:color/transparent</color>
 
     <!-- Notification Shortcuts -->
     <drawable name="notification_shortcut_background_color">#00000000</drawable>

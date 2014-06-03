@@ -66,36 +66,41 @@
         <item name="android:textColor">@color/status_bar_clock_color</item>
     </style>
 
-    <style name="TextAppearance.StatusBar.Expanded" parent="@*android:style/TextAppearance.StatusBar" />
+    <style name="TextAppearance.StatusBar.Expanded" parent="@*android:style/TextAppearance.StatusBar">
+        <item name="android:textColor">@color/dark_grey_text_color</item>
+    </style>
 
     <style name="TextAppearance.StatusBar.Expanded.Clock">
         <item name="android:textSize">32dp</item>
         <item name="android:fontFamily">sans-serif-light</item>
         <item name="android:textStyle">normal</item>
-        <item name="android:textColor">#ffffff</item>
+        <item name="android:textColor">@color/light_grey_text_color</item>
     </style>
 
     <style name="TextAppearance.StatusBar.Expanded.Date">
         <item name="android:textSize">11dp</item>
         <item name="android:textStyle">normal</item>
-        <item name="android:textColor">#cccccc</item>
+        <item name="android:textColor">@color/light_grey_text_color</item>
         <item name="android:textAllCaps">true</item>
     </style>
 
     <style name="TextAppearance.StatusBar.Expanded.Network" parent="@style/TextAppearance.StatusBar.Expanded.Date">
-        <item name="android:textColor">#999999</item>
+        <item name="android:textColor">@color/light_grey_text_color</item>
 	</style>
 
     <style name="TextAppearance.StatusBar.Expanded.Network.EmergencyOnly">
     </style>
 
     <style name="TextAppearance" />
-    <style name="TextAppearance.QuickSettings" />
+
+    <style name="TextAppearance.QuickSettings">
+        <item name="android:textColor">@color/dark_grey_text_color</item> <!-- Might not be needed -->
+    </style>
 
     <style name="TextAppearance.QuickSettings.TileView">
         <item name="android:textSize">12dp</item>
         <item name="android:textStyle">normal</item>
-        <item name="android:textColor">#CCCCCC</item>
+        <item name="android:textColor">@color/dark_grey_text_color</item>
         <item name="android:textAllCaps">true</item>
         <item name="android:paddingStart">6dp</item>
         <item name="android:paddingEnd">6dp</item>
@@ -111,7 +116,7 @@
 
     <style name="TextAppearance.QuickSettings.Clock" parent="@style/TextAppearance.QuickSettings.TileView">
         <item name="android:textSize">20dp</item>
-        <item name="android:textColor">@android:color/holo_blue_light</item>
+        <item name="android:textColor">@color/light_grey_text_color</item>
     </style>
 
     <style name="TextAppearance.QuickSettings.Date" parent="@style/TextAppearance.QuickSettings.TileView">
@@ -128,7 +133,7 @@
     </style>
 
     <style name="TextAppearance.QuickSettings.TileView.User" parent="@style/TextAppearance.QuickSettings.TileView">
-        <item name="android:background">#CC000000</item>
+        <item name="android:background">@android:color/transparent</item>
         <item name="android:padding">4dp</item>
         <item name="android:singleLine">true</item>
         <item name="android:fadingEdge">horizontal</item>

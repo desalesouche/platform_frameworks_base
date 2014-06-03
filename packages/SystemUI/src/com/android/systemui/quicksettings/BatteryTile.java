@@ -33,9 +33,9 @@ import android.widget.TextView;
 import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
 
-import com.android.systemui.BatteryMeterView;
+import com.android.systemui.QSBatteryMeterView;
 import com.android.systemui.R;
-import com.android.systemui.BatteryMeterView.BatteryMeterMode;
+import com.android.systemui.QSBatteryMeterView.BatteryMeterMode;
 import com.android.systemui.statusbar.phone.QuickSettingsController;
 import com.android.systemui.statusbar.policy.BatteryController;
 import com.android.systemui.statusbar.policy.BatteryController.BatteryStateChangeCallback;
