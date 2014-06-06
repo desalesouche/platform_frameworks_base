@@ -30,7 +30,7 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:background="@android:drawable/divider_horizontal_light"
+        android:background="@*android:drawable/divider_horizontal_holo_light"
         />
     <LinearLayout
         android:id="@+id/reminder_contents"
@@ -52,7 +52,7 @@
             android:textAllCaps="true"
             android:textSize="14dp"
             android:singleLine="true"
-            android:textColor="@color/dialog_text_title_color"
+            android:textColor="@*android:color/dialog_text_title_color"
             />
         <ViewFlipper
             android:id="@+id/message"
