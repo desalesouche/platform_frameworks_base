@@ -42,11 +42,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
-<<<<<<< HEAD
-import android.content.pm.PackageManager.NameNotFoundException;
-=======
-import android.content.pm.ThemeUtils;
->>>>>>> 818c7f5... base: Moves isAvailableApp and isAppInstalled to PackageUtils
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.content.res.XmlResourceParser;
