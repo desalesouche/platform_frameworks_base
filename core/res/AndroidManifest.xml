@@ -2619,7 +2619,7 @@
         <activity android:name="android.accounts.ChooseAccountActivity"
                 android:excludeFromRecents="true"
                 android:exported="true"
-                android:theme="@android:style/Theme.Holo.Light.Dialog"
+                android:theme="@android:style/Theme.Holo.Dialog"
                 android:label="@string/choose_account_label"
                 android:process=":ui">
         </activity>
@@ -2627,14 +2627,14 @@
         <activity android:name="android.accounts.ChooseTypeAndAccountActivity"
                 android:excludeFromRecents="true"
                 android:exported="true"
-                android:theme="@android:style/Theme.Holo.Light.Dialog"
+                android:theme="@android:style/Theme.Holo.Dialog"
                 android:label="@string/choose_account_label"
                 android:process=":ui">
         </activity>
 
         <activity android:name="android.accounts.ChooseAccountTypeActivity"
                 android:excludeFromRecents="true"
-                android:theme="@android:style/Theme.Holo.Light.Dialog"
+                android:theme="@android:style/Theme.Holo.Dialog"
                 android:label="@string/choose_account_label"
                 android:process=":ui">
         </activity>
@@ -2642,19 +2642,19 @@
         <activity android:name="android.accounts.CantAddAccountActivity"
                 android:excludeFromRecents="true"
                 android:exported="true"
-                android:theme="@android:style/Theme.Holo.Light.Dialog.NoActionBar"
+                android:theme="@android:style/Theme.Holo.Dialog.NoActionBar"
                 android:process=":ui">
         </activity>
 
         <activity android:name="android.accounts.GrantCredentialsPermissionActivity"
                 android:excludeFromRecents="true"
                 android:exported="true"
-                android:theme="@android:style/Theme.Holo.Light.DialogWhenLarge"
+                android:theme="@android:style/Theme.Holo.DialogWhenLarge"
                 android:process=":ui">
         </activity>
 
         <activity android:name="android.content.SyncActivityTooManyDeletes"
-               android:theme="@android:style/Theme.Holo.Light.Dialog"
+               android:theme="@android:style/Theme.Holo.Dialog"
                android:label="@string/sync_too_many_deletes"
                android:process=":ui">
         </activity>
