@@ -3961,12 +3961,6 @@ public final class Settings {
          * @hide
          */
         public static final String DOUBLE_TAP_SLEEP_GLOWPAD = "double_tap_sleep_glowpad";
-
-        /**
-         * Whether to use the custom status bar header or not
-         * @hide
-         */
-        public static final String STATUS_BAR_CUSTOM_HEADER = "status_bar_custom_header";
         
         /**
          * Defines the custom path to use for UI sound effects (null for default)

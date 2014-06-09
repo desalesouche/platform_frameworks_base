@@ -142,8 +142,6 @@ import com.android.systemui.statusbar.policy.NotificationRowLayout;
 import com.android.systemui.statusbar.policy.OnSizeChangedListener;
 import com.android.systemui.statusbar.policy.RotationLockController;
 
-import com.android.systemui.mahdi.StatusHeaderMachine;
-
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
 import java.lang.StringBuilder;
@@ -396,8 +394,6 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
     int mInitialTouchX;
     int mInitialTouchY;
 
-    private StatusHeaderMachine mStatusHeaderMachine;
-    private Runnable mStatusHeaderUpdater;
     private ImageView mStatusHeaderImage;
     private Drawable mHeaderOverlay;
 
@@ -519,8 +515,6 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.NOTIFICATION_ALPHA),
                     false, this, UserHandle.USER_ALL);
-            resolver.registerContentObserver(Settings.System.getUriFor(
-                    Settings.System.STATUS_BAR_CUSTOM_HEADER), false, this);
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.NAVBAR_LEFT_IN_LANDSCAPE), false, this);
             resolver.registerContentObserver(Settings.System.getUriFor(
@@ -991,11 +985,6 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
 
         mNotificationPanelHeader = mStatusBarWindow.findViewById(R.id.header);
 
-        mStatusHeaderMachine = new StatusHeaderMachine(mContext);
-        mStatusHeaderImage = (ImageView) mNotificationPanelHeader.findViewById(R.id.header_background_image);
-        mHeaderOverlay = res.getDrawable(R.drawable.bg_custom_header_overlay);
-        updateCustomHeaderStatus();
-
         mReminderHeader = mStatusBarWindow.findViewById(R.id.reminder_header);
         mReminderHeader.setOnClickListener(mReminderButtonListener);
         mReminderHeader.setOnLongClickListener(mReminderLongButtonListener);
@@ -1331,66 +1320,6 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
         updateShakeListener();
 
         return mStatusBarView;
-    }
-
-    private void updateCustomHeaderStatus() {
-        ContentResolver resolver = mContext.getContentResolver();
-        boolean customHeader = Settings.System.getInt(
-                resolver, Settings.System.STATUS_BAR_CUSTOM_HEADER, 0) == 1;
-
-        if (mNotificationPanelHeader == null) return;
-
-        // Setup the updating notification bar header image
-        if (customHeader) {
-            if (mStatusHeaderUpdater == null) {
-                mStatusHeaderUpdater = new Runnable() {
-                    private Drawable mPrevious = mNotificationPanelHeader.getBackground();
-
-                    public void run() {
-                        Drawable next = mStatusHeaderMachine.getCurrent();
-                        Log.i(TAG, "Updating status bar header background");
-
-                        setNotificationPanelHeaderBackground(next);
-                        mPrevious = next;
-
-                        // Check every hour. As postDelayed isn't holding a wakelock, it will basically
-                        // only check when the CPU is on. Thus, not consuming battery overnight.
-                        mHandler.postDelayed(this, 1000 * 3600);
-                    }
-                };
-            }
-
-            // Cancel any eventual ongoing statusHeaderUpdater, and start a clean one
-            mHandler.removeCallbacks(mStatusHeaderUpdater);
-            mHandler.post(mStatusHeaderUpdater);
-        } else {
-            if (mStatusHeaderUpdater != null) {
-                mHandler.removeCallbacks(mStatusHeaderUpdater);
-            }
-            setNotificationPanelHeaderBackground(mStatusHeaderMachine.getDefault());
-        }
-    }
-
-    private void setNotificationPanelHeaderBackground(Drawable dwSrc) {
-        Drawable[] arrayDrawable = new Drawable[2];
-
-        // Overlay a dark gradient
-        arrayDrawable[0] = dwSrc;
-        arrayDrawable[1] = mHeaderOverlay;
-        final Drawable dw = new LayerDrawable(arrayDrawable);
-
-        // Transition animation
-        arrayDrawable[0] = mStatusHeaderImage.getDrawable();
-        arrayDrawable[1] = dw;
-
-        if (arrayDrawable[0] != null) {
-            TransitionDrawable transitionDrawable = new TransitionDrawable(arrayDrawable);
-            transitionDrawable.setCrossFadeEnabled(true);
-            mStatusHeaderImage.setImageDrawable(transitionDrawable);
-            transitionDrawable.startTransition(1000);
-        } else {
-            mStatusHeaderImage.setImageDrawable(dw);
-        }
     }
 
     @Override
@@ -3943,7 +3872,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
     }
 
     private void updateSettings() {
-        final ContentResolver resolver = mContext.getContentResolver();
+        ContentResolver resolver = mContext.getContentResolver();
         //XXX: multi-user correct?
         boolean autoBrightness = Settings.System.getInt(
                 resolver, Settings.System.SCREEN_BRIGHTNESS_MODE, 0) ==
@@ -3951,9 +3880,8 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
         mBrightnessControl = !autoBrightness && Settings.System.getInt(
                 resolver, Settings.System.STATUS_BAR_BRIGHTNESS_CONTROL, 0) == 1;
 
-        updateCustomHeaderStatus();
-
-        int batteryStyle = Settings.System.getInt(resolver, Settings.System.STATUS_BAR_BATTERY, 0);
+        int batteryStyle = Settings.System.getIntForUser(resolver,
+                Settings.System.STATUS_BAR_BATTERY, 0, mCurrentUserId);
         BatteryMeterMode mode = BatteryMeterMode.BATTERY_METER_ICON_PORTRAIT;
         switch (batteryStyle) {
             case 2:
