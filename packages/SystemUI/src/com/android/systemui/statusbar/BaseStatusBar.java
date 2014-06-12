@@ -171,9 +171,6 @@ public abstract class BaseStatusBar extends SystemUI implements
     PowerManager mPowerManager;
     protected int mRowHeight;
 
-    // Notification peek
-    protected NotificationPeek mNotificationPeek;
-
     protected FrameLayout mStatusBarContainer;
 
     private RecentController cRecents;
