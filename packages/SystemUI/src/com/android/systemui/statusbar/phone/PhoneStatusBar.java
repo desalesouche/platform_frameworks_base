@@ -1287,8 +1287,9 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
                 inflateRibbon();
             }
 
-            mBrightnessSliderEnabled = Settings.System.getBooleanForUser(resolver,
-                    Settings.System.NOTIFICATION_BRIGHTNESS_SLIDER, false, UserHandle.USER_CURRENT);
+            // TODO: make multiuser aware
+            mBrightnessSliderEnabled = Settings.System.getBoolean(resolver,
+                    Settings.System.NOTIFICATION_BRIGHTNESS_SLIDER, false);
             if (mBrightnessSliderEnabled) {
                 cleanupBrightnessSlider();
                 mBrightnessView = null;
