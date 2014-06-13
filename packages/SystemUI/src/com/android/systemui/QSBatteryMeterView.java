@@ -39,7 +39,7 @@ import android.util.DisplayMetrics;
 import android.view.View;
 
 public class QSBatteryMeterView extends View implements DemoMode {
-    public static final String TAG = BatteryMeterView.class.getSimpleName();
+    public static final String TAG = QSBatteryMeterView.class.getSimpleName();
     public static final String ACTION_LEVEL_TEST = "com.android.systemui.BATTERY_LEVEL_TEST";
 
     public static final boolean ENABLE_PERCENT = true;
@@ -193,15 +193,15 @@ public class QSBatteryMeterView extends View implements DemoMode {
         getContext().unregisterReceiver(mTracker);
     }
 
-    public BatteryMeterView(Context context) {
+    public QSBatteryMeterView(Context context) {
         this(context, null, 0);
     }
 
-    public BatteryMeterView(Context context, AttributeSet attrs) {
+    public QSBatteryMeterView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public BatteryMeterView(Context context, AttributeSet attrs, int defStyle) {
+    public QSBatteryMeterView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         mHandler = new Handler();
 
