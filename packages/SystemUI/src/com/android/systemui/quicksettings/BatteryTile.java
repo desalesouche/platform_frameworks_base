@@ -33,7 +33,7 @@ import android.widget.TextView;
 import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
 
-import com.android.systemui.QS;
+import com.android.systemui.QSBatteryMeterView;
 import com.android.systemui.R;
 import com.android.systemui.QSBatteryMeterView.BatteryMeterMode;
 import com.android.systemui.statusbar.phone.QuickSettingsController;
@@ -41,19 +41,19 @@ import com.android.systemui.statusbar.policy.QSBatteryController;
 import com.android.systemui.statusbar.policy.QSBatteryController.QSBatteryStateChangeCallback;
 
 public class BatteryTile extends QuickSettingsTile implements QSBatteryStateChangeCallback {
-    private BatteryController mController;
+    private QSBatteryController mController;
 
     private int mBatteryLevel = 0;
     private boolean mPluggedIn;
     private boolean mPresent;
     private QSBatteryMeterView mBatteryView;
 
-    public BatteryTile(Context context, QuickSettingsController qsc, BatteryController controller) {
+    public BatteryTile(Context context, QuickSettingsController qsc, QSBatteryController controller) {
         this(context, qsc, controller, R.layout.quick_settings_tile_battery);
     }
 
     protected BatteryTile(Context context, QuickSettingsController qsc,
-            BatteryController controller, int resourceId) {
+            QSBatteryController controller, int resourceId) {
         super(context, qsc, resourceId);
 
         mController = controller;
