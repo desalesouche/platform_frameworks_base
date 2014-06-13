@@ -648,7 +648,7 @@ public class QSBatteryMeterView extends View implements DemoMode {
             mFrontPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_ATOP));
 
             mBackPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-            mBackPaint.setColor(res.getColor(R.color.qs_qatterymeter_frame_color));
+            mBackPaint.setColor(res.getColor(R.color.qs_batterymeter_frame_color));
             mBackPaint.setStrokeCap(Paint.Cap.BUTT);
             mBackPaint.setDither(true);
             mBackPaint.setStrokeWidth(0);

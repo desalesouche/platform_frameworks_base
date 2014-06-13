@@ -33,20 +33,20 @@ import android.widget.TextView;
 import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
 
-import com.android.systemui.QSBatteryMeterView;
+import com.android.systemui.QS;
 import com.android.systemui.R;
 import com.android.systemui.QSBatteryMeterView.BatteryMeterMode;
 import com.android.systemui.statusbar.phone.QuickSettingsController;
-import com.android.systemui.statusbar.policy.BatteryController;
-import com.android.systemui.statusbar.policy.BatteryController.BatteryStateChangeCallback;
+import com.android.systemui.statusbar.policy.QSBatteryController;
+import com.android.systemui.statusbar.policy.QSBatteryController.QSBatteryStateChangeCallback;
 
-public class BatteryTile extends QuickSettingsTile implements BatteryStateChangeCallback {
+public class BatteryTile extends QuickSettingsTile implements QSBatteryStateChangeCallback {
     private BatteryController mController;
 
     private int mBatteryLevel = 0;
     private boolean mPluggedIn;
     private boolean mPresent;
-    private BatteryMeterView mBatteryView;
+    private QSBatteryMeterView mBatteryView;
 
     public BatteryTile(Context context, QuickSettingsController qsc, BatteryController controller) {
         this(context, qsc, controller, R.layout.quick_settings_tile_battery);
@@ -69,7 +69,7 @@ public class BatteryTile extends QuickSettingsTile implements BatteryStateChange
     @Override
     void onPostCreate() {
         updateTile();
-        mBatteryView = getBatteryMeterView();
+        mBatteryView = getQSBatteryMeterView();
         mBatteryView.setMode(BatteryMeterMode.BATTERY_METER_ICON_PORTRAIT);
         if (mQsc.isRibbonMode()) {
             boolean showPercent = Settings.System.getInt(mContext.getContentResolver(),
@@ -109,8 +109,8 @@ public class BatteryTile extends QuickSettingsTile implements BatteryStateChange
         }
     }
 
-    protected BatteryMeterView getBatteryMeterView() {
-        return (BatteryMeterView) mTile.findViewById(R.id.image);
+    protected QSBatteryMeterView getQSBatteryMeterView() {
+        return (QSBatteryMeterView) mTile.findViewById(R.id.image);
     }
 
     @Override
