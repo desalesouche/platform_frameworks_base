@@ -39,8 +39,8 @@ public class QSBatteryController extends BroadcastReceiver {
     public interface QSBatteryStateChangeCallback {
         public void onBatteryLevelChanged(boolean present, int level, boolean pluggedIn,
                 int status);
-        public void onBatteryMeterModeChanged(BatteryMeterMode mode);
-        public void onBatteryMeterShowPercent(boolean showPercent);
+        public void onQSBatteryMeterModeChanged(BatteryMeterMode mode);
+        public void onQSBatteryMeterShowPercent(boolean showPercent);
     }
 
     public QSBatteryController(Context context) {
@@ -79,15 +79,15 @@ public class QSBatteryController extends BroadcastReceiver {
         }
     }
 
-    public void onBatteryMeterModeChanged(BatteryMeterMode mode) {
+    public void onQSBatteryMeterModeChanged(BatteryMeterMode mode) {
         for (QSBatteryStateChangeCallback cb : mChangeCallbacks) {
-            cb.onBatteryMeterModeChanged(mode);
+            cb.onQSBatteryMeterModeChanged(mode);
         }
     }
 
-    public void onBatteryMeterShowPercent(boolean showPercent) {
+    public void onQSBatteryMeterShowPercent(boolean showPercent) {
         for (QSBatteryStateChangeCallback cb : mChangeCallbacks) {
-            cb.onBatteryMeterShowPercent(showPercent);
+            cb.onQSBatteryMeterShowPercent(showPercent);
         }
     }
 }
