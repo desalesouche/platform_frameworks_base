@@ -131,7 +131,6 @@ import com.android.systemui.statusbar.SignalClusterView;
 import com.android.systemui.statusbar.StatusBarIconView;
 import com.android.systemui.statusbar.phone.ShortcutsWidget;
 import com.android.systemui.statusbar.policy.BatteryController;
-import com.android.systemui.statusbar.policy.QSBatteryController;
 import com.android.systemui.statusbar.policy.BluetoothController;
 import com.android.systemui.statusbar.policy.Clock;
 import com.android.systemui.statusbar.policy.ClockCenter;
@@ -218,7 +217,6 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
     // These are no longer handled by the policy, because we need custom strategies for them
     BluetoothController mBluetoothController;
     BatteryController mBatteryController;
-    QSBatteryController mQSBatteryController;
     LocationController mLocationController;
     NetworkController mNetworkController;
     RotationLockController mRotationLockController;
@@ -1111,7 +1109,6 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
         // Other icons
         mLocationController = new LocationController(mContext); // will post a notification
         mBatteryController = new BatteryController(mContext);
-        mQSBatteryController = new QSBatteryController(mContext);
 
         mNetworkController = new NetworkController(mContext);
         mBluetoothController = new BluetoothController(mContext);
@@ -3984,10 +3981,8 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
 
         mBatteryView.setMode(mode);
         mBatteryController.onBatteryMeterModeChanged(mode);
-        mQSBatteryController.onQSBatteryMeterModeChanged(mode);
         mBatteryView.setShowPercent(showPercent);
         mBatteryController.onBatteryMeterShowPercent(showPercent);
-        mQSBatteryController.onQSBatteryMeterShowPercent(showPercent);
             
         String notificationShortcutsIsActive = Settings.System.getStringForUser(resolver,
                 Settings.System.NOTIFICATION_SHORTCUTS_CONFIG, UserHandle.USER_CURRENT);

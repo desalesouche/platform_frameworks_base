@@ -225,7 +225,7 @@ public class QuickSettingsController {
             if (tile.equals(TILE_USER)) {
                 qs = new UserTile(mContext, this);
             } else if (tile.equals(TILE_BATTERY)) {
-                qs = new BatteryTile(mContext, this, mStatusBarService.mQSBatteryController);
+                qs = new BatteryTile(mContext, this, mStatusBarService.mBatteryController);
             } else if (tile.equals(TILE_SETTINGS)) {
                 qs = new PreferencesTile(mContext, this);
             } else if (tile.equals(TILE_WIFI)) {

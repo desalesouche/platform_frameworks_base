@@ -68,13 +68,5 @@
     <color name="dark_grey_text_color">#ff666666</color>
     <color name="light_grey_text_color">#99666666</color>
     <color name="quick_settings_tile_text_color">#ff979797</color>
-
-    <!-- Schism Battery Colors -->
-    <color name="qs_batterymeter_charge_color">#FF666666</color>
-    <color name="qs_batterymeter_critical">#FFFF3300</color>
-    <color name="qs_batterymeter_low">#FFFF3300</color>
-    <color name="qs_batterymeter_full">#FF666666</color>
-    <color name="qs_batterymeter_frame_color">#66666666</color><!-- 40% white -->
-    <color name="qs_batterymeter_bolt_color">#B2000000</color><!-- 70% black -->
- 
+    
 </resources>

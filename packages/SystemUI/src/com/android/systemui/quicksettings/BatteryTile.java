@@ -33,27 +33,27 @@ import android.widget.TextView;
 import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
 
-import com.android.systemui.QSBatteryMeterView;
+import com.android.systemui.BatteryMeterView;
 import com.android.systemui.R;
-import com.android.systemui.QSBatteryMeterView.BatteryMeterMode;
+import com.android.systemui.BatteryMeterView.BatteryMeterMode;
 import com.android.systemui.statusbar.phone.QuickSettingsController;
-import com.android.systemui.statusbar.policy.QSBatteryController;
-import com.android.systemui.statusbar.policy.QSBatteryController.QSBatteryStateChangeCallback;
+import com.android.systemui.statusbar.policy.BatteryController;
+import com.android.systemui.statusbar.policy.BatteryController.BatteryStateChangeCallback;
 
-public class BatteryTile extends QuickSettingsTile implements QSBatteryStateChangeCallback {
-    private QSBatteryController mController;
+public class BatteryTile extends QuickSettingsTile implements BatteryStateChangeCallback {
+    private BatteryController mController;
 
     private int mBatteryLevel = 0;
     private boolean mPluggedIn;
     private boolean mPresent;
-    private QSBatteryMeterView mBatteryView;
+    private BatteryMeterView mBatteryView;
 
-    public BatteryTile(Context context, QuickSettingsController qsc, QSBatteryController controller) {
+    public BatteryTile(Context context, QuickSettingsController qsc, BatteryController controller) {
         this(context, qsc, controller, R.layout.quick_settings_tile_battery);
     }
 
     protected BatteryTile(Context context, QuickSettingsController qsc,
-            QSBatteryController controller, int resourceId) {
+            BatteryController controller, int resourceId) {
         super(context, qsc, resourceId);
 
         mController = controller;
@@ -69,7 +69,7 @@ public class BatteryTile extends QuickSettingsTile implements QSBatteryStateChan
     @Override
     void onPostCreate() {
         updateTile();
-        mBatteryView = getQSBatteryMeterView();
+        mBatteryView = getBatteryMeterView();
         mBatteryView.setMode(BatteryMeterMode.BATTERY_METER_ICON_PORTRAIT);
         if (mQsc.isRibbonMode()) {
             boolean showPercent = Settings.System.getInt(mContext.getContentResolver(),
@@ -109,8 +109,8 @@ public class BatteryTile extends QuickSettingsTile implements QSBatteryStateChan
         }
     }
 
-    protected QSBatteryMeterView getQSBatteryMeterView() {
-        return (QSBatteryMeterView) mTile.findViewById(R.id.image);
+    protected BatteryMeterView getBatteryMeterView() {
+        return (BatteryMeterView) mTile.findViewById(R.id.image);
     }
 
     @Override
