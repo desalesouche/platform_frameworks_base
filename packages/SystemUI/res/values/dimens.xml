@@ -94,10 +94,6 @@
     <!-- gap on either side of status bar notification icons -->
     <dimen name="status_bar_icon_padding">0dp</dimen>
 
-    <!-- half the distance between notifications in the panel -->
-    <dimen name="notification_divider_height">5dp</dimen>
-    <dimen name="notification_side_divider_height">15dp</dimen>
-
     <!-- Notification drawer tuning parameters (phone UI) -->
     <!-- Initial velocity of the shade when expanding on its own -->
     <dimen name="self_expand_velocity">3000dp</dimen>
