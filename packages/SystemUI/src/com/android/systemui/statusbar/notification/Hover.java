@@ -24,17 +24,14 @@ import android.content.Context;
 import android.graphics.PixelFormat;
 import android.os.Handler;
 import android.os.PowerManager;
-import android.os.RemoteException;
 import android.provider.Settings;
 import android.service.notification.StatusBarNotification;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.Gravity;
-import android.view.IWindowManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
-import android.view.WindowManagerGlobal;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.FrameLayout;
 
@@ -99,8 +96,6 @@ public class Hover {
     private ArrayList<HoverNotification> mNotificationList;
     private ArrayList<StatusBarNotification> mStatusBarNotifications;
 
-    private IWindowManager mWindowManagerService;
-
     /**
      * Creates a new hover instance
      * @Param context the current Context
@@ -117,7 +112,6 @@ public class Hover {
         mHoverTabletWidth = mContext.getResources().getDimensionPixelSize(R.dimen.hover_tablet_width);
         mNotificationList = new ArrayList<HoverNotification>();
         mStatusBarNotifications = new ArrayList<StatusBarNotification>();
-        mWindowManagerService = WindowManagerGlobal.getWindowManagerService();
 
         // root hover view
         mNotificationView = (FrameLayout) mHoverLayout.findViewById(R.id.hover_notification);
@@ -341,11 +335,6 @@ public class Hover {
     public boolean isDialpadShowing() {
         return Settings.System.getInt(mContext.getContentResolver(),
                 Settings.System.DIALPAD_STATE, 0) != 0;
-    }
-
-    public boolean requireFullscreenMode() {
-        return Settings.System.getInt(mContext.getContentResolver(),
-                Settings.System.HOVER_REQUIRE_FULLSCREEN_MODE, 1) != 0;
     }
 
     public boolean excludeNonClearable() {
@@ -644,19 +633,6 @@ public class Hover {
             allowed = mStatusBar.getNotificationManager().isPackageAllowedForHover(packageName);
         } catch (android.os.RemoteException ex) {
             // System is dead
-        }
-
-        //Check for fullscreen mode
-        if (requireFullscreenMode()) {
-            int vis = 0;
-            try {
-                vis = mWindowManagerService.getSystemUIVisibility();
-            } catch (android.os.RemoteException ex) {
-            }
-            final boolean isStatusBarVisible = (vis & View.SYSTEM_UI_FLAG_FULLSCREEN) == 0
-                    || (vis & View.STATUS_BAR_TRANSIENT) != 0;
-            if (isStatusBarVisible)
-                allowed = false;
         }
 
         //Exclude non-clearable
