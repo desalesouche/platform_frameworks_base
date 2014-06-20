@@ -52,7 +52,7 @@
         android:layout_height="match_parent">
 
         <ImageView android:id="@+id/camera_surface_flash_overlay"
-            android:src="#88666666"
+            android:src="#88ffffff"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:visibility="gone" />

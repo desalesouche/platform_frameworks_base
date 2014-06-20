@@ -24,7 +24,7 @@
     android:id="@+id/notification_panel"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
-    android:background="@drawable/notification_panel_background"
+    android:background="@drawable/notification_panel_bg"
     android:paddingTop="@dimen/notification_panel_padding_top"
     android:layout_marginStart="@dimen/notification_panel_margin_left"
     >
@@ -111,9 +111,6 @@
                     android:id="@+id/latestItems"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="@dimen/notification_side_divider_height"
-                    android:paddingRight="@dimen/notification_side_divider_height"
-                    android:paddingTop="@dimen/notification_divider_height"
                     systemui:rowHeight="@dimen/notification_row_min_height"
                     />
             </ScrollView>
