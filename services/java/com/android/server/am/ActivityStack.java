@@ -1728,6 +1728,7 @@ final class ActivityStack {
 
     final void startActivityLocked(ActivityRecord r, boolean newTask,
             boolean doResume, boolean keepCurTransition, Bundle options) {
+
         TaskRecord rTask = r.task;
         final int taskId = rTask.taskId;
         if (taskForIdLocked(taskId) == null || newTask) {
@@ -1790,8 +1791,6 @@ final class ActivityStack {
         task.setFrontOfTask();
 
         r.putInHistory();
-        if (mActivityTrigger != null) {
-            mActivityTrigger.activityStartTrigger(r.intent);
         if (!isHomeStack() || numActivities() > 0) {
             // We want to show the starting preview window if we are
             // switching to a new task, or the next activity's process is
