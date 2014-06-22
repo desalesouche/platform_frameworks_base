@@ -882,25 +882,29 @@ final class DisplayPowerController {
                 }
             }
         } else {
-            // Want screen off.
-            // Wait for previous on animation to complete beforehand.
-            unblockScreenOn();
-            if (!mElectronBeamOnAnimator.isStarted()) {
-                if (!mElectronBeamOffAnimator.isStarted()) {
-                    if (mPowerState.getElectronBeamLevel() == 0.0f) {
-                        setScreenOn(false);
-                    } else if (mPowerState.prepareElectronBeam(
-                            mElectronBeamFadesConfig ?
-                                    ElectronBeam.MODE_FADE :
-                                            ElectronBeam.MODE_COOL_DOWN)
-                            && mPowerState.isScreenOn()) {
-                        mElectronBeamOffAnimator.start();
-                    } else {
-                        mElectronBeamOffAnimator.end();
+                // Want screen off.
+                // Wait for previous on animation to complete beforehand.
+                if (!mElectronBeamOnAnimator.isStarted()) {
+                    if (!mElectronBeamOffAnimator.isStarted()) {
+                        if (mPowerState.getElectronBeamLevel() == 0.0f) {
+                            setScreenOn(false);
+                            unblockScreenOn();
+                        } else if (mPowerState.prepareElectronBeam(
+                                mElectronBeamMode == 0 ?
+                                        ElectronBeam.MODE_FADE :
+                                            (mElectronBeamMode == 4
+                                            ? ElectronBeam.MODE_SCALE_DOWN
+                                            : ElectronBeam.MODE_COOL_DOWN))
+                                && mPowerState.isScreenOn()) {
+                            mElectronBeamOffAnimator.start();
+                        } else {
+                            mElectronBeamOffAnimator.end();
+                        }
                     }
                 }
             }
         }
+
 
         // Report whether the display is ready for use.
         // We mostly care about the screen state here, ignoring brightness changes
