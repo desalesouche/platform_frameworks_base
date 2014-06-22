@@ -1720,7 +1720,7 @@ public class Activity extends ContextThemeWrapper
                 }
             }
         }
-        
+
         if (mActionBar != null) {
             // Do this last; the action bar will need to access
             // view changes from above.
