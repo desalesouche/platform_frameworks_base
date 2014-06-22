@@ -880,8 +880,7 @@ final class DisplayPowerController {
                         }
                     }
                 }
-            }
-        } else {
+            } else {
                 // Want screen off.
                 // Wait for previous on animation to complete beforehand.
                 if (!mElectronBeamOnAnimator.isStarted()) {
@@ -904,7 +903,6 @@ final class DisplayPowerController {
                 }
             }
         }
-
 
         // Report whether the display is ready for use.
         // We mostly care about the screen state here, ignoring brightness changes
