@@ -3860,30 +3860,6 @@ public final class Settings {
         public static final String FORMAL_TEXT_INPUT = "formal_text_input";
 
         /**
-        * Sets the portrait background of notification drawer
-        * @hide
-        */
-        public static final String NOTIFICATION_BACKGROUND = "notification_background";
-
-       /**
-        * Sets the landscape background of notification drawer
-        * @hide
-        */
-        public static final String NOTIFICATION_BACKGROUND_LANDSCAPE = "notification_background_landscape";
-
-       /**
-        * Sets the alpha (transparency) of notification wallpaper
-        * @hide
-        */
-        public static final String NOTIFICATION_BACKGROUND_ALPHA = "notification_background_alpha";
-
-       /**
-        * Sets the alpha (transparency) of the notification
-        * @hide
-        */
-        public static final String NOTIFICATION_ALPHA = "notification_alpha";
-
-        /**
          * Whether to unlock the screen with the home key.  The value is boolean (1 or 0).
          * @hide
          */
@@ -4557,7 +4533,6 @@ public final class Settings {
          * Shake events for shaking along the x, y, and z axis.
          * @hide
          */
-
         public static final String[] SHAKE_EVENTS_REGULAR = new String[] {
             "shake_events_regular_x",
             "shake_events_regular_y",

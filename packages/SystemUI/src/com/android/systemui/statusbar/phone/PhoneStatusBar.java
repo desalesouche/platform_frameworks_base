@@ -504,18 +504,6 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
                     Settings.System.LOCKSCREEN_USE_WIDGET_CONTAINER_CAROUSEL),
                     false, this, UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.System.getUriFor(
-                    Settings.System.NOTIFICATION_BACKGROUND),
-                    false, this, UserHandle.USER_ALL);
-            resolver.registerContentObserver(Settings.System.getUriFor(
-                    Settings.System.NOTIFICATION_BACKGROUND_LANDSCAPE),
-                    false, this, UserHandle.USER_ALL);
-            resolver.registerContentObserver(Settings.System.getUriFor(
-                    Settings.System.NOTIFICATION_BACKGROUND_ALPHA),
-                    false, this, UserHandle.USER_ALL);
-            resolver.registerContentObserver(Settings.System.getUriFor(
-                    Settings.System.NOTIFICATION_ALPHA),
-                    false, this, UserHandle.USER_ALL);
-            resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.NAVBAR_LEFT_IN_LANDSCAPE), false, this);
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.REMINDER_ALERT_ENABLED), false, this,
@@ -582,21 +570,6 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
             } else if (uri.equals(Settings.System.getUriFor(
                     Settings.System.GLOBAL_IMMERSIVE_MODE_STATE))) {
                 mNavigationBarOverlay.setIsExpanded(isExpanded());
-            } else if (uri.equals(Settings.System.getUriFor(
-                    Settings.System.NOTIFICATION_BACKGROUND))
-                || uri.equals(Settings.System.getUriFor(
-                    Settings.System.NOTIFICATION_BACKGROUND_LANDSCAPE))
-                || uri.equals(Settings.System.getUriFor(
-                    Settings.System.NOTIFICATION_BACKGROUND_ALPHA))) {
-                if (mNotificationPanel != null) {
-                    mNotificationPanel.setBackgroundDrawables();
-                }
-                if (mSettingsPanel != null) {
-                    mSettingsPanel.setBackgroundDrawables();
-                }
-            } else if (uri.equals(Settings.System.getUriFor(
-                    Settings.System.NOTIFICATION_ALPHA))) {
-                setNotificationAlpha();
             } else if (uri.equals(Settings.System.getUriFor(
                     Settings.System.LOCKSCREEN_CAMERA_WIDGET))
                 || uri.equals(Settings.System.getUriFor(
@@ -1794,7 +1767,6 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
             mPile.removeView(remove);
         }
 
-        setNotificationAlpha();
         for (int i=0; i<toShow.size(); i++) {
             View v = toShow.get(i);
             if (v.getParent() == null) {
@@ -4652,31 +4624,4 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
                     false, this, UserHandle.USER_ALL);
         }
     }
-
-    private void setNotificationAlpha() {
-        if (mPile == null || mNotificationData == null) {
-            return;
-        }
-        float notifAlpha = Settings.System.getFloatForUser(
-            mContext.getContentResolver(), Settings.System.NOTIFICATION_ALPHA,
-            0.0f, UserHandle.USER_CURRENT);
-        int alpha = (int) ((1 - notifAlpha) * 255);
-        int dataSize = mNotificationData.size();
-        for (int i = 0; i < dataSize; i++) {
-            Entry ent = mNotificationData.get(dataSize - i - 1);
-            View expanded = ent.expanded;
-            if (expanded !=null && expanded.getBackground() != null) {
-                expanded.getBackground().setAlpha(alpha);
-            }
-            View expandedBig = ent.getBigContentView();
-            if (expandedBig != null && expandedBig.getBackground() != null) {
-                expandedBig.getBackground().setAlpha(alpha);
-            }
-            StatusBarIconView icon = ent.icon;
-            if (icon !=null && icon.getBackground() != null) {
-                icon.getBackground().setAlpha(alpha);
-            }
-        }
-    }
-
 }
