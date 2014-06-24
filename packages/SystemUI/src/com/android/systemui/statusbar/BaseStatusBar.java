@@ -228,10 +228,6 @@ public abstract class BaseStatusBar extends SystemUI implements
     protected ImageView mHoverButton;
     protected HoverCling mHoverCling;
 
-    public int getNotificationCount() {
-        return mNotificationData.size();
-    }
-
     // UI-specific methods
 
     /**
