@@ -340,6 +340,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
     // for heads up notifications
     private HeadsUpNotificationView mHeadsUpNotificationView;
     private int mHeadsUpNotificationDecay;
+    private int mHeadsUpNotificationFSDecay;
 
     // on-screen navigation buttons
     private NavigationBarView mNavigationBarView = null;
@@ -535,6 +536,12 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.SHAKE_SENSITIVITY), false, this,
                     UserHandle.USER_ALL);
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.HEADS_UP_FS_TIMEOUT),
+                    false, this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.HEADS_UP_TIMEOUT),
+                    false, this, UserHandle.USER_ALL);
             update();
         }
 
@@ -696,6 +703,12 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
                 updateCarrierAndWifiLabelVisibility(false);
             }
             updateBatteryIcons();
+
+        mHeadsUpNotificationDecay = Settings.System.getInt(
+                    resolver, Settings.System.HEADS_UP_TIMEOUT,
+                    mContext.getResources().getInteger(R.integer.heads_up_notification_decay));
+        mHeadsUpNotificationFSDecay = Settings.System.getInt(
+                                resolver, Settings.System.HEADS_UP_FS_TIMEOUT, 700);
     }
 
     private void updateBatteryIcons() {
