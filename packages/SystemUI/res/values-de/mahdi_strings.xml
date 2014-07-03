@@ -17,6 +17,11 @@
  */
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">    
+
+    <!-- QS Battery Tile -->
+    <string name="quick_settings_battery_charging">Laden</string>
+    <string name="quick_settings_battery_discharging">Entladen</string>
+
     <!-- QuickSettings: Profile [CHAR LIMIT=NONE] -->
     <string name="quick_settings_profile_label">Profile</string>
 
