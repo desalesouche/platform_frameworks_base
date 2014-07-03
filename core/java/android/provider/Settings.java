@@ -3173,24 +3173,42 @@ public final class Settings {
         public static final String KEY_APP_SWITCH_DOUBLE_TAP_ACTION =
                 "key_app_switch_double_tap_action";
 
-    /**
+        /**
          * Display style of the status bar battery information
-         * 0: Display the battery an icon in portrait mode
-         * 2: Display the battery as a circle
-         * 4: Hide the battery status information
-         * 5: Display the battery an icon  in landscape mode
          * default: 0
          * @hide
          */
         public static final String STATUS_BAR_BATTERY = "status_bar_battery";
 
         /**
-         * Display percentage in text of the battery level on the status bar
-         * default: 0
+         * Circle battery icon color
+         * in statusbar
          * @hide
          */
-        public static final String STATUS_BAR_BATTERY_SHOW_PERCENT =
-                "status_bar_battery_show_percent";
+        public static final String STATUS_BAR_BATTERY_COLOR = "status_bar_battery_color";
+
+        /**
+         * Battery icon text color
+         * in statusbar
+         * @hide
+         */
+        public static final String STATUS_BAR_BATTERY_TEXT_COLOR = "status_bar_battery_text_color";
+
+        /**
+         * Battery icon text charging color
+         * in statusbar
+         * @hide
+         */
+        public static final String STATUS_BAR_BATTERY_TEXT_CHARGING_COLOR =
+                "status_bar_battery_text_charging_color";
+         
+        /**
+         * Circle battery animation speed during charge
+         * in statusbar
+         * @hide
+         */
+        public static final String STATUS_BAR_CIRCLE_BATTERY_ANIMATIONSPEED =
+                "status_bar_circle_battery_animationspeed";   
 
         /**
          * Navigation bar button color
@@ -4120,83 +4138,6 @@ public final class Settings {
         * @hide
         */
         public static final String ON_THE_GO_SERVICE_RESTART = "on_the_go_service_restart";
-        
-        /**
-         *
-         * SMOOTH PROGRESS BAR interpolator
-         * @hide
-         */
-        public static final String PROGRESSBAR_INTERPOLATOR = "progressbar_interpolator";
-
-        /**
-         *
-         * SMOOTH PROGRESS BAR Mirror
-         * @hide
-         */
-        public static final String PROGRESSBAR_MIRROR = "progressbar_mirror";
-
-        /**
-         *
-         * SMOOTH PROGRESS BAR Reverse
-         * @hide
-         */
-        public static final String PROGRESSBAR_REVERSE = "progressbar_reverse";
-
-        /**
-         *
-         * SMOOTH PROGRESS BAR Speed
-         * @hide
-         */
-        public static final String PROGRESSBAR_SPEED = "progressbar_speed";
-
-        /**
-         *
-         * SMOOTH PROGRESS BAR Width
-         * @hide
-         */
-        public static final String PROGRESSBAR_WIDTH = "progressbar_width";
-
-        /**
-         *
-         * SMOOTH PROGRESS BAR Length
-         * @hide
-         */
-        public static final String PROGRESSBAR_LENGTH = "progressbar_length";
-
-        /**
-         *
-         * SMOOTH PROGRESS BAR Count
-         * @hide
-         */
-        public static final String PROGRESSBAR_COUNT = "progressbar_count";
-
-        /**
-         *
-         * SMOOTH PROGRESS BAR Color_1
-         * @hide
-         */
-        public static final String PROGRESSBAR_COLOR_1 = "progressbar_color_1";
-
-        /**
-     *
-     * SMOOTH PROGRESS BAR Color_2
-     * @hide
-     */
-        public static final String PROGRESSBAR_COLOR_2 = "progressbar_color_2";
-
-        /**
-         *
-         * SMOOTH PROGRESS BAR Color_3
-         * @hide
-         */
-        public static final String PROGRESSBAR_COLOR_3 = "progressbar_color_3";
-
-        /**
-         *
-         * SMOOTH PROGRESS BAR Color_4
-         * @hide
-         */
-        public static final String PROGRESSBAR_COLOR_4 = "progressbar_color_4";
 
         /**
          * Enable looking up of phone numbers of nearby places
@@ -4393,7 +4334,6 @@ public final class Settings {
         public static final String USE_EDGE_SERVICE_FOR_GESTURES = "edge_service_for_gestures";
 
         /**
-<<<<<<< HEAD
          * Enable blocking wakelock
          * @hide
          */
@@ -4465,10 +4405,7 @@ public final class Settings {
          * An intent (a flattened Uri String) to launch when user voice launch
          * action is detected. An empty or null string will launch the default
          * voice search activity.
-=======
-         * Enable looking up of phone numbers of nearby places
          *
->>>>>>> parent of afa21f2... Progressbar customizations squash
          * @hide
          */
         public static final String VOICE_LAUNCH_INTENT = "voice_launch_intent";
