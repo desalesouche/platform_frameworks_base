@@ -4394,6 +4394,7 @@ public final class Settings {
         public static final String USE_EDGE_SERVICE_FOR_GESTURES = "edge_service_for_gestures";
 
         /**
+<<<<<<< HEAD
          * Enable blocking wakelock
          * @hide
          */
@@ -4465,6 +4466,10 @@ public final class Settings {
          * An intent (a flattened Uri String) to launch when user voice launch
          * action is detected. An empty or null string will launch the default
          * voice search activity.
+=======
+         * Enable looking up of phone numbers of nearby places
+         *
+>>>>>>> parent of afa21f2... Progressbar customizations squash
          * @hide
          */
         public static final String VOICE_LAUNCH_INTENT = "voice_launch_intent";
