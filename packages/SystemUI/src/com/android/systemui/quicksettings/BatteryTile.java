@@ -76,12 +76,6 @@ public class BatteryTile extends QuickSettingsTile implements BatteryStateChange
         qsc.registerObservedContent(Settings.System.getUriFor(
                 Settings.System.STATUS_BAR_BATTERY), this);
         qsc.registerObservedContent(Settings.System.getUriFor(
-                Settings.System.STATUS_BAR_BATTERY_COLOR), this);
-        qsc.registerObservedContent(Settings.System.getUriFor(
-                Settings.System.STATUS_BAR_BATTERY_TEXT_COLOR), this);
-        qsc.registerObservedContent(Settings.System.getUriFor(
-                Settings.System.STATUS_BAR_BATTERY_TEXT_CHARGING_COLOR), this);
-        qsc.registerObservedContent(Settings.System.getUriFor(
                 Settings.System.STATUS_BAR_CIRCLE_BATTERY_ANIMATIONSPEED), this);
     }
 
