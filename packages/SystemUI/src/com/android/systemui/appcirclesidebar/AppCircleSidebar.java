@@ -28,7 +28,6 @@ import android.view.animation.TranslateAnimation;
 import android.widget.*;
 
 import com.android.systemui.R;
-import com.android.systemui.appcirclesidebar.TriggerOverlay;
 
 import java.util.ArrayList;
 import java.util.Calendar;
