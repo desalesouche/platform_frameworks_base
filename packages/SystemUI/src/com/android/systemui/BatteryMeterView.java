@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2013 The Android Open Source Project
+ * This code has been modified. Portions copyright (C) 2013, ParanoidAndroid Project.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -200,8 +201,6 @@ public class BatteryMeterView extends View implements DemoMode {
         super(context, attrs, defStyle);
 
         final Resources res = context.getResources();
-        TypedArray levels = res.obtainTypedArray(R.array.batterymeter_color_levels);
-        TypedArray colors = res.obtainTypedArray(R.array.batterymeter_color_values);
 
         TypedArray batteryType = context.obtainStyledAttributes(attrs,
             com.android.systemui.R.styleable.BatteryIcon, 0, 0);
@@ -212,20 +211,11 @@ public class BatteryMeterView extends View implements DemoMode {
             mBatteryTypeView = "statusbar";
         }
 
-        final int N = levels.length();
-        mColors = new int[2*N];
-        for (int i=0; i<N; i++) {
-            mColors[2*i] = levels.getInt(i, 0);
-            mColors[2*i+1] = colors.getColor(i, 0);
-        }
-        levels.recycle();
-        colors.recycle();
         batteryType.recycle();
 
         mWarningString = context.getString(R.string.battery_meter_very_low_overlay_symbol);
 
         mFramePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        mFramePaint.setColor(res.getColor(R.color.batterymeter_frame_color));
         mFramePaint.setDither(true);
         mFramePaint.setStrokeWidth(0);
         mFramePaint.setStyle(Paint.Style.FILL_AND_STROKE);
@@ -240,7 +230,6 @@ public class BatteryMeterView extends View implements DemoMode {
         mTextPaint.setTextAlign(Paint.Align.CENTER);
 
         mWarningTextPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        mWarningTextPaint.setColor(mColors[1]);
         Typeface font = Typeface.create("sans-serif", Typeface.BOLD);
         mWarningTextPaint.setTypeface(font);
         mWarningTextPaint.setTextAlign(Paint.Align.CENTER);
@@ -251,6 +240,28 @@ public class BatteryMeterView extends View implements DemoMode {
         setLayerType(View.LAYER_TYPE_SOFTWARE, null);
 
         updateSettings();
+    }
+
+    public void setColors(boolean qs) {
+        Resources res = getResources();
+        TypedArray levels = res.obtainTypedArray(R.array.batterymeter_color_levels);
+        TypedArray colors = res.obtainTypedArray(qs ? R.array.qs_batterymeter_color_values :
+                                                      R.array.sb_batterymeter_color_values);
+
+        final int N = levels.length();
+        mColors = new int[2*N];
+        for (int i=0; i<N; i++) {
+            mColors[2*i] = levels.getInt(i, 0);
+            mColors[2*i+1] = colors.getColor(i, 0);
+        }
+        levels.recycle();
+        colors.recycle();
+        mWarningTextPaint.setColor(mColors[1]);
+        if (qs) {
+            mFramePaint.setColor(res.getColor(R.color.qs_batterymeter_frame_color));
+        } else {
+            mFramePaint.setColor(res.getColor(R.color.sb_batterymeter_frame_color));
+        }
     }
 
     private static float[] loadBoltPoints(Resources res) {
@@ -500,7 +511,7 @@ public class BatteryMeterView extends View implements DemoMode {
             mBatteryPaint.setColor(Color.RED);
         } else if (mBatteryColor == -2) {
             mBatteryPaint.setColor(mContext.getResources().getColor(
-                    R.color.batterymeter_charge_color));
+                    R.color.sb_batterymeter_charge_color));
         } else {
             mBatteryPaint.setColor(mBatteryColor);
         }
@@ -509,10 +520,10 @@ public class BatteryMeterView extends View implements DemoMode {
             if (mPercentageChargingColor == -2) {
                 if (mBatteryStyle == BATTERY_STYLE_PERCENT) {
                     mBoltPaint.setColor(mContext.getResources().getColor(
-                            R.color.batterymeter_charge_color));
+                            R.color.sb_batterymeter_charge_color));
                 } else {
                     mBoltPaint.setColor(mContext.getResources().getColor(
-                            R.color.batterymeter_bolt_color));
+                            R.color.sb_batterymeter_bolt_color));
                 }
             } else {
                 mBoltPaint.setColor(mPercentageChargingColor);
@@ -525,10 +536,10 @@ public class BatteryMeterView extends View implements DemoMode {
             } else if (mPercentageColor == -2) {
                 if (mBatteryStyle == BATTERY_STYLE_ICON_PERCENT) {
                     mTextPaint.setColor(mContext.getResources().getColor(
-                            R.color.batterymeter_bolt_color));
+                            R.color.sb_batterymeter_bolt_color));
                 } else {
                     mTextPaint.setColor(mContext.getResources().getColor(
-                            R.color.batterymeter_charge_color));
+                            R.color.sb_batterymeter_charge_color));
                 }
             } else {
                 mTextPaint.setColor(mPercentageColor);

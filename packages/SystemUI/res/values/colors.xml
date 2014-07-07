@@ -58,12 +58,28 @@
     <color name="pie_long_pressed_color">#ff8c8c8c</color>
     <color name="pie_outline_color">#ff5c5c5c</color>
 
-    <!-- Battery view colors -->
-    <color name="batterymeter_frame_color">#66FFFFFF</color><!-- 40% white -->
-    <color name="batterymeter_charge_color">#FFFFFFFF</color>
-    <color name="batterymeter_critical">#FFFF3300</color>
-    <color name="batterymeter_low">#FFFF3300</color>
-    <color name="batterymeter_full">#FFFFFFFF</color>
-    <color name="batterymeter_bolt_color">#FF000000</color><!-- 100% black -->
+    <!-- QuickSettings battery colors -->
+    <color name="qs_batterymeter_frame_color">#66666666</color>
+    <color name="qs_batterymeter_charge_color">#FF5C5C5C</color>
+    <color name="qs_batterymeter_bolt_color">#B2A4A4A4</color>
+    <color name="qs_batterymeter_critical">#FFFF3300</color>
+    <color name="qs_batterymeter_low">#FFFF3300</color>
+    <color name="qs_batterymeter_full">#FF666666</color>
+    <color name="qs_batterymeter_circle_bg">#66666666</color>
+    <color name="qs_batterymeter_circle_fg">#FF666666</color>
+    <color name="qs_batterymeter_circle_text">#FFA4A4A4</color>
+    <color name="qs_batterymeter_circle_text_charging">#FFA4A4A4</color>
+
+    <!-- StatusBar battery colors -->
+    <color name="sb_batterymeter_frame_color">#66FFFFFF</color>
+    <color name="sb_batterymeter_charge_color">#FFFFFFFF</color>
+    <color name="sb_batterymeter_bolt_color">#B2000000</color>
+    <color name="sb_batterymeter_critical">#FFFF3300</color>
+    <color name="sb_batterymeter_low">#FFFF3300</color>
+    <color name="sb_batterymeter_full">#FFFFFFFF</color>
+    <color name="sb_batterymeter_circle_bg">#66FFFFFF</color>
+    <color name="sb_batterymeter_circle_fg">#FFFFFFFF</color>
+    <color name="sb_batterymeter_circle_text">#FFFFFFFF</color>
+    <color name="sb_batterymeter_circle_text_charging">#FFFFFFFF</color>
 
 </resources>

@@ -96,8 +96,10 @@ public class BatteryTile extends QuickSettingsTile implements BatteryStateChange
     public void onChangeUri(ContentResolver resolver, Uri uri) {
         BatteryMeterView battery =
                 (BatteryMeterView) mTile.findViewById(R.id.image);
+        battery.setColors(true);
         BatteryCircleMeterView circleBattery =
                 (BatteryCircleMeterView) mTile.findViewById(R.id.circle_battery);
+        circleBattery.setColors(true);
         if (circleBattery != null) {
             circleBattery.updateSettings();
         }
@@ -155,5 +157,7 @@ public class BatteryTile extends QuickSettingsTile implements BatteryStateChange
                 tv.setTextColor(mTileTextColor);
             }
         }
+        circleBattery.setColors(true);
+        battery.setColors(true);
     }
 }
