@@ -157,7 +157,7 @@ public class BatteryTile extends QuickSettingsTile implements BatteryStateChange
                 tv.setTextColor(mTileTextColor);
             }
         }
-        circleBattery.setColors(true);
-        battery.setColors(true);
+        //circleBattery.setColors(true);
+        //battery.setColors(true);
     }
 }
