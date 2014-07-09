@@ -359,7 +359,7 @@ public class Hover {
 
     public boolean excludeTopmost() {
         return Settings.System.getInt(mContext.getContentResolver(),
-                Settings.System.HOVER_EXCLUDE_TOPMOST, 1) != 0;
+                Settings.System.HOVER_EXCLUDE_TOPMOST, 0) != 0;
     }
 
     public boolean isInCallUINotification(Entry entry) {
