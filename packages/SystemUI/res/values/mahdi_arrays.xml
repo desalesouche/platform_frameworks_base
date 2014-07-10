@@ -28,4 +28,9 @@
         <item>com.android.mms</item>
     </string-array>
 
+    <!-- Active Display -->
+    <array name="ad_targets_unlock_only">
+        <item>@drawable/ic_ad_target_unlock</item>
+    </array>
+
 </resources>
