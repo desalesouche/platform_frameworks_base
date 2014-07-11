@@ -48,6 +48,9 @@ public class BatteryTile extends QuickSettingsTile implements BatteryStateChange
     private int mBatteryLevel = 0;
     private boolean mPluggedIn;
 
+    private BatteryMeterView mBattery;
+    private BatteryCircleMeterView mCircleBattery;
+
     public BatteryTile(Context context, QuickSettingsController qsc, BatteryController controller) {
         super(context, qsc, R.layout.quick_settings_tile_battery);
 
@@ -94,17 +97,15 @@ public class BatteryTile extends QuickSettingsTile implements BatteryStateChange
 
     @Override
     public void onChangeUri(ContentResolver resolver, Uri uri) {
-        BatteryMeterView battery =
-                (BatteryMeterView) mTile.findViewById(R.id.image);
-        battery.setColors(true);
-        BatteryCircleMeterView circleBattery =
-                (BatteryCircleMeterView) mTile.findViewById(R.id.circle_battery);
-        circleBattery.setColors(true);
-        if (circleBattery != null) {
-            circleBattery.updateSettings();
+        mBattery = (BatteryMeterView) mTile.findViewById(R.id.image);
+        mBattery.setColors(true);
+        mCircleBattery = (BatteryCircleMeterView) mTile.findViewById(R.id.circle_battery);
+        mCircleBattery.setColors(true);
+        if (mCircleBattery != null) {
+            mCircleBattery.updateSettings();
         }
-        if (battery != null) {
-            battery.updateSettings();
+        if (mBattery != null) {
+            mBattery.updateSettings();
         }
         updateResources();
     }
@@ -144,6 +145,8 @@ public class BatteryTile extends QuickSettingsTile implements BatteryStateChange
                     : mContext.getString(R.string.quick_settings_battery_discharging);
             }
         }
+        mBattery.setColors(true);
+        mCircleBattery.setColors(true);
     }
 
     @Override
@@ -157,7 +160,5 @@ public class BatteryTile extends QuickSettingsTile implements BatteryStateChange
                 tv.setTextColor(mTileTextColor);
             }
         }
-        //circleBattery.setColors(true);
-        //battery.setColors(true);
     }
 }
