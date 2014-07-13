@@ -49,7 +49,7 @@
         android:layout_centerVertical="true"
         android:gravity="center"
         android:paddingTop="26dp"
-        android:textColor="#666666"
+        android:textColor="@color/notification_dark_text_color"
         android:textSize="12sp"
         />
 </merge>

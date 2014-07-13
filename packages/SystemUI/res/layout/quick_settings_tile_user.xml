@@ -24,7 +24,7 @@
         android:layout_height="match_parent"
         android:src="@drawable/ic_qs_default_user"
         android:scaleType="centerCrop"
-        systemui:corner_radius="30dip"
+        systemui:corner_radius="50dip"
         systemui:is_oval="true"
         />
     <TextView

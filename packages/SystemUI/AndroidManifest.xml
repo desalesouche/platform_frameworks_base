@@ -276,7 +276,7 @@
         <!-- Reminder dialog sets -->
         <activity
             android:name="com.android.systemui.timedialog.ReminderTimeDialog"
-            android:theme="@android:style/Theme.Holo.Dialog.NoActionBar"
+            android:theme="@android:style/Theme.Holo.Light.Dialog.NoActionBar"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:excludeFromRecents="true"
             android:taskAffinity="com.android.systemui.timedialog.ReminderTimeDialog"

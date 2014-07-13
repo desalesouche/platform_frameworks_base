@@ -35,6 +35,13 @@
             android:animateLayoutChanges="true"
             android:columnCount="@integer/quick_settings_num_columns"
             />
+        <!-- <View (Commented out for now. Once we get a base for QS I will 
+        enable this to see if it works)
+            android:id="@+id/bottom_border" 
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/qs_bottom_border"
+            android:background="@drawable/qs_bottom_border_color"
+            /> -->
     </com.android.systemui.statusbar.phone.QuickSettingsScrollView>
 
     <View

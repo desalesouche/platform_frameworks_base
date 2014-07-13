@@ -70,4 +70,8 @@
 
     <!-- AM/PM size in active display -->
     <dimen name="ad_ampm_font_size">32dp</dimen>
+
+    <!-- Notification panel / QS Redesign -->
+    <dimen name="notification_divider_height">2dp</dimen>
+    <dimen name="notification_side_divider_height">8dp</dimen>
 </resources>
