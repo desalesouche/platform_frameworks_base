@@ -3187,7 +3187,13 @@ public final class Settings {
          */
         public static final String BATTERY_AROUND_LOCKSCREEN_RING = "battery_around_lockscreen_ring";
 
-	    /**
+        /**
+         * Whether hardware keys are enabled or disabled
+         * @hide
+         */
+        public static final String DISABLE_HARDWARE_KEYS = "disable_hardware_keys";
+
+    	/**
          * Whether custom hardware key rebinding is enabled
          * @hide
          */
