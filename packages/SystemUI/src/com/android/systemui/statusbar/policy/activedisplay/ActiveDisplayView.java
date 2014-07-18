@@ -203,7 +203,7 @@ public class ActiveDisplayView extends FrameLayout {
 
     private OnTriggerListener mOnTriggerListener = new OnTriggerListener() {
 
-        public void onTrigger(View v, int target) {
+        public void onTrigger(final View v, final int target) {
             if (target == UNLOCK_TARGET) {
                 mWakedByPocketMode = false;
                 disableProximitySensor();
@@ -272,6 +272,9 @@ public class ActiveDisplayView extends FrameLayout {
         }
 
         public void onFinishFinalAnimation() {
+        }
+
+        public void onTargetChange(final View v, final int whichHandle) {
         }
     };
 
