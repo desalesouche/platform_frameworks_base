@@ -48,7 +48,7 @@
         android:layout_marginTop="208dp"
         android:paddingStart="64dp"
         android:layout_gravity="bottom"
-        android:background="#CC111111"
+        android:background="#CC919191"
         >
         <include
             layout="@layout/notification_action_list"

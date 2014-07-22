@@ -25,6 +25,7 @@
     android:showDividers="middle"
     android:divider="?android:attr/listDivider"
     android:dividerPadding="12dp"
+    android:textColor="#666666"
     >
     <!-- actions will be added here -->
 </LinearLayout>
