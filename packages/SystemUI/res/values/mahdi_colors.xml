@@ -19,13 +19,14 @@
 <resources>
 
     <!-- quick settings text color -->
-    <color name="quick_settings_text_color">#cccccc</color>
-    <color name="quick_settings_alarm_text_color">#ff3a3b39</color>
+    <color name="quick_settings_text_color">#666666</color>
+    <color name="quick_settings_alarm_text_color">#ffbabbb8</color>
     <color name="quick_settings_clock_text_color">#ff33b5e5</color>
 
     <!-- quick settings background -->
     <color name="qs_background_color">@android:color/transparent</color>
     <color name="qs_background_pressed_color">@android:color/transparent</color>
+    <color name="qs_bottom_border_color">#ff666666</color>
 
     <!-- Notification Shortcuts -->
     <drawable name="notification_shortcut_background_color">#00000000</drawable>
@@ -38,6 +39,6 @@
     <color name="navigationbar_button_glow_default_color">#00000000</color>
 
     <!-- Navigation ring -->
-    <color name="navring_system_icon_default_color">#FF000000</color>    
+    <color name="navring_system_icon_default_color">#FF000000</color>
 
 </resources>

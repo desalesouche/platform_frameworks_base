@@ -74,4 +74,5 @@
     <!-- Notification panel / QS Redesign -->
     <dimen name="notification_divider_height">2dp</dimen>
     <dimen name="notification_side_divider_height">8dp</dimen>
+    <dimen name="qs_bottom_border_size">1dp</dimen>
 </resources>
