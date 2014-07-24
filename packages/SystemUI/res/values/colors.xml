@@ -34,7 +34,7 @@
     <color name="notification_list_shadow_top">#80858585</color>
     <color name="notification_dark_text_color">#ff666666</color>
     <color name="notification_light_text_color">#99666666</color>
-    <color name="qs_tile_text_color">#ff979797</color>
+    <color name="qs_tile_text_color">#ff666666</color>
     <drawable name="notification_item_background_legacy_color">#ffe0e0e0</drawable>
     <drawable name="status_bar_notification_row_background_color">#ff898989</drawable>
     <drawable name="notification_header_bg">#FFE0E0E0</drawable>
