@@ -116,7 +116,7 @@ import com.android.internal.util.mahdi.MahdiActions;
 import com.android.internal.util.slim.ShakeListener;
 
 import com.android.systemui.BatteryMeterView;
-import com.android.systemui.BatteryCircleMeterView;
+import com.android.systemui.BatteryMeterView.BatteryMeterMode;
 import com.android.systemui.DemoMode;
 import com.android.systemui.EventLogTags;
 import com.android.systemui.R;
@@ -406,8 +406,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
 
     DisplayMetrics mDisplayMetrics = new DisplayMetrics();
 
-    private BatteryMeterView mBattery;
-    private BatteryCircleMeterView mCircleBattery;
+    private BatteryMeterView mBatteryView;
 
     // XXX: gesture research
     private final GestureRecorder mGestureRec = DEBUG_GESTURES
@@ -459,11 +458,9 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
         void observe() {
             ContentResolver resolver = mContext.getContentResolver();
             resolver.registerContentObserver(Settings.System.getUriFor(
-                    Settings.System.STATUS_BAR_BATTERY),
-                    false, this, UserHandle.USER_ALL);
+                    Settings.System.STATUS_BAR_BATTERY), false, this);
             resolver.registerContentObserver(Settings.System.getUriFor(
-                    Settings.System.STATUS_BAR_CIRCLE_BATTERY_ANIMATIONSPEED),
-                    false, this, UserHandle.USER_ALL);
+                    Settings.System.STATUS_BAR_BATTERY_SHOW_PERCENT), false, this);
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.NOTIFICATION_SHORTCUTS_CONFIG),
                     false, this, UserHandle.USER_ALL);
@@ -544,7 +541,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.HEADS_UP_TIMEOUT),
                     false, this, UserHandle.USER_ALL);
-            update();
+            updateSettings();
         }
 
         @Override
@@ -651,77 +648,15 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
                     cleanupBrightnessSlider();
                 }
             }
-            update();
+            updateSettings();
         }
     }
 
-    public void update() {
-        ContentResolver resolver = mContext.getContentResolver();
-        boolean autoBrightness = Settings.System.getInt(
-                    resolver, Settings.System.SCREEN_BRIGHTNESS_MODE, 0) ==
-                    Settings.System.SCREEN_BRIGHTNESS_MODE_AUTOMATIC;
-            mBrightnessControl = !autoBrightness && Settings.System.getInt(
-                    resolver, Settings.System.STATUS_BAR_BRIGHTNESS_CONTROL, 0) == 1;
-            
-            String notificationShortcutsIsActive = Settings.System.getStringForUser(resolver,
-                    Settings.System.NOTIFICATION_SHORTCUTS_CONFIG, UserHandle.USER_CURRENT);
-            mNotificationShortcutsIsActive = !(notificationShortcutsIsActive == null
-                    || notificationShortcutsIsActive.isEmpty());
-
-            if (mNavigationBarView != null) {
-            boolean navLeftInLandscape = Settings.System.getInt(resolver,
-                    Settings.System.NAVBAR_LEFT_IN_LANDSCAPE, 0) == 1;
-            mNavigationBarView.setLeftInLandscape(navLeftInLandscape);
-            }
-
-        mFlipInterval = Settings.System.getIntForUser(mContext.getContentResolver(),
-                        Settings.System.REMINDER_ALERT_INTERVAL, 1500, UserHandle.USER_CURRENT);
-
-            boolean reminderHolder = Settings.System.getIntForUser(mContext.getContentResolver(),
-                        Settings.System.REMINDER_ALERT_ENABLED, 0, UserHandle.USER_CURRENT) != 0;
-            if (reminderHolder != mReminderEnabled) {
-                mReminderEnabled = reminderHolder;
-                if (mReminderEnabled) {
-                    if (mShared.getString("title", null) == null) {
-                        mShared.edit().putString("title",
-                                mContext.getResources().getString(
-                                R.string.quick_settings_reminder_help_title)).commit();
-                        mShared.edit().putString("message",
-                                mContext.getResources().getString(
-                                R.string.quick_settings_reminder_help_message)).commit();
-                    }
-                }
-                enableOrDisableReminder();
-            }
-
-            if (mCarrierLabel != null) {
-                mHideLabels = Settings.System.getIntForUser(resolver,
-                        Settings.System.NOTIFICATION_HIDE_LABELS, 0, UserHandle.USER_CURRENT);
-                updateCarrierMargin(mHideLabels == 3);
-                if (mHideLabels == 3) {
-                    mCarrierAndWifiViewVisible = false;
-                    mCarrierAndWifiView.setVisibility(View.INVISIBLE);
-                }
-                updateCarrierAndWifiLabelVisibility(false);
-            }
-            updateBatteryIcons();
-
-        mHeadsUpNotificationDecay = Settings.System.getInt(
-                    resolver, Settings.System.HEADS_UP_TIMEOUT,
-                    mContext.getResources().getInteger(R.integer.heads_up_notification_decay));
-        mHeadsUpNotificationFSDecay = Settings.System.getInt(
-                                resolver, Settings.System.HEADS_UP_FS_TIMEOUT, 700);
+    @Override
+    public void onChange(boolean selfChange) {
+        updateSettings();
     }
 
-    private void updateBatteryIcons() {
-        if (mBattery != null && mCircleBattery != null) {
-            mBattery.updateSettings();
-            mBattery.setColors(false);
-            mCircleBattery.updateSettings();
-            mCircleBattery.setColors(false);
-        }
-    }
-    
     private boolean isPieEnabled() {
         return Settings.System.getIntForUser(mContext.getContentResolver(),
                 Settings.System.PIE_CONTROLS, 0,
@@ -1161,6 +1096,8 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
         final SignalClusterView signalCluster =
                 (SignalClusterView)mStatusBarView.findViewById(R.id.signal_cluster);
 
+        mBatteryView = (BatteryMeterView) mStatusBarView.findViewById(R.id.battery);
+
         mNetworkController.addSignalCluster(signalCluster);
         signalCluster.setNetworkController(mNetworkController);
 
@@ -1368,12 +1305,6 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
         resetUserSetupObserver();
 
         mNotificationShortcutsLayout.setupShortcuts();
-
-        mBattery = (BatteryMeterView) mStatusBarView.findViewById(R.id.battery);
-        mBattery.setColors(false);
-        mCircleBattery = (BatteryCircleMeterView) mStatusBarView.findViewById(R.id.circle_battery);
-        mCircleBattery.setColors(false);
-        updateBatteryIcons();
 
         mNetworkController.setListener(this);
 
@@ -3956,8 +3887,97 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
         animateCollapsePanels();
         updateNotificationIcons();
         resetUserSetupObserver();
-        update();        
-        super.userSwitched(newUserId);              
+        updateSettings();
+        super.userSwitched(newUserId);
+    }
+
+    private void updateSettings() {
+        ContentResolver resolver = mContext.getContentResolver();
+        boolean autoBrightness = Settings.System.getInt(
+                resolver, Settings.System.SCREEN_BRIGHTNESS_MODE, 0) ==
+                Settings.System.SCREEN_BRIGHTNESS_MODE_AUTOMATIC;
+        mBrightnessControl = !autoBrightness && Settings.System.getInt(
+                resolver, Settings.System.STATUS_BAR_BRIGHTNESS_CONTROL, 0) == 1;
+
+        int batteryStyle = Settings.System.getIntForUser(resolver,
+                Settings.System.STATUS_BAR_BATTERY, 0, mCurrentUserId);
+        BatteryMeterMode mode = BatteryMeterMode.BATTERY_METER_ICON_PORTRAIT;
+        switch (batteryStyle) {
+            case 2:
+                mode = BatteryMeterMode.BATTERY_METER_CIRCLE;
+                break;
+
+            case 4:
+                mode = BatteryMeterMode.BATTERY_METER_GONE;
+                break;
+
+            case 5:
+                mode = BatteryMeterMode.BATTERY_METER_ICON_LANDSCAPE;
+                break;
+
+            case 6:
+                mode = BatteryMeterMode.BATTERY_METER_TEXT;
+                break;
+
+            default:
+                break;
+        }
+
+        boolean showPercent = Settings.System.getInt(resolver,
+                   Settings.System.STATUS_BAR_BATTERY_SHOW_PERCENT, 0) == 1;
+
+        mBatteryView.setMode(mode);
+        mBatteryController.onBatteryMeterModeChanged(mode);
+        mBatteryView.setShowPercent(showPercent);
+        mBatteryController.onBatteryMeterShowPercent(showPercent);
+
+        String notificationShortcutsIsActive = Settings.System.getStringForUser(resolver,
+                Settings.System.NOTIFICATION_SHORTCUTS_CONFIG, UserHandle.USER_CURRENT);
+        mNotificationShortcutsIsActive = !(notificationShortcutsIsActive == null
+                || notificationShortcutsIsActive.isEmpty());
+
+        if (mNavigationBarView != null) {
+        boolean navLeftInLandscape = Settings.System.getInt(resolver,
+                Settings.System.NAVBAR_LEFT_IN_LANDSCAPE, 0) == 1;
+        mNavigationBarView.setLeftInLandscape(navLeftInLandscape);
+        }
+
+        mFlipInterval = Settings.System.getIntForUser(mContext.getContentResolver(),
+                        Settings.System.REMINDER_ALERT_INTERVAL, 1500, UserHandle.USER_CURRENT);
+
+            boolean reminderHolder = Settings.System.getIntForUser(mContext.getContentResolver(),
+                        Settings.System.REMINDER_ALERT_ENABLED, 0, UserHandle.USER_CURRENT) != 0;
+            if (reminderHolder != mReminderEnabled) {
+                mReminderEnabled = reminderHolder;
+                if (mReminderEnabled) {
+                    if (mShared.getString("title", null) == null) {
+                        mShared.edit().putString("title",
+                                mContext.getResources().getString(
+                                R.string.quick_settings_reminder_help_title)).commit();
+                        mShared.edit().putString("message",
+                                mContext.getResources().getString(
+                                R.string.quick_settings_reminder_help_message)).commit();
+                }
+            }
+            enableOrDisableReminder();
+        }
+
+        if (mCarrierLabel != null) {
+            mHideLabels = Settings.System.getIntForUser(resolver,
+                    Settings.System.NOTIFICATION_HIDE_LABELS, 0, UserHandle.USER_CURRENT);
+            updateCarrierMargin(mHideLabels == 3);
+            if (mHideLabels == 3) {
+                mCarrierAndWifiViewVisible = false;
+                mCarrierAndWifiView.setVisibility(View.INVISIBLE);
+            }
+            updateCarrierAndWifiLabelVisibility(false);
+        }
+
+        mHeadsUpNotificationDecay = Settings.System.getInt(
+                    resolver, Settings.System.HEADS_UP_TIMEOUT,
+                    mContext.getResources().getInteger(R.integer.heads_up_notification_decay));
+        mHeadsUpNotificationFSDecay = Settings.System.getInt(
+                                resolver, Settings.System.HEADS_UP_FS_TIMEOUT, 700);
     }
 
     private void resetUserSetupObserver() {
@@ -4254,7 +4274,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
             addNotificationViews(createNotificationViews(notifData.first, notifData.second));
         }
 
-        update();
+        updateSettings();
         setAreThereNotifications();
 
         mStatusBarContainer.addView(mStatusBarWindow);

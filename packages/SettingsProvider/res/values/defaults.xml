@@ -189,4 +189,9 @@
 
     <!-- Default Blacklist values of Settings.System.HEADS_UP_NOTIFICATION -->
     <string name="def_heads_up_notification_blacklist_values"></string>
+
+    <!-- Default for Settings.System.STATUS_BAR_BATTERY -->
+    <integer name="def_battery_style">0</integer>
+    <!-- Default for Settings.System.STATUS_BAR_BATTERY_SHOW_PERCENT -->
+    <integer name="def_battery_show_percent">0</integer>
 </resources>

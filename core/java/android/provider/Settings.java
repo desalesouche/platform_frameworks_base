@@ -3274,20 +3274,25 @@ public final class Settings {
         public static final String KEY_APP_SWITCH_DOUBLE_TAP_ACTION =
                 "key_app_switch_double_tap_action";
 
-        /**
+    /**
          * Display style of the status bar battery information
+         * 0: Display the battery an icon in portrait mode
+         * 2: Display the battery as a circle
+         * 4: Hide the battery status information
+         * 5: Display the battery an icon in landscape mode
+         * 6: Display the battery as plain text
          * default: 0
          * @hide
          */
         public static final String STATUS_BAR_BATTERY = "status_bar_battery";
-         
+
         /**
-         * Circle battery animation speed during charge
-         * in statusbar
+         * Display percentage in text of the battery level on the status bar
+         * default: 0
          * @hide
          */
-        public static final String STATUS_BAR_CIRCLE_BATTERY_ANIMATIONSPEED =
-                "status_bar_circle_battery_animationspeed";   
+        public static final String STATUS_BAR_BATTERY_SHOW_PERCENT =
+                "status_bar_battery_show_percent";
 
         /**
          * Navigation bar button color
@@ -4534,7 +4539,6 @@ public final class Settings {
          * An intent (a flattened Uri String) to launch when user voice launch
          * action is detected. An empty or null string will launch the default
          * voice search activity.
-         *
          * @hide
          */
         public static final String VOICE_LAUNCH_INTENT = "voice_launch_intent";

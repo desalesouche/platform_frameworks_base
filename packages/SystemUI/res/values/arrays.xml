@@ -46,10 +46,10 @@
         <item>15</item>
         <item>100</item>
     </array>
-    <array name="qs_batterymeter_color_values">
-        <item>@color/qs_batterymeter_critical</item>
-        <item>@color/qs_batterymeter_low</item>
-        <item>@color/qs_batterymeter_full</item>
+    <array name="batterymeter_color_values">
+        <item>@color/batterymeter_critical</item>
+        <item>@color/batterymeter_low</item>
+        <item>@color/batterymeter_full</item>
     </array>
     <array name="batterymeter_bolt_points">
         <item>73</item> <item>0</item>
@@ -59,12 +59,5 @@
         <item>4</item>  <item>703</item>
         <item>157</item><item>334</item>
         <item>0</item>  <item>334</item>
-    </array>
-
-    <!-- StatusBar BatteryMeterView colors -->
-    <array name="sb_batterymeter_color_values">
-        <item>@color/sb_batterymeter_critical</item>
-        <item>@color/sb_batterymeter_low</item>
-        <item>@color/sb_batterymeter_full</item>
     </array>
 </resources>

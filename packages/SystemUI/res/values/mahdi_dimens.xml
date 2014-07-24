@@ -28,20 +28,18 @@
     <!-- Network traffic monitor multi-line text size -->
     <dimen name="net_traffic_multi_text_size">9dp</dimen>
 
+    <!-- Status bar battery icons dimensions -->
+    <dimen name="status_bar_battery_height">16dp</dimen>
+    <dimen name="status_bar_battery_width">10.5dp</dimen>
+
+    <!-- Padding under status bar battery icon -->
+    <dimen name="status_bar_battery_bottom_padding">1px</dimen>
+
     <!-- App Circle Sidebar -->
     <dimen name="app_sidebar_trigger_width">12dip</dimen>
     <dimen name="app_sidebar_listview_width">160dp</dimen>
     <dimen name="app_sidebar_icon_width">72dp</dimen>
     <dimen name="app_sidebar_icon_height">72dp</dimen>
-
-    <!-- Circle battery view -->
-    <item name="qs_circle_battery_size_percentage" format="float" type="dimen">1.0</item>
-    <item name="qs_circle_battery_thickness_fg_percentage" format="float" type="dimen">1.0</item>
-    <item name="qs_circle_battery_thickness_bg_percentage" format="float" type="dimen">1.0</item>
-
-    <item name="sb_circle_battery_size_percentage" format="float" type="dimen">1.0</item>
-    <item name="sb_circle_battery_thickness_fg_percentage" format="float" type="dimen">1.0</item>
-    <item name="sb_circle_battery_thickness_bg_percentage" format="float" type="dimen">1.0</item>
 
     <!-- Active Display -->
     <!-- Top margin for overflow notifications container shown in the P.O.R.N. view -->
@@ -75,4 +73,5 @@
     <dimen name="notification_divider_height">2dp</dimen>
     <dimen name="notification_side_divider_height">8dp</dimen>
     <dimen name="qs_bottom_border_size">1dp</dimen>
+
 </resources>
