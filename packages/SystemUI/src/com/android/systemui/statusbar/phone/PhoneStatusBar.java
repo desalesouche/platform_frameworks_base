@@ -646,15 +646,15 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
                     mBrightnessView.setVisibility(View.VISIBLE);
                 } else {
                     cleanupBrightnessSlider();
-                }
             }
-            updateSettings();
         }
+        updateSettings();
     }
 
     @Override
     public void onChange(boolean selfChange) {
         updateSettings();
+        }
     }
 
     private boolean isPieEnabled() {
