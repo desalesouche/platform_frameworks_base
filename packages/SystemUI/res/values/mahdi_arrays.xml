@@ -30,6 +30,7 @@
     <!-- Active Display -->
     <array name="ad_targets_unlock_only">
         <item>@drawable/ic_ad_target_unlock</item>
+    </array>
 
     <array name="batterymeter_inverted_bolt_points" translatable="false">
         <item>743</item><item>73</item>
