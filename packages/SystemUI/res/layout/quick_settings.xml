@@ -14,7 +14,7 @@
      limitations under the License.
 -->
 
-<com.android.systemui.statusbar.phone.SettingsPanelView 
+<com.android.systemui.statusbar.phone.SettingsPanelView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -36,8 +36,8 @@
             android:columnCount="@integer/quick_settings_num_columns"
             />
         <View
-            android:id="@+id/bottom_border" 
-            android:layout_width="match_parent"
+            android:id="@+id/bottom_border"
+            android:layout_width="wrap_content"
             android:layout_height="@dimen/qs_bottom_border_size"
             android:background="@drawable/qs_bottom_border_color"
             />
