@@ -22,11 +22,6 @@
         <item>@drawable/ic_qs_perf_profile_perf</item>
     </string-array>
 
-    <!-- Heads Up -->
-    <string-array name="heads_up_pkg_whitelist">
-        <item>com.android.mms</item>
-    </string-array>
-
     <!-- Active Display -->
     <array name="ad_targets_unlock_only">
         <item>@drawable/ic_ad_target_unlock</item>
