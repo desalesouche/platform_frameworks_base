@@ -78,8 +78,6 @@ import com.android.internal.widget.LockPatternUtils;
 
 import com.android.systemui.R;
 import com.android.systemui.statusbar.BaseStatusBar;
-import com.android.systemui.widget.RoundedDrawable;
-import com.android.systemui.widget.RoundedImageView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -127,7 +125,7 @@ public class ActiveDisplayView extends FrameLayout {
     private GlowPadView mGlowPadView;
     private View mRemoteView;
     private View mClock;
-    private RoundedImageView mCurrentNotificationIcon;
+    private ImageView mCurrentNotificationIcon;
     private FrameLayout mRemoteViewLayout;
     private FrameLayout mContents;
     private ObjectAnimator mAnim;
@@ -500,7 +498,7 @@ public class ActiveDisplayView extends FrameLayout {
 
         mRemoteViewLayout = (FrameLayout) contents.findViewById(R.id.remote_content_parent);
         mClock = contents.findViewById(R.id.clock_view);
-        mCurrentNotificationIcon = (RoundedImageView) contents.findViewById(R.id.current_notification_icon);
+        mCurrentNotificationIcon = (ImageView) contents.findViewById(R.id.current_notification_icon);
 
         mOverflowNotifications = (LinearLayout) contents.findViewById(R.id.keyguard_other_notifications);
         mOverflowNotifications.setOnTouchListener(mOverflowTouchListener);
@@ -922,7 +920,7 @@ public class ActiveDisplayView extends FrameLayout {
                 for (int i = sbns.length - 1; i >= 0; i--) {
                     if (isValidNotification(sbns[i])
                             && mOverflowNotifications.getChildCount() < MAX_OVERFLOW_ICONS) {
-                        RoundedImageView iv = new RoundedImageView(mContext);
+                        ImageView iv = new ImageView(mContext);
                         if (mOverflowNotifications.getChildCount() < (MAX_OVERFLOW_ICONS - 1)) {
                             Drawable iconDrawable = null;
                             try {
@@ -949,7 +947,7 @@ public class ActiveDisplayView extends FrameLayout {
                             iv.setImageResource(R.drawable.ic_ad_morenotifications);
                         }
                         iv.setPadding(mIconPadding, mIconPadding, mIconPadding, mIconPadding);
-                        iv.setScaleType(RoundedImageView.ScaleType.FIT_CENTER);
+                        iv.setScaleType(ImageView.ScaleType.FIT_CENTER);
                         mOverflowNotifications.addView(iv, mOverflowLayoutParams);
                     }
                 }
@@ -971,7 +969,7 @@ public class ActiveDisplayView extends FrameLayout {
                     final int childCount = mOverflowNotifications.getChildCount();
                     Rect hitRect = new Rect();
                     for (int i = 0; i < childCount; i++) {
-                        final RoundedImageView iv = (RoundedImageView) mOverflowNotifications.getChildAt(i);
+                        final ImageView iv = (ImageView) mOverflowNotifications.getChildAt(i);
                         final StatusBarNotification sbn = (StatusBarNotification) iv.getTag();
                         iv.getHitRect(hitRect);
                         if (i != mLastChildPosition ) {
