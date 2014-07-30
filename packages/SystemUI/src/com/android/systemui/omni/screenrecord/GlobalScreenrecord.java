@@ -191,7 +191,7 @@ class GlobalScreenrecord {
                 R.string.screenrecord_notif_pointer_off :
                 R.string.screenrecord_notif_pointer_on;
         builder
-            .addAction(com.android.internal.R.drawable.ic_media_stop,
+            .addAction(R.drawable.ic_menu_stop,
                 r.getString(R.string.screenrecord_notif_stop), stopPendIntent)
             .addAction(togglePointerIconId,
                 r.getString(togglePointerStringId), pointerPendIntent);

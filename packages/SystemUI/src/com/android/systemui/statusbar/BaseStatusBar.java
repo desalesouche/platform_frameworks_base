@@ -1072,7 +1072,7 @@ public abstract class BaseStatusBar extends SystemUI implements
             if (mIntent != null) {
 
                 if (mFloat && !"android".equals(mPkg)) {
-                    Intent floatwindow = new Intent();
+                    Intent floatwindow = new Intent(mContext);
                     floatwindow.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_FLOATING_WINDOW);
                     mContext.startActivity(floatwindow);
                 }
