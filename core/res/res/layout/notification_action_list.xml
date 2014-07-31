@@ -23,7 +23,7 @@
     android:visibility="gone"
     android:layout_marginBottom="8dp"
     android:showDividers="middle"
-    android:divider="?android:attr/listDivider"
+    android:divider="@*android:drawable/list_divider_holo_light"
     android:dividerPadding="12dp"
     android:textColor="#666666"
     >

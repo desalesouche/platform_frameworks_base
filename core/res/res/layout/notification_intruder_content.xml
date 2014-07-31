@@ -18,6 +18,7 @@
         >
         <TextView android:id="@+id/title"
             android:textAppearance="@style/TextAppearance.StatusBar.EventContent.Title"
+            android:textColor="#666666"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:singleLine="true"
@@ -26,6 +27,7 @@
             />
         <TextView android:id="@+id/text"
             android:textAppearance="@style/TextAppearance.StatusBar.EventContent"
+            android:textColor="#666666"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -46,6 +48,7 @@
         <Button
             style="?android:attr/buttonBarButtonStyle"
             android:textAppearance="@style/TextAppearance.StatusBar.EventContent.Title"
+            android:textColor="#666666"
             android:id="@+id/action0"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -55,6 +58,7 @@
         <Button
             style="?android:attr/buttonBarButtonStyle"
             android:textAppearance="@style/TextAppearance.StatusBar.EventContent.Title"
+            android:textColor="#666666"
             android:id="@+id/action1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -64,6 +68,7 @@
         <Button
             style="?android:attr/buttonBarButtonStyle"
             android:textAppearance="@style/TextAppearance.StatusBar.EventContent.Title"
+            android:textColor="#666666"
             android:id="@+id/action2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

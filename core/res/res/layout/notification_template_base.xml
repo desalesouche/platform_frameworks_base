@@ -51,6 +51,7 @@
             >
             <TextView android:id="@+id/title"
                 android:textAppearance="@style/TextAppearance.StatusBar.EventContent.Title"
+                android:textColor="#666666"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:singleLine="true"
@@ -75,6 +76,7 @@
         </LinearLayout>
         <TextView android:id="@+id/text2"
             android:textAppearance="@style/TextAppearance.StatusBar.EventContent.Line2"
+            android:textColor="#666666"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="-2dp"
@@ -91,7 +93,7 @@
             android:layout_height="12dp"
             android:layout_marginStart="8dp"
             android:visibility="gone"
-            style="?android:attr/progressBarStyleHorizontal"
+            style="@*android:style/Widget.Holo.Light.ProgressBar.Horizontal"
             />
         <LinearLayout
             android:id="@+id/line3"
@@ -103,6 +105,7 @@
             >
             <TextView android:id="@+id/text"
                 android:textAppearance="@style/TextAppearance.StatusBar.EventContent"
+                android:textColor="#666666"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -113,6 +116,7 @@
                 />
             <TextView android:id="@+id/info"
                 android:textAppearance="@style/TextAppearance.StatusBar.EventContent.Info"
+                android:textColor="#666666"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
