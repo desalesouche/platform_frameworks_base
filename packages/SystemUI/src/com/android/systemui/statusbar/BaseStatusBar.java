@@ -587,8 +587,8 @@ public abstract class BaseStatusBar extends SystemUI implements
         return new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-final NotificationData.Entry entry = (Entry) v.getTag();    488
-                final StatusBarNotification sbNotification = entry.notification;    489
+                final NotificationData.Entry entry = (Entry) v.getTag();
+                final StatusBarNotification sbNotification = entry.notification;
                 final String packageNameF = sbNotification.getPackageName();
                 if (packageNameF == null) return false;
                 if (v.getWindowToken() == null) return false;
