@@ -227,8 +227,8 @@ public class PieController implements BaseStatusBar.NavigationBarCallback, PieVi
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.PIE_IME_CONTROL), false, this,
                     UserHandle.USER_ALL);
-            resolver.registerContentObserver(Settings.PAC.getUriFor(
-                    Settings.PAC.PIE_TRIGGER_SENSITIVITY), false, this,
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.PIE_TRIGGER_SENSITIVITY), false, this,
                     UserHandle.USER_ALL);
         }
 
@@ -418,8 +418,8 @@ public class PieController implements BaseStatusBar.NavigationBarCallback, PieVi
                 Settings.System.PIE_GRAVITY, EdgeGesturePosition.LEFT.FLAG,
                 UserHandle.USER_CURRENT);
 
-        mSensitivity = Settings.PAC.getInt(resolver,
-                Settings.PAC.PIE_TRIGGER_SENSITIVITY, mSensitivity);
+        mSensitivity = Settings.System.getInt(resolver,
+                Settings.System.PIE_TRIGGER_SENSITIVITY, mSensitivity);
 
         if (mSensitivity < EdgeServiceConstants.SENSITIVITY_LOWEST
                 || mSensitivity > EdgeServiceConstants.SENSITIVITY_HIGHEST) {
