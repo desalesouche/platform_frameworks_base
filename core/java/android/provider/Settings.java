@@ -3526,6 +3526,13 @@ public final class Settings {
         public static final String HEADS_UP_FS_TIMEOUT = "heads_up_fs_timeout";
 
         /**
+         * Whether heads up notification is expanded by default (default = disabled)
+         *
+         * @hide
+         */
+        public static final String HEADS_UP_EXPANDED = "heads_up_expanded";
+
+        /**
          * Quick Settings Panel Dynamic Tiles
          *
          * @hide
