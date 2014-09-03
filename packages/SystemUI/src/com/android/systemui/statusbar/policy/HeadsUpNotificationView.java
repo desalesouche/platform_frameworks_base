@@ -76,7 +76,7 @@ public class HeadsUpNotificationView extends FrameLayout implements SwipeHelper.
 
     public boolean setNotification(NotificationData.Entry headsUp, boolean isExpanded) {
         mHeadsUp = headsUp;
-        HeadsUpIsExpanded = isExpanded;
+        mHeadsUpIsExpanded = isExpanded;
         mHeadsUp.row.setExpanded(isExpanded && mHeadsUp.row.isExpandable());
         if (mContentHolder == null) {
             // too soon!
